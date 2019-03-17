@@ -35,7 +35,6 @@ If you don't have the Symfony client installed, run `php bin/console server:run`
 Alternatively, you can [configure a web server][3] like Nginx or Apache to run
 the application.
 
-[1]: https://symfony.com/doc/current/best_practices/index.html
 [2]: https://symfony.com/doc/current/reference/requirements.html
 [3]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
 [4]: https://symfony.com/download
