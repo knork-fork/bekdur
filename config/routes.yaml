@@ -4,3 +4,7 @@
 index:
     path: /
     controller: App\Controller\Homepage\DefaultController:index
+
+new_user:
+    path: /user/new
+    controller: App\Controller\UserController:new

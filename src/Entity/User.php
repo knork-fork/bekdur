@@ -2,16 +2,32 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ */
 class User
 {
-    public $id;
-    public $name;
-    // to-do: add roles, email, login token(??) etc.
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
-    function __construct()
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $username;
+
+    public function getId(): ?int
     {
-        // Hardcoded values for testing
-        $this->id = 0;
-        $this->name = "default_user";
+        return $this->id;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
     }
 }
