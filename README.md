@@ -1,7 +1,7 @@
 --to be named-- (Bekdur)
 ========================
 
-Aplikacija za kolaboraciju između učenika.
+[HR] Aplikacija za kolaboraciju između učenika.
 
 Requirements
 ------------
@@ -17,6 +17,12 @@ Clone this repository and run:
 
 ```bash
 $ composer install --no-interaction
+```
+
+Then run latest migrations:
+
+```bash
+$ ./bin/console doctrine:migrations:migrate
 ```
 
 Usage
