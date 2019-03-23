@@ -9,14 +9,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use App\Repository\UserRepository;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class LoginAuthenticator extends AbstractFormLoginAuthenticator
 {
     private $userRepository;
+    private $router;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, RouterInterface $router)
     {
         $this->userRepository = $userRepository;
+        $this->router = $router;
     }
 
     public function supports(Request $request)
@@ -47,6 +51,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         // todo: redirect to user page here
+        return new RedirectResponse($this->router->generate("index"));
     }
 
     protected function getLoginUrl()
