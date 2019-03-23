@@ -11,16 +11,19 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 use App\Repository\UserRepository;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class LoginAuthenticator extends AbstractFormLoginAuthenticator
 {
     private $userRepository;
     private $router;
+    private $encoder;
 
-    public function __construct(UserRepository $userRepository, RouterInterface $router)
+    public function __construct(UserRepository $userRepository, RouterInterface $router, UserPasswordEncoderInterface $encoder)
     {
         $this->userRepository = $userRepository;
         $this->router = $router;
+        $this->encoder = $encoder;
     }
 
     public function supports(Request $request)
@@ -39,13 +42,12 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         // todo: call dummy hash if no user found
-        return $this->userRepository->findOneBy(['username' => $credentials['username']]);
+        return $this->userRepository->findOneBy(["username" => $credentials["username"]]);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        // todo: check password here
-        dd($user);
+        return $this->encoder->isPasswordValid($user, $credentials["password"]);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
