@@ -11,6 +11,18 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
+    public function login()
+    {
+        // todo: return login form template
+        return new Response("login");
+    }
+
+    public function signup()
+    {
+        // todo: return signup form template
+        return new Response("signup");
+    }
+
     public function new()
     {
         return new Response("OK!");

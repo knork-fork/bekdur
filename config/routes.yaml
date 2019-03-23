@@ -5,6 +5,18 @@ index:
     path: /
     controller: App\Controller\Homepage\DefaultController:index
 
+### user logic
+
+user_login:
+    path: /login
+    controller: App\Controller\UserController:login
+
+user_signup:
+    path: /signup
+    controller: App\Controller\UserController:signup
+
+### other
+
 new_user:
     path: /user/new
     controller: App\Controller\UserController:new
