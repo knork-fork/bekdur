@@ -11,6 +11,10 @@ user_login:
     path: /login
     controller: App\Controller\UserController:login
 
+user_logout:
+    path: /logout
+    controller: App\Controller\UserController:logout
+
 user_signup:
     path: /signup
     controller: App\Controller\UserController:signup

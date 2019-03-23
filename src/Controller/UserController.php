@@ -17,6 +17,11 @@ class UserController extends AbstractController
         return new Response("login");
     }
 
+    public function logout()
+    {
+        throw new \Exception("Something went wrong.");
+    }
+
     public function signup()
     {
         // todo: return signup form template
