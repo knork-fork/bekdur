@@ -7,4 +7,10 @@
 {% block body %}
 <h1 class="exampleStyle">This is a homepage</h1>
 <div class="exampleStyle2">Currently logged in: {{ user_name }}</div>
+<br>
+    {% if user_name == "anon." %}
+        <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ path('user_login') }}">Log in</a>
+    {% else %}
+        <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ path('user_logout') }}">Log out</a>
+    {% endif %}
 {% endblock %}
