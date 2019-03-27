@@ -1,0 +1,1488 @@
+body {
+    overflow: auto;
+    height: 100vh;
+	margin:0;
+}
+
+
+a{
+	text-decoration:none;
+}
+
+
+/***** Pocetna stranica *****/
+/* NavBar  */
+
+#startPageHeader{
+	width:100%;
+	height:65px;
+	left:0px;
+	padding:0px;
+	top:0px;
+	z-index:100;
+	position:fixed;
+	overflow:visible;
+}
+#startPageHeaderA{
+	float:left;
+}
+#startPageHeaderA img{
+	margin-left:15px;
+	margin-top:13px;
+	height:45px;
+}
+#startPageHeader div{
+	height:100%;
+	float:right;  
+	margin-right:15px;
+}
+#startPageHeader div ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	margin-top:15px;
+}
+#startPageHeader div li{    
+	display: inline;
+}
+#startPageHeader div li a{
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Segoe UI;
+	font-weight:500;
+	font-size:17px;
+}
+
+#startPageHeader div li button{
+    border: none;
+    font-family: Segoe UI Semibold;
+    cursor: pointer;
+    padding: 10px 70px;
+    letter-spacing: 2px;
+    outline: none;
+	background-color: #2263d6;
+    color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+
+
+/*------DIV za centriranje sadrzaja po x i y(pocetna stranica i stranica za ulaz u igru)*/
+.centerContentDiv{
+	width:100%;
+	height:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+}
+
+
+
+
+
+
+/***** Pocetna stranica *****/
+#startPageDivA {
+	-webkit-clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+	background-color:#eee;
+}
+#startPageDivB{
+	height:500px;
+	color:#e2e2e2;
+	opacity:0;
+	transform: scale(0.75,0.75);
+	transition: transform 0.7s ease-in-out;
+}
+#startPageDivB h6{
+	font-size:47px;
+	font-family:Segoe UI;
+	font-weight:400;
+	margin:20px;
+}
+#startPageDivB h5{
+	font-size:23px;
+	font-family:Segoe UI;
+	font-weight:400;
+	padding:0 70px 0 70px;
+}
+.presentationCard{
+	margin:50px;
+	width:330px;
+	height:450px;
+	border-radius:10px;
+	overflow:hidden;
+	background-color:#e0e0e0;
+	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3), 0 6px 30px 0 rgba(0, 0, 0, 0.3);
+	display:inline-block;
+	opacity:0;
+	transform: scale(0.75,0.75);
+	transition: transform 0.7s ease-out;
+}
+.presentationCard #top{
+	width:100%;
+	height:53%;
+	-webkit-clip-path: polygon(100% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0);
+	clip-path: polygon(100% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0);
+}
+.presentationCard #top div{
+	width:100%;
+	height:100%;
+    background-size: cover;
+	background-position: center;
+    background-repeat: no-repeat;
+	transition: all 0.5s ease-in-out;
+}
+.presentationCard #top div:hover{
+	width:120%;
+	height:120%;
+}
+.presentationCard #bottom{
+	width:100%;
+	height:47%;
+	padding:10px;
+	font-family:Segoe UI;
+	color:#424242;
+}
+.presentationCard h1{
+	font-size:26px;
+}
+.presentationCard p{
+	font-size:16px;
+	width:95%;
+}
+
+
+#startPageDiv{
+	background-image:url(../images/wood_texture.png);
+    background-size: cover;
+	background-position: center;
+    background-repeat: no-repeat;
+	overflow:hidden;
+	min-height:500px;
+	height:110vh;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+}
+
+#headerDiv{
+	width:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+	opacity:1;
+}
+
+#headerDiv.blackBg{
+	padding:50px;
+	background:rgba(0,0,0,0.3);
+}
+#headerDiv  img{
+	height:10vw;
+	min-height:70px;
+	max-height:15vh;
+}
+
+#headerDiv  h1{
+	font-size:40px;
+	font-family:Segoe UI;
+	font-weight:lighter;
+	color:#FFF;
+}
+
+
+
+/***** Footer *****/
+footer {
+    padding: 90px 0 30px 0;
+	margin-top:-100px;
+    text-align: center;
+    background: #383838;
+	display:block;
+	background-image:url(../images/pattern_bg.png);
+    background-size: cover;
+	background-position: center;
+    background-repeat: no-repeat;
+	background-attachment:fixed;
+	-webkit-clip-path: polygon(0 0, 100% 13%, 100% 100%, 0 100%);
+	clip-path: polygon(0 0, 100% 13%, 100% 100%, 0 100%);
+}
+footer span{
+	margin:0px 15px 70px 15px;
+}
+#twitterCr{
+	opacity:0.3;
+	color:#FFF;
+	transition:all 0.4s;
+}
+#facebookCr{
+	opacity:0.3;
+	color:#FFF;
+	transition:all 0.4s;
+}
+#youtubeCr{
+	opacity:0.3;
+	color:#FFF;
+	transition:all 0.4s;
+}
+#twitterL{
+	color:#383838;
+}
+#facebookL{
+	color:#383838;
+}
+#youtubeL{
+	color:#383838;
+}
+#googlePlusL{
+	color:#383838;
+}
+#googlePlusCr{
+	opacity:0.3;
+	color:#FFF;
+	transition:all 0.4s;
+}
+#twitterHov:hover>#twitterCr{
+		opacity:1;
+		color:#55ACEE;
+}
+#facebookHov:hover>#facebookCr{
+		opacity:1;
+		color:#3b5998;
+}
+#googlePlusHov:hover>#googlePlusCr{
+		opacity:1;
+		color:#dd4b39;
+}
+#youtubeHov:hover>#youtubeCr{
+		opacity:1;
+		color:#b31217;
+}
+footer p{
+	font-size:14px;
+	color:#c9c9c9;
+	font-family:Segoe UI;
+	font-weight:100;
+}
+
+footer  a{
+	color:#c9c9c9;
+	text-decoration: none;
+}
+
+
+
+/*------plavi gumb------*/
+.blueRegButton{
+    border: none;
+    font-family: Segoe UI Semibold;
+    background-color: none;
+    cursor: pointer;
+    padding: 15px 100px;
+    letter-spacing: 2px;
+    outline: none;
+    transition: all 0.1s;
+	background-color: #2263d6;
+    color: #fff;
+    box-shadow: 0 8px #184596;
+	font-size: 17px;
+	text-transform: uppercase;
+}
+
+.blueRegButton:hover {
+    box-shadow: 0 5px #184596;
+}
+ 
+.blueRegButton:active {
+    box-shadow: 0 1px #184596;
+}
+
+
+
+
+
+/*   Class:  container */
+.container:before{
+	display:table;
+	content:" ";
+}
+
+.container:after{
+	clear:both;
+	display:table;
+	content:" ";
+}
+
+
+
+
+
+
+
+
+
+
+/*----forma za login i register------*/
+
+.logRegDiv .logRegForm {
+	background: #FFFFFF;
+	max-width: 280px;
+	padding: 70px 30px 70px 30px;
+	text-align: center;
+	float:left;
+}
+.logRegDiv .logRegForm span{
+	font-size:14px;
+	color:#c0392b;
+	font-family:Segoe UI;
+	width:250px;
+	font-weight:600;
+}
+
+.logRegDiv .logRegForm input[type="text"], .logRegDiv .logRegForm input[type="password"], .logRegDiv .logRegForm select{
+	font-family: sans-serif;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	margin: 10px 0 10px;
+	padding: 15px;
+	box-sizing: border-box;
+	font-size: 15px;
+}
+.logRegDiv .logRegForm input[type="submit"] {
+	font-family: sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #2C73A0;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+	cursor: pointer;
+	margin:10px 0px 10px;
+}
+
+.logRegDiv .logRegForm input[type="submit"]:hover,
+.logRegDiv .logRegForm input[type="submit"]:active,
+.logRegDiv .logRegForm input[type="submit"]:focus {
+	background: #1d5b82;
+}
+
+
+.logRegDiv .contDiv{
+	height:auto;
+	width:auto;
+	display:inline;
+	overflow:hidden;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+.logRegDiv{
+	width:100%;
+	height:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+	background-color:#e0e0e0;
+    background-size: cover;
+}
+.logRegDiv .imgTxtDiv{
+	background-color:blue;
+	float:left;
+	width:300px;
+	height:100%;
+	background-image:url(../temp/logRegBg.png);
+    background-size: cover;	
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+	background-color:#133B55;
+    background-size: cover;
+}
+
+.logRegDiv .imgTxtDiv  img{
+	width:90px;
+	height:auto;
+}
+
+.logRegDiv .imgTxtDiv  h1{
+	font-size:38px;
+	color:white;
+	font-family:Segoe UI;
+	letter-spacing:-1px;
+	line-height:0px;
+	padding-top:10px;
+	font-weight:300;
+}
+
+.logRegDiv .imgTxtDiv  p{
+	font-size:14px;
+	color:white;
+	font-family:Segoe UI;
+	width:250px;
+	font-weight:100;
+}
+
+.logRegDiv .imgTxtDiv  a{
+	color: #e5e6e8;
+	text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------*/
+/*---------Dashboard za kreiranje --------------*/
+/*----------------------------------------------*/
+
+/*--		Navigacijska traka		--*/
+.creatorHeader{
+	width:100%;
+	height:65px;
+	left:0px;
+	overflow:hidden;
+	padding:0px;
+	top:0px;
+	z-index:100;
+	position:fixed;
+	background-color:#0379af;
+	display: inline;
+}
+.creatorHeader img{
+	height:45px;
+}
+
+.creatorHeader div{
+	height:100%;
+	float:right;  
+	margin-right:15px;
+}
+.creatorHeader ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+	margin-top:10px;
+}
+.creatorHeader li{    
+	display: inline;
+}
+.creatorHeader li a{
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Segoe UI;
+	font-weight:500;
+	font-size:17px;
+    color: white;
+}
+
+.creatorHeader li button{
+    border: none;
+    font-family: Segoe UI Semibold;
+    cursor: pointer;
+    padding: 10px 70px;
+    letter-spacing: 2px;
+    outline: none;
+	background-color: #2263d6;
+    color: #fff;
+	font-size: 14px;
+}
+
+.creatorHeader .bgDiv{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	width:250px;
+	float:left;
+}
+.creatorHeader .bgDiv.transparent{
+	background:rgba(0,0,0,0);
+}
+.creatorHeader .bgDiv.blue{
+	background:rgba(0,0,0,0.15);
+}
+.creatorHeader .wlcDiv{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	font-family:Segoe UI;
+	line-height:16px;
+}
+.creatorHeader .wlcDiv h1{
+	font-size:12px;
+	font-weight:600;
+    color: #fff;
+	margin:0;
+	padding:0;
+	
+}
+.creatorHeader .wlcDiv h2{
+	font-size:17px;
+	font-weight:200;
+    color: #fff;
+	margin:0;
+	padding:0;
+}
+.creatorHeader .txtDiv{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	font-family:Segoe UI;
+}
+
+
+/*-		User panel 		-*/
+.userPanelDiv{
+	width:100%;
+	font-family:Segoe UI;
+}
+.userPanelDiv .leftNavDiv{
+	width:250px;
+	background-color:#2d323d;
+	height:100%;
+	padding-top:80px;
+	position:fixed;
+	display:inline;
+	float:left;
+	top:0;
+}
+
+.userPanelDiv .leftNavDiv button{
+    border: none;
+    cursor: pointer;
+    padding: 17px 0px;
+    color: #fff;
+	font-size: 16px;
+	width:100%;
+	transition: background 0.6s;
+	text-align:left;
+	padding-left:27px;
+}
+.userPanelDiv .leftNavDiv button.notselected{
+	background:rgba(0,0,0,0.0);
+}
+.userPanelDiv .leftNavDiv button.selected{
+	background:rgba(0,0,0,0.25);
+}
+.userPanelDiv .leftNavDiv button:hover{
+	background:rgba(0,0,0,0.25);
+}
+
+.userPanelDiv #userPanelContentDiv{
+	margin:65px 0px 0px 250px;
+	padding:50px 50px 50px 50px;
+}
+.userPanelDiv #userPanelContentDiv table {
+    border-collapse: collapse;
+    width: 100%;
+	min-width:500px;
+}
+
+.userPanelDiv #userPanelContentDiv th, td {
+    text-align: left;
+    padding: 12px;
+}
+
+.userPanelDiv #userPanelContentDiv tr:nth-child(even){
+	background: rgba(0,0,0,0.03);
+}
+
+.userPanelDiv #userPanelContentDiv th {
+    background-color: #16a085;
+    color: white;
+	font-weight:400;
+}
+.userPanelDiv #userPanelContentDiv .buttons{
+    border: none;
+    font-family: Segoe UI;
+    cursor: pointer;
+    padding: 10px 70px;
+	margin-right:10px;
+	background-color: #16a085;
+    color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	text-decoration:none;
+}
+.userPanelDiv #userPanelContentDiv #four{
+    width:100%;
+	
+}
+/*  Statistika
+.userPanelDiv #userPanelContentDiv #four .statsDiv{
+    width:300px;
+	height:133px;
+    background-size: cover;
+	background-position: center;
+	float:left;
+	margin:0px 30px 30px 0px;
+	border-radius:5px;
+	padding:10px 10px 10px 30px;
+}
+.userPanelDiv #userPanelContentDiv #four .statsDiv.users{
+	background-image:url(../images/usersStat.png);
+	border-bottom:20px solid #0092b7;
+}
+.userPanelDiv #userPanelContentDiv #four .statsDiv.plays{
+	background-image:url(../images/playsStat.png);
+	border-bottom:20px solid #008e4a;
+}
+.userPanelDiv #userPanelContentDiv #four .statsDiv.visits{
+	background-image:url(../images/visitsStat.png);
+	border-bottom:20px solid #d18601;
+}
+.userPanelDiv #userPanelContentDiv #four .statsDiv.quiz{
+	background-image:url(../images/quizzesStat.png);
+	border-bottom:20px solid #d35942;
+}
+.userPanelDiv #userPanelContentDiv #four .statsDiv h1{
+    color:white;
+	font-size:45px;
+	font-weight:700;
+	margin:10px 0px 10px 0px;
+	
+}
+.userPanelDiv #userPanelContentDiv #four .statsDiv h2{
+    color:white;
+	font-size:26px;
+	margin:0px;
+	font-weight:600;
+}
+.userPanelDiv #userPanelContentDiv #four .statsDiv h3{
+    color:white;
+	font-size:13px;
+	margin:0px;
+	font-weight:600;
+}*/
+
+.userPanelDiv #userPanelContentDiv h6{
+	font-size:45px;
+	font-family:Segoe UI;
+	font-weight:400;
+	color:#4c4c4c;
+	margin:0px 0px 35px 0px;
+}
+
+
+/*-		Lista kvizova unutar panela		-*/
+.quizzes{
+	background-color:#fff;
+	width:95%;
+	min-width:650px;
+	height:130px;
+	margin:0px;
+	margin:5px 5px 5px 5px;
+	border: 2px solid #e2e2e2;
+	overflow:hidden;
+}
+
+.quizzes h2{
+	font-family:Segoe UI;
+	font-size:27px;
+	font-weight:400;
+	color:#323232;
+	margin:0;
+}
+.quizzes #middle{
+	float:left;
+	overflow:hidden;
+	width:70%;
+	min-width:400px;
+	padding:10px 10px 10px 10px;
+}
+.quizzes #middle #top{
+	width:100%;
+	height:50%;
+}
+.quizzes #middle #bottom{
+	width:100%;
+	height:50%;
+	font-size:13px;
+	font-family:FontAwesome, Segoe UI;
+}
+.quizzes #left a{
+	font-size:40px;
+	color:#f4f4f4;
+	text-decoration:none;
+	font-family:FontAwesome;
+	transition:font-size 0.3s ease-in-out;
+}
+.quizzes #left a:hover{
+	font-size:60px;
+}
+.quizzes #left{
+	float:left;
+	width:0px;
+	overflow:hidden;
+	background-color:#0379af;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	color:#f4f4f4;
+	transition:width 0.5s ease-in-out;
+	height:100%;
+}
+
+.quizzes #right{
+	float:right;
+	width:0px;
+	overflow:hidden;
+	background-color:#c0392b;
+	color:#f4f4f4;
+	transition:width 0.5s ease-in-out;
+	height:100%;
+}
+.quizzes #right #menu{
+	height:100%;
+	width:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	font-size:40px;
+	color:#f4f4f4;
+	font-family:FontAwesome;
+}
+.quizzes #play{
+	float:left;
+	width:100px;
+	overflow:hidden;
+	background-color:#16a085;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	color:#f4f4f4;
+	transition:width 0s ease-in-out;
+	height:100%;
+}
+
+.quizzes #percentage{
+	float:right;
+	width:120px;
+	overflow:hidden;
+	background-color:#0379af;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	color:#f4f4f4;
+	font-size:40px;
+	font-family:Segoe UI;
+	font-weight:600;
+	height:100%;
+}
+.quizzes:hover>#left, .quizzes:hover>#right{
+	width:120px;
+}
+.quizzes #right:hover  .dropdown-menu{
+	display:inline-block;
+}
+.quizzes .dropdown-menu {
+	position:absolute;
+	float:right;
+    display:none;
+    background-color: #f9f9f9;
+    width:120px;
+	height:auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.quizzes .dropdown-menu div{
+	display:block;
+	font-size:18px;
+	color:#323232;
+	font-family:FontAwesome, Segoe UI;
+	max-width:120px;
+	padding:18px 10px 18px 10px;
+	overflow:hidden;
+}
+.quizzes .dropdown-menu div:hover{
+	background-color:rgba(0,0,0,0.2);
+}
+
+/*----------------------------------------------*/
+/*---------Izrada pitanja i odgovora------------*/
+/*----------------------------------------------*/
+
+.questionDiv{
+	margin-top:70px;
+	padding:30px;
+	width:80%;
+	background-color:#eaeaea;
+	border-radius:10px;
+	min-width:600px;
+}
+
+.questionDiv h1{
+	font-family:Segoe UI;
+	font-size:40px;
+	color:#545454;
+}
+.questionsForm #question{
+	display:inline-block;
+	width:49%;
+}	
+.questionsForm #answers{
+	display:inline-block;
+	width:100%;
+	margin-top:50px;
+	margin-bottom:50px;
+}
+.questionsForm .answer{
+	display:inline-block;
+	margin-bottom:20px;
+}
+.questionsForm #image{
+	display:inline-block;
+	width:400px;
+}
+.questionsForm #buttons{
+	display:inline-block;
+	width:100#;
+}
+@media screen and (min-width: 0px) {
+    .questionsForm .answer{
+        width: 100%;
+    }
+	.questionsForm #question{
+        width: 100%;
+    }
+	.questionsForm #image{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .questionsForm .answer{
+        width: 49%;
+    }
+	.questionsForm #question{
+        width: 49%;
+    }
+	.questionsForm #image{
+        width: 49%;
+    }
+}
+
+.questionsForm input[type="radio"], .questionsForm input[type="checkbox"]{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	position: relative;
+	top: 16px;
+	height: 45px;
+	width: 45px;
+	background: #dbdbdb;
+	border: none;
+	color: #fff;
+	font-size: 0px;
+	cursor: pointer;
+	transition:0.5s font-size;
+	border-radius:22.5px;
+}
+
+.questionsForm input[type="text"]:hover,.questionsForm input[type="number"]:hover,.questionsForm input[type="radio"]:hover, .questionsForm input[type="checkbox"]:hover {
+	background: #c6c6c6;
+}
+.questionsForm input[type="radio"]:checked, .questionsForm input[type="checkbox"]:checked {
+	background: #2ecc71;
+	font-size: 33px;
+}
+.questionsForm input[type="radio"]:checked::before, .questionsForm input[type="checkbox"]:checked::before {
+	height: 45px;
+	width: 45px;
+	position: absolute;
+	content: '✔';
+	text-align: center;
+}
+.questionsForm input[type="radio"]::after, .questionsForm input[type="checkbox"]::after {
+	background: #40e0d0;
+	content: '';
+}
+
+.questionsForm input[type="file"] {
+    display: none;
+}
+.questionsForm #upload{
+    border-radius:8px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+	width:calc(85% - 45px);
+	background-color:#0379af;
+	color:#fff;
+	font-family:Segoe UI;
+	font-size:15px;
+	font-weight:500;
+	padding: 35px 10px 35px 10px;
+	box-sizing: content-box;
+	text-transform: uppercase;
+	text-align:center;
+}
+
+/*
+#creatorContentDiv{
+	width:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	padding-top:150px;
+}
+#creatorContentDiv h1{
+	font-family:Segoe UI;
+	font-size:27px;
+	font-weight:200;
+	color:#545454;
+}*/
+.questionsForm input[type="text"],.questionsForm input[type="number"]{
+	font-family:Segoe UI;
+	font-size:15px;
+	padding: 15px 10px 15px 10px;
+	background-color:rgba(0,0,0,0);
+	box-sizing: content-box;
+	width:calc(85% - 45px);
+	border:0;
+	background-color:#dbdbdb;
+	border-radius:8px;
+}
+.questionsForm h3{
+	font-family:Segoe UI;
+	font-size:20px;
+	font-weight:200;
+	color:#545454;
+}
+.questionsForm h2{
+	font-family:Segoe UI;
+	font-size:15px;
+	color:#545454;
+}
+.questionsForm h1{
+	font-family:Segoe UI;
+	font-size:35px;
+	color:#545454;
+	font-weight:400;
+}
+.questionsForm input[type="submit"]{
+	border:0px; 
+	font-family:Segoe UI;
+	font-size:15px;
+	font-weight:500;
+	padding: 15px 10px 15px 10px;
+	color:#FFF;
+	cursor:pointer;
+	width:350px;
+	box-sizing: content-box;
+	text-transform: uppercase;
+	border-radius:8px;
+	
+}
+.questionsForm input[type="submit"].blue{
+	background:#0379af;
+}
+.questionsForm input[type="submit"].blue:hover{
+	background:#005f8c;
+}
+.questionsForm input[type="submit"].red{
+	background:#c0392b;
+}
+.questionsForm input[type="submit"].red:hover{
+	background:#a32f23;
+}
+.contentDiv{
+	width:100%;
+	min-height:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	background-color:#f4f4f4;
+	/*padding-top:150px;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------*/
+/*-----Forma na stranici za ulaz u igru---------*/
+/*----------------------------------------------*/
+
+#startQuizForm input[type="text"]{
+	font-family: Segoe UI Semibold;
+	background: #e8e8e8;
+	width: 275px;
+	height:55px;
+	border: 0;
+	margin: 10px 0 10px;
+	box-sizing: border-box;
+	font-size: 17px;
+	text-align:center;
+    box-shadow: 0 5px #bababa;
+    letter-spacing: 2px;
+	border-radius: 15px;
+}
+#startQuizForm input[type="submit"]{
+    border: none;
+    font-family: Segoe UI Semibold;
+    background-color: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    outline: none;
+    transition: all 0.1s;
+	background-color: #4c4c4c;
+    color: #fff;
+    box-shadow: 0 5px #3a3a3a;
+	font-size: 17px;
+	margin: 10px 0 10px;
+	width: 275px;
+	height:55px;
+	border-radius: 15px;
+}
+
+.grayButton{
+    border: none;
+    font-family: Segoe UI Semibold;
+    background-color: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    outline: none;
+    transition: all 0.1s;
+	background-color: #4c4c4c;
+    color: #fff;
+    box-shadow: 0 5px #3a3a3a;
+	font-size: 17px;
+	margin: 10px 0 10px;
+	width: 275px;
+	height:55px;
+	border-radius: 15px;
+}
+
+
+/*- Slike na toj stranici, s lijeve i desne strane -*/
+.startQuizImg{
+	height:100%;
+	width:30%;
+	position:fixed;
+    display: inline-block;
+	bottom:0;
+}
+.startQuizImg.left{
+	left:0;
+	background-image:url(../images/kid2.png);
+    background-size: 100% auto;
+	background-position: bottom;
+    background-repeat: no-repeat;
+}	
+.startQuizImg.right{
+	right:0;	
+	background-image:url(../images/kid1.png);
+    background-size: 100% auto;
+	background-position: bottom;
+    background-repeat: no-repeat;
+}	
+
+
+
+
+
+
+
+/*----------------------------------------------*/
+/*------Divovi - razne liste na stranici--------*/
+/*----------------------------------------------*/
+.whiteGrayDiv{
+	font-family: Segoe UI Semibold;
+	background: #e8e8e8;
+    box-shadow: 0 5px #bababa;
+	margin:10px;
+	color:#545454;
+	overflow:hidden;
+	box-sizing: border-box; 
+}
+.whiteGrayDiv.wide{
+	width:80%;
+	min-width:800px;
+	padding:15px;
+	text-align:left;
+	font-size: 23px;
+	border-radius: 15px;
+}
+.whiteGrayDiv #question{
+	font-size:25px;
+	padding:10px;
+	overflow:hidden;
+}
+.whiteGrayDiv #answers{
+	height:0px;
+	font-size:18px;
+	overflow:hidden;
+}
+
+.whiteGrayDiv.big:hover > #answers{
+	height:auto;
+}
+
+
+	
+.whiteGrayDiv.big{
+	width:475px;
+	padding:20px 0px 20px 0px;
+	font-size: 60px;
+	margin:60px;
+	border-radius: 25px;
+}
+
+.whiteGrayDiv p{
+	display:inline-block;
+	margin:0;
+}
+.whiteGrayDiv img{
+	display:inline-block;
+}
+.whiteGrayDiv table{
+	border:0;
+	border-collapse: collapse;
+}
+.whiteGrayDiv td{
+	padding:0;
+}
+.whiteGrayDiv #quiz_image{
+	height:200px;
+}
+/*----krajnji poredak*/
+#podium{
+	width:80%;
+	min-width:800px;
+	margin:100px 0px 15px 0px;
+}
+
+.podiumDiv{
+	display:inline-block;
+    vertical-align:bottom;
+	/*overflow:hidden;*/
+	margin:0px;
+	box-sizing: border-box;
+	padding:0px;
+	position:relative;
+}
+.podiumDiv.first{
+	height:430px;
+	width:34%;
+	margin-left:15px;
+	margin-right:15px;
+}
+.podiumDiv.second{
+	height:360px;
+	width:calc(33% - 15px);
+}
+.podiumDiv.third{
+	height:290px;
+	width:calc(33% - 15px);
+}
+.podiumDiv .stand{
+	background-color:#e8e8e8;
+	margin:0px;
+    box-shadow: 0 10px #bababa;
+	box-sizing: border-box;
+	border-radius: 25px;
+	padding:5px;
+	height:50%;
+	width:100%;
+	position:absolute;
+	bottom:10px;
+	overflow:scroll;
+}
+.podiumDiv .stand {
+    -ms-overflow-style: none; 
+    overflow: -moz-scrollbars-none;  
+}
+/* mozda*/
+.podiumDiv .stand::-webkit-scrollbar { 
+    display: none;  
+}
+
+
+
+.podiumDiv .stand h1{
+	font-family: Segoe UI;
+	font-weight:500;
+	color:#545454;
+	margin:0px;
+}
+.podiumDiv .stand h3{
+	font-family: Segoe UI;
+	font-weight:500;
+	color:#545454;
+	margin:0px;
+}
+.podiumDiv .stand p{
+	font-family: Segoe UI;
+	font-weight:500;
+	color:#545454;
+	margin:0px;
+	display:inline-block;
+}
+.podiumDiv .award{
+	height:49%;
+}
+
+
+
+.awardImg{
+	height:40px;
+	width:auto;
+	margin:2px;
+	display:inline-block;
+}
+
+
+
+/*----------------------------------------------*/
+/*-----Stranica za igru, pitanje i odgovori-----*/
+/*----------------------------------------------*/
+
+
+#playingQuiz{
+	width:100%;
+	height:100%;
+	transition-duration:0.777174s;
+}
+#playingQuiz .half{
+	width:100vw;
+	height:50vh;
+	white-space:wrap;
+	overflow:hidden;
+	max-width:100vw;
+}
+#playingQuiz .half.noImage{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#playingQuiz .half.noImage p{
+	font-size:45px;
+	font-family:Segoe UI;
+	color:#fff;
+	width:80%;
+	font-weight:700;
+    text-align: center;
+	text-shadow: 2px 2px 5px #000;
+}
+#playingQuiz .half.withImage{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#playingQuiz .half.withImage p{
+	font-size:45px;
+	font-family:Segoe UI;
+	color:#fff;
+	width:80%;
+	font-weight:700;
+    text-align: center;
+	text-shadow: 2px 2px 5px #000;
+}
+#playingQuiz .half.withImage:hover > p{
+	color: transparent;
+	text-shadow: none;
+}
+
+
+#playingQuiz .answers{
+	cursor:pointer;
+	width:calc(50% - 24px);
+	height:calc(50% - 24px);
+	float:left;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	font-family:Segoe UI;
+	font-weight:700;
+	font-size:27px;
+	color:#fff;
+	text-shadow: 2px 2px 5px #000;
+	transition: border-radius 0.3s ease-in-out;
+}
+#playingQuiz .answers.blue{
+	margin:0px 6px 6px 0px;
+	background-color: #0379af;
+	border:8px solid #036795;
+	border-radius:20vh 0vh 0vh 5vh;
+}
+#playingQuiz .answers.red{
+	margin:0px 0px 6px 6px;
+	border:8px solid #c0392b;
+	background-color: #e74c3c;
+	border-radius:0vh 20vh 5vh 0vh;
+}
+
+#playingQuiz .answers.green{
+	margin:6px 0px 0px 6px;
+	border:8px solid #1fa357;
+	background-color: #27ae60;
+	border-radius:0vh 5vh 20vh 0vh;
+}
+#playingQuiz .answers.orange{
+	margin:6px 6px 0px 0px;
+	border:8px solid #8e44ad;
+	background-color: #9b59b6;
+	border-radius:5vh 0vh 0vh 20vh;
+}
+
+#playingQuiz .answers.blue:hover{
+	background-color:#00557c;
+	border-radius:20vh 0vh 0vh 20vh;
+}
+#playingQuiz .answers.red:hover{
+	background-color:#b53124;
+	border-radius:0vh 20vh 20vh 0vh;
+}
+#playingQuiz .answers.green:hover{
+	background-color:#168c48;
+	border-radius:0vh 20vh 20vh 0vh;
+}
+#playingQuiz .answers.orange:hover{
+	background-color:#7f4396;
+	border-radius:20vh 0vh 0vh 20vh;
+}
+
+#playPageHeader{
+	width:100%;
+	height:65px;
+	left:0px;
+	padding:0px;
+	top:0px;
+	z-index:100;
+	position:fixed;
+	overflow:visible;
+}
+#playPageHeader #clock{
+	float:right;  
+	margin: 10px;
+	height: 100px;
+	min-width:100px;
+	width: auto;
+	background-color: #ecf0f1;
+	border-radius: 50%;
+	border: 5px solid #d35400; 
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	overflow:hidden;
+	font-size:40px;
+	font-family:Segoe UI;
+	color:#d35400;
+	font-weight:700;
+	transition: font-size 0.35s;
+}
+#playPageHeader img{
+	float:left;  
+	margin: 15px;
+	height: 80px;
+	width:auto;
+}
+#award{
+	position:absolute;
+	top:0;
+	width:100%;
+	height:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;	
+	overflow:hidden;
+	transform: scale(0,0);
+	transition-duration: 0.777174s;
+}
+#award img{
+	height:90%;
+}
+#antiClick{
+	position:absolute;
+	top:0;
+	width:100%;
+	height:100%;
+	transform: scale(0,0);
+}
+
+
+@media(max-width:700px){
+    #playingQuiz .half p{
+         font-size:18px;
+    }
+	#playingQuiz .answers{
+		font-size:13px;
+	}
+	.quizDone{
+		height:510px;
+	}
+}
+@media (min-width:701px) and (max-width:1400px){
+    #playingQuiz .half p{
+         font-size:33px;
+    }
+	#playingQuiz .answers{
+		font-size:18px;
+	}
+	.quizDone{
+		height:350px;
+	}
+}
+
+	
