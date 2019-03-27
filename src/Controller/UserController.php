@@ -7,14 +7,48 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\RouterInterface;
 
 
 class UserController extends AbstractController
 {
+    private $tokenStorage;
+    private $authUtils;
+    private $router;
+
+    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router)
+    {
+        $this->tokenStorage = $tokenStorage;
+        $this->authUtils = $authUtils;
+        $this->router = $router;
+    }
+
     public function login()
     {
-        // todo: return login form template
-        return new Response("login");
+        if ($this->authUtils->getLastAuthenticationError() != null)
+            $errorMsg = "Neispravni podaci";
+        else
+            $errorMsg = "";
+
+        if ($this->tokenStorage->getToken()->getUsername() === "anon.")
+        {
+            // Not logged in, continue
+
+            return $this->render("user/login.html.twig", [
+                "page_title" => "Bekdur aplikacija",
+                "login_error" => $errorMsg,
+            ]);
+        }
+        else
+        {
+            // Logged in, redirect
+
+            // todo: redirect to user page here
+            return new RedirectResponse($this->router->generate("index"));
+        }
     }
 
     public function logout()

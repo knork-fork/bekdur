@@ -58,7 +58,6 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getLoginUrl()
     {
-        // todo: redirect to login page here
-        return $this->router->generate("index");
+        return $this->router->generate("user_login");
     }
 }
