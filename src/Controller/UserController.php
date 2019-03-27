@@ -75,6 +75,7 @@ class UserController extends AbstractController
         $user->setFirstName("Userko");
         $user->setLastName("Useric");
         $user->setPassword($encoder->encodePassword($user, "blank"));
+        $user->setCreated(new \DateTime());
 
         $em->persist($user);
         $em->flush();
