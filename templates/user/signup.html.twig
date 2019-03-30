@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('build/temp/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="logRegDiv">
+	<div class="contDiv">
+		<div class="imgTxtDiv">
+			<a href="index.html">
+				<img src="{{ asset('build/temp/logoImg.png') }}">
+			</a>
+			<h1>Registriraj se</h1>
+			<p>Registriraj se na Quizy i počni s kreiranjem kvizova!</p>
+			<br><br><br><br><br>
+			<p>Već ste registrirani? <a href="{{ path('user_login') }}">Prijavi se</a></p>
+		</div>
+		<div class="logRegForm">
+			<form id="register-form" method="POST">
+				<input id="usernameInput" oninput="inputCheck('username')" name="username" type="text" placeholder="korisničko ime" />
+				<span id="usernameError"></span>
+				<input id="passwordInput" oninput="inputCheck('password');inputCheck('passwordAgain')" name="password" type="password" placeholder="lozinka" />
+				<span id="passwordError"></span>
+				<input id="passwordAgainInput" oninput="inputCheck('passwordAgain')" type="password" placeholder="potvrdi lozinku" />
+				<span id="passwordAgainError"></span>
+				<input id="emailInput" oninput="inputCheck('email')" name="email" type="text" placeholder="e-mail adresa" />
+				<span id="emailError"></span>
+				<span><?php echo $error;?></span>
+				<input id="registerButton123" name="register" type="submit" value="REGISTRIRAJ SE" />
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+		
+{% block javascripts %}
+<script src="{{ asset('build/temp/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('build/temp/functions.js') }}"></script>
+{% endblock %}

@@ -58,8 +58,21 @@ class UserController extends AbstractController
 
     public function signup()
     {
-        // todo: return signup form template
-        return new Response("signup");
+        if ($this->tokenStorage->getToken()->getUsername() === "anon.")
+        {
+            // Not logged in, continue
+
+            return $this->render("user/signup.html.twig", [
+                "page_title" => "Bekdur aplikacija",
+            ]);
+        }
+        else
+        {
+            // Logged in, redirect
+
+            // todo: redirect to user page here
+            return new RedirectResponse($this->router->generate("index"));
+        }
     }
 
     public function new()
