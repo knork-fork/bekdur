@@ -11,6 +11,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
+use App\Service\UserRegister;
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\UserRegistrationType;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use App\Security\LoginAuthenticator;
 
 
 class UserController extends AbstractController
@@ -18,12 +23,18 @@ class UserController extends AbstractController
     private $tokenStorage;
     private $authUtils;
     private $router;
+    private $userRegister;
+    private $passwordEncoder;
+    private $guardHandler;
 
-    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router)
+    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router, UserRegister $userRegister, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler)
     {
         $this->tokenStorage = $tokenStorage;
         $this->authUtils = $authUtils;
         $this->router = $router;
+        $this->userRegister = $userRegister;
+        $this->passwordEncoder = $passwordEncoder;
+        $this->guardHandler = $guardHandler;
     }
 
     public function login()
@@ -56,14 +67,51 @@ class UserController extends AbstractController
         throw new \Exception("Something went wrong.");
     }
 
-    public function signup()
+    public function signup(Request $request, LoginAuthenticator $loginInterface)
     {
         if ($this->tokenStorage->getToken()->getUsername() === "anon.")
         {
             // Not logged in, continue
 
+            $form = $this->createForm(UserRegistrationType::class);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid())
+            {
+                $user = $form->getData();
+
+                // to-do: Move all user-adding stuff here
+                //$this->userRegister->register($user);
+                // also check if fields are valid there
+                
+                $user->setPassword($this->passwordEncoder->encodePassword(
+                    $user,
+                    $user->getPassword()
+                ));
+
+                $user->setCreated(new \DateTime());
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                return $this->guardHandler->authenticateUserAndHandleSuccess(
+                    $user,
+                    $request,
+                    $loginInterface,
+                    'main'
+                );
+            }
+
+            // to-do: get specific error
+            if ($form->isSubmitted() && !$form->isValid())
+                $errorMsg = "Neispravni podaci";
+            else
+                $errorMsg = "";
+
             return $this->render("user/signup.html.twig", [
                 "page_title" => "Bekdur aplikacija",
+                "registrationForm" => $form->createView(),
+                "register_error" => $errorMsg,
             ]);
         }
         else

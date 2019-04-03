@@ -5,6 +5,30 @@
 {% endblock %}
 
 {% block body %}
+
+<div class="logRegDiv">
+	<div class="contDiv">
+		<div class="imgTxtDiv">
+			<a href="index.html">
+				<img src="{{ asset('build/temp/logoImg.png') }}">
+			</a>
+			<h1>Registriraj se</h1>
+			<p>Registriraj se na Quizy i počni s kreiranjem kvizova!</p>
+			<br><br><br><br><br>
+			<p>Već ste registrirani? <a href="{{ path('user_login') }}">Prijavi se</a></p>
+		</div>
+		<div class="logRegForm">
+			{{ form_start(registrationForm) }}
+			    {{ form_widget(registrationForm) }}
+				<span>{{ register_error }}</span>
+			    <input id="registerButton123" name="register" type="submit" value="REGISTRIRAJ SE" />
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
+</div>
+
+
+{#
 <div class="logRegDiv">
 	<div class="contDiv">
 		<div class="imgTxtDiv">
@@ -32,6 +56,7 @@
 		</div>
 	</div>
 </div>
+#}
 {% endblock %}
 		
 {% block javascripts %}
