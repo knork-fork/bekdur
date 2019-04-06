@@ -21,7 +21,7 @@ user_signup:
 
 ### user pages
 
-user_dashoard:
+user_dashboard:
     path: /dashboard
     controller: App\Controller\UserController:dashboard
 
