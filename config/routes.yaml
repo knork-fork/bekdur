@@ -19,6 +19,12 @@ user_signup:
     path: /signup
     controller: App\Controller\UserController:signup
 
+### user pages
+
+user_dashoard:
+    path: /dashboard
+    controller: App\Controller\UserController:dashboard
+
 ### other
 
 new_user:

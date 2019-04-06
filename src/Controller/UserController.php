@@ -57,8 +57,7 @@ class UserController extends AbstractController
         {
             // Logged in, redirect
 
-            // todo: redirect to user page here
-            return new RedirectResponse($this->router->generate("index"));
+            return new RedirectResponse($this->router->generate("user_dashboard"));
         }
     }
 
@@ -83,6 +82,8 @@ class UserController extends AbstractController
                 // to-do: Move all user-adding stuff here
                 //$this->userRegister->register($user);
                 // also check if fields are valid there
+                
+                // to-do: check if duplicate!
                 
                 $user->setPassword($this->passwordEncoder->encodePassword(
                     $user,
@@ -118,9 +119,15 @@ class UserController extends AbstractController
         {
             // Logged in, redirect
 
-            // todo: redirect to user page here
-            return new RedirectResponse($this->router->generate("index"));
+            return new RedirectResponse($this->router->generate("user_dashboard"));
         }
+    }
+
+    public function dashboard()
+    {
+        return $this->render("user/dashboard.html.twig", [
+            "page_title" => "Bekdur aplikacija",
+        ]);
     }
 
     public function new()
