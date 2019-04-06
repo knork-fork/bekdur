@@ -4,6 +4,11 @@ body {
 	margin:0;
 }
 
+.body_dashboard {
+	background-color: #f4f4f4;
+}
+
+
 a{
 	text-decoration:none;
 }
