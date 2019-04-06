@@ -13,6 +13,8 @@
         <br><br>
         <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ path('user_signup') }}">Sign up</a>
     {% else %}
+        <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ path('user_dashboard') }}">Dashboard</a>
+        <br><br>
         <a style="margin-left: 75px;" class="navbar-brand space-brand" href="{{ path('user_logout') }}">Log out</a>
     {% endif %}
 {% endblock %}
