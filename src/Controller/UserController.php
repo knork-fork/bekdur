@@ -125,9 +125,20 @@ class UserController extends AbstractController
 
     public function dashboard()
     {
-        return $this->render("user/dashboard.html.twig", [
-            "page_title" => "Bekdur aplikacija",
-        ]);
+        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
+        {
+            // Logged in, continue
+
+            return $this->render("user/dashboard.html.twig", [
+                "page_title" => "Bekdur aplikacija",
+            ]);
+        }
+        else
+        {
+            // Not logged in, redirect
+
+            return new RedirectResponse($this->router->generate("user_login"));
+        }
     }
 
     public function new()
