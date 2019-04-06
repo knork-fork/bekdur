@@ -1,8 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('build/temp/style.css') }}">
-{% endblock %}
+{% extends 'user/user.html.twig' %}
 
 {% block body %}
 <div class="logRegDiv">
@@ -26,9 +22,4 @@
 		</div>
 	</div>
 </div>
-{% endblock %}
-
-{% block javascripts %}
-<script src="{{ asset('build/temp/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ asset('build/temp/functions.js') }}"></script>
 {% endblock %}
