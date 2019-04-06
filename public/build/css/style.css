@@ -1,0 +1,366 @@
+body {
+    overflow: auto;
+    height: 100vh;
+	margin:0;
+}
+
+a{
+	text-decoration:none;
+}
+
+
+
+/*----------------------------------------------*/
+/*----------------User dashboard----------------*/
+/*----------------------------------------------*/
+
+/*-------------------Colors---------------------*/
+.color_GreenSea{
+	background-color: #16a085;
+}
+.color_Nephritis{
+	background-color: #27ae60;
+}
+.color_QuizyBlue{
+	background-color: #0379af;
+}
+.color_Wisteria{
+	background-color: #8e44ad;
+}
+.color_MidnightBlue{
+	background-color: #2c3e50;
+}
+.color_SunFlower{
+	background-color: #f1c40f;
+}
+.color_Pumpkin{
+	background-color: #d35400;
+}
+.color_Pomegranate{
+	background-color: #c0392b;
+}
+.color_Asbestos{
+	background-color: #7f8c8d;
+}
+
+
+
+/*-------------------Main Header Bar---------------------*/
+.mainHeader{
+	width:100%;
+	height:50px;
+	left:0px;
+	overflow:hidden;
+	padding:0px;
+	top:0px;
+	z-index:100;
+	position:fixed;
+	display: inline;
+	box-shadow: 0px 1px 3px #2d323d;
+}
+.mainHeader img{
+	height:45px;
+}
+
+.mainHeader div{
+	height:100%;
+	float:right;  
+	margin-right:15px;
+}
+
+.mainHeader .bgDiv{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	width:300px;
+	float:left;
+}
+.mainHeader .bgDiv.transparent{
+	background:rgba(0,0,0,0);
+}
+.mainHeader .bgDiv.blue{
+	background:rgba(0,0,0,0.15);
+}
+
+
+
+/*-------------------Dashboard---------------------*/
+.dashboard{
+	width:100%;
+	font-family:Segoe UI;
+}
+.dashboard #content{
+	margin:65px 0px 0px 400px;
+	padding:50px 50px 50px 50px;
+}
+
+.notificationCenter{
+	width:400px;
+	height:100%;
+	padding-top:50px;
+	position:fixed;
+	float:right;
+	right:0;
+	top:0;
+	overflow-y:scroll;
+	box-sizing: content-box;
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+}
+.notificationCenter::-webkit-scrollbar { 
+    display: none;  
+}
+
+/*-------------------Notifications-----------------*/
+.notificationCenter .notification{
+	background-color:#e8e8e8;
+	width:360px;
+	margin:25px 20px;
+	overflow:hidden;
+	border-radius: 5px;
+	position: relative;
+	box-shadow: 0px 5px 13px #2d323d;
+}
+
+.notificationCenter .notification #top{
+	background-color: #d8d8d8;
+	height:21px;
+	width:100%;
+	border-bottom:1px solid #c4c4c4;
+	position: absolute;
+	top:0px;
+}
+.notificationCenter .notification #top #left{
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 600;
+	display: inline;
+	padding-left:15px;
+}
+.notificationCenter .notification #top #right{
+	font-family: FontAwesome;
+	color: #878787;
+	float:right;
+	font-size: 15px;
+	display: inline;
+	padding:2px 10px 2px 2px;
+	cursor: pointer;
+}
+.notificationCenter .notification #bottom{
+	height:19px;
+	width:100%;
+	position: absolute;
+	bottom:0px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	color:#f2f2f2;
+	padding-top: 1px;
+	cursor: pointer;
+}
+.notificationCenter .notification #center{
+	width:100%;
+	font-size: 14px;
+	padding:20px 12px 25px 12px;
+	cursor: pointer;
+}
+.notificationCenter .notification #center h3{
+	font-size: 12px;
+	margin:2px;
+}
+.notificationCenter .notification #center p{
+	font-size: 11px;
+	margin:2px;
+}
+.notificationCenter .notification #image{
+	width:40px;
+	height:40px;
+	background-size: cover;
+	position:fixed;
+	z-index: 10;
+	margin:-25px 0px 30px 10px;
+	border-radius: 3px;
+}
+
+
+/*------------Left Menu bar------------*/
+#leftMenuBar{
+	width:300px;
+	height:100%;
+	top:50px;
+	position:fixed;
+	float:left;
+	overflow:hidden;
+	box-sizing: content-box;
+	-ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+#leftMenuBar .title{
+	width:100%;
+	height:35px;
+	color: #c4c4c4;
+	font-weight: 600;
+	font-size:13px;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 2px solid rgba(0,0,0,0.1);
+	margin-bottom:10px;
+}
+#leftMenuBar::-webkit-scrollbar { 
+    display: none;  
+}
+#leftMenuBar #groupsMenu{
+	width:80px;
+	height:100%;
+	background-color: #1f2229;/*1f2229*/
+	position:fixed;
+	float:left;
+	overflow-x:visible;
+	overflow-y: scroll;
+	box-sizing: content-box;
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+	padding:0px 0px 30px 0px;
+	z-index:2;
+}
+
+#leftMenuBar #groupsMenu::-webkit-scrollbar { 
+    display: none;  
+}
+
+#leftMenuBar #groupsMenu .groupButton{
+    border: none;
+	cursor: pointer;
+	margin:10px 12px 10px 12px;
+	background-color: red;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-size: 16px;
+	width:54px;
+	height:54px;
+	border-radius: 50%;
+	transition: border-radius 0.2s ease-in-out;
+}
+#leftMenuBar #groupsMenu .groupButton:hover{
+	border-radius:20%;
+}
+#leftMenuBar #groupsMenu .groupButton #newPosts{
+	height:20px;
+	max-width:20px;
+	overflow:hidden;
+	display:flex;
+	white-space: nowrap;
+	align-items: center; 
+	justify-content: center;
+	font-size: 12px;
+	color:#fff;
+	font-weight:600;
+	padding:1px 3px 1px 3px;
+	border-radius: 9px;
+	margin:-10px;
+	position: absolute;
+	border: 4px solid hsl(222, 14%, 14%);
+}
+#leftMenuBar #groupsMenu .groupButton #groupName{
+	height:40px;
+	max-width:200px;
+	overflow:hidden;
+	white-space: nowrap;
+	font-size: 14px;
+	color:#ccc;
+	font-weight:600;
+	border-radius: 9px;
+	background-color: black;
+	position: absolute;
+	display: block;
+	z-index: 100;
+}
+
+
+#leftMenuBar #chatsMenu{
+	width:220px;
+	height:100%;
+	background-color: #2d323d;/*2d323d*/
+	position:fixed;
+	float:left;
+	overflow-y:scroll;
+	left:80px;
+	box-sizing: content-box;
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+	padding:0px 0px 30px 0px;
+	box-shadow: 1px 0px 3px #2d323d;
+}
+
+#leftMenuBar #chatsMenu::-webkit-scrollbar { 
+    display: none;  
+}
+#leftMenuBar #chatsMenu .chatButton{
+    cursor: pointer;
+    color: #fff;
+	width:100%;
+	height:50px;
+	transition: background 0.2s;
+	text-align:left;
+	margin:0;
+	padding:0;
+	display: flex;
+	align-items: center; 
+}
+#leftMenuBar #chatsMenu .chatButton.notselected{
+	background:rgba(0,0,0,0.0);
+}
+#leftMenuBar #chatsMenu .chatButton.selected{
+	background:rgba(0,0,0,0.25);
+}
+#leftMenuBar #chatsMenu .chatButton:hover{
+	background:rgba(0,0,0,0.25);
+}
+#leftMenuBar #chatsMenu .chatButton #profileImageDiv{
+	height:40px;
+	width:40px;
+	border-radius:50%;
+	margin:0px 10px 0px 10px;
+	float:left;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: red;
+}
+
+#leftMenuBar #chatsMenu .chatButton #profileImageDivStatus{
+	height:10px;
+	width:10px;
+	border-radius:50%;
+	border: 3px solid #1f2229;
+	float:right;
+	margin:-3px;
+}
+#leftMenuBar #chatsMenu .chatButton span{
+	max-width:120px;
+	overflow:hidden;
+	white-space: nowrap;
+	font-size: 15px;
+	color:#ccc;
+	font-weight:400;
+}
+#leftMenuBar #chatsMenu .chatButton #unreadMessages{
+	height:20px;
+	max-width:20px;
+	overflow:hidden;
+	display:flex;
+	white-space: nowrap;
+	align-items: center; 
+	justify-content: center;
+	font-size: 12px;
+	color:#fff;
+	font-weight:600;
+	padding:1px 3px 1px 3px;
+	border-radius: 5px;
+	margin:0 7px 0 auto;
+}

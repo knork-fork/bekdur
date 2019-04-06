@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	
+    <head>
+        <meta charset="utf-8">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <title>Quizy - Moji kvizovi</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="font-awesome-animation.min.css">
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/functions.js"></script>
+	</head>
+	
+	<body style="background-color:#f4f4f4;">
+		<header class="mainHeader color_QuizyBlue">
+			<div class="bgDiv blue">
+				<a href="index.html">
+					<img src="images/logoImg.png"> 
+				</a>
+			</div>
+
+		</header>
+		
+		<div class="dashboard">
+
+			<div id="leftMenuBar">
+
+				<div id="groupsMenu">
+						<div class="title">Grupe</div>
+
+						<!--
+							Dugme za grupu
+							ako nema novih obavijesti, div id "newPosts" se ne treba kreirat
+							"groupButton"treba dodati background-image;
+						-->
+						<div class = "groupButton">
+							<div id="newPosts" class="color_Pomegranate">55</div>
+						</div>
+
+				</div>
+
+
+
+				<div id="chatsMenu">
+					<div class="title">Razgovori</div>
+
+					<!--
+						Dugme za chat
+						takoder ako nema novih obavijesti, div "unreadMessages" se ne kreira
+						"profileImageDiv"treba dodati background-image;
+						"profileImageDivStatus" oznacava off/on status, boje su color_Nephritis i color_Pomegranate
+					-->
+					<div class = "chatButton">
+						<div id="profileImageDiv">
+							<div id="profileImageDivStatus" class="color_Nephritis"></div>
+						</div>
+						<span>Luka Kgfdne</span>
+						<div id="unreadMessages" class="color_Pomegranate">55</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="notificationCenter">
+
+
+				<!--
+					Notifikacija
+					"center" i "bottom" oboje trebaju voditi na isti link
+					"right" zatvara obavijest
+				-->
+				<div class="notification">
+					<div id="top">
+						<div id="left">ime grupe</div>
+						<div id="right">&#xf00d;</div>
+					</div>
+					<div id="center">
+						<h3>naslov obavijesti</h3>
+						<p>tekst obavijesti</p>
+					</div>
+					<div id="bottom" class="color_Wisteria">Otvori grupu</div>
+				</div>
+
+
+
+			</div>
+			
+			
+			<div id="content">
+				fds
+			</div>
+		
+		
+		</div>
+		
+		
+	</body>
+</html>
