@@ -17,25 +17,28 @@ class UserRegistrationType extends AbstractType
             'attr' => ['class' => 'username-field', 'placeholder' => 'korisničko ime'],
             'required' => false,
             'label' => false,
+            'empty_data' => '',
         ]);
 
         $builder->add('email', TextType::class, [
             'attr' => ['class' => 'email-field', 'placeholder' => 'e-mail adresa'],
             'required' => false,
             'label' => false,
+            'empty_data' => '',
         ]);
 
         $builder->add('password', PasswordType::class, [
             'attr' => ['class' => 'password-field', 'placeholder' => 'lozinka'],
             'required' => false,
             'label' => false,
+            'empty_data' => '',
         ]);
 
-        $builder->add('password_repeat', PasswordType::class, [
-            'mapped' => false,
+        $builder->add('passwordRepeat', PasswordType::class, [
             'attr' => ['class' => 'password-field', 'placeholder' => 'potvrdi lozinku'],
             'required' => false,
             'label' => false,
+            'empty_data' => '',
         ]);
     }
 

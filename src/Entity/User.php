@@ -34,6 +34,8 @@ class User implements UserInterface
      */
     private $password;
 
+    private $passwordRepeat;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -106,6 +108,18 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getPasswordRepeat(): string
+    {
+        return (string) $this->passwordRepeat;
+    }
+
+    public function setPasswordRepeat(string $passwordRepeat): self
+    {
+        $this->passwordRepeat = $passwordRepeat;
 
         return $this;
     }

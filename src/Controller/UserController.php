@@ -75,39 +75,28 @@ class UserController extends AbstractController
             $form = $this->createForm(UserRegistrationType::class);
             $form->handleRequest($request);
 
+            $errorMsg = "";
+
             if ($form->isSubmitted() && $form->isValid())
             {
                 $user = $form->getData();
 
-                // to-do: Move all user-adding stuff here
-                //$this->userRegister->register($user);
-                // also check if fields are valid there
+                $registerOk = $this->userRegister->register($user, $errorMsg);
                 
-                // to-do: check if duplicate!
-                
-                $user->setPassword($this->passwordEncoder->encodePassword(
-                    $user,
-                    $user->getPassword()
-                ));
-
-                $user->setCreated(new \DateTime());
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-
-                return $this->guardHandler->authenticateUserAndHandleSuccess(
-                    $user,
-                    $request,
-                    $loginInterface,
-                    'main'
-                );
+                if ($registerOk)
+                {
+                    return $this->guardHandler->authenticateUserAndHandleSuccess(
+                        $user,
+                        $request,
+                        $loginInterface,
+                        'main'
+                    );
+                }
             }
 
-            // to-do: get specific error
+            // Generic error
             if ($form->isSubmitted() && !$form->isValid())
                 $errorMsg = "Neispravni podaci";
-            else
-                $errorMsg = "";
 
             return $this->render("user/signup.html.twig", [
                 "page_title" => "Bekdur aplikacija",
