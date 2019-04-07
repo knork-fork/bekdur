@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserRegistrationType;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Security\LoginAuthenticator;
-
+use App\Repository\NotificationRepository;
 
 class UserController extends AbstractController
 {
@@ -109,14 +109,20 @@ class UserController extends AbstractController
         }
     }
 
-    public function dashboard()
+    public function dashboard(NotificationRepository $notificationRepository)
     {
         if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
         {
             // Logged in, continue
 
+            $notifications = $notificationRepository->findBy([
+                "userId" => 18,
+                "seen" => false,
+            ]);
+
             return $this->render("user/dashboard.html.twig", [
                 "page_title" => "Bekdur aplikacija",
+                "notifications" => $notifications,
             ]);
         }
         else

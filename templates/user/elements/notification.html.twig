@@ -4,16 +4,16 @@ Notifikacija
 "right" zatvara obavijest
 #}
 
-{# to-do: add variables #}
-
+{% for notification in notifications %}
 <div class="notification">
 	<div id="top">
-		<div id="left">ime grupe</div>
+		<div id="left">{{ notification.getUserGroup.getName }}</div>
 		<div id="right">&#xf00d;</div>
 	</div>
 	<div id="center">
-		<h3>naslov obavijesti</h3>
-		<p>tekst obavijesti</p>
+		<h3>{{ notification.getTitle }}</h3>
+		<p>{{ notification.getText }}</p>
 	</div>
 	<div id="bottom" class="color_Wisteria">Otvori grupu</div>
 </div>
+{% endfor %}
