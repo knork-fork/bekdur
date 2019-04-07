@@ -33,9 +33,15 @@ class UserGroup
      */
     private $notifications;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\GroupMembership", mappedBy="userGroup")
+     */
+    private $groupMemberships;
+
     public function __construct()
     {
         $this->notifications = new ArrayCollection();
+        $this->groupMemberships = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,37 @@ class UserGroup
             // set the owning side to null (unless already changed)
             if ($notification->getUserGroup() === $this) {
                 $notification->setUserGroup(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GroupMembership[]
+     */
+    public function getGroupMemberships(): Collection
+    {
+        return $this->groupMemberships;
+    }
+
+    public function addGroupMembership(GroupMembership $groupMembership): self
+    {
+        if (!$this->groupMemberships->contains($groupMembership)) {
+            $this->groupMemberships[] = $groupMembership;
+            $groupMembership->setUserGroup($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupMembership(GroupMembership $groupMembership): self
+    {
+        if ($this->groupMemberships->contains($groupMembership)) {
+            $this->groupMemberships->removeElement($groupMembership);
+            // set the owning side to null (unless already changed)
+            if ($groupMembership->getUserGroup() === $this) {
+                $groupMembership->setUserGroup(null);
             }
         }
 
