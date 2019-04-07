@@ -14,6 +14,8 @@ use App\Form\UserRegistrationType;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Security\LoginAuthenticator;
 use App\Repository\NotificationRepository;
+use App\Repository\UserGroupRepository;
+use App\Repository\GroupMembershipRepository;
 
 class UserController extends AbstractController
 {
@@ -23,8 +25,11 @@ class UserController extends AbstractController
     private $userRegister;
     private $passwordEncoder;
     private $guardHandler;
+    private $notificationRepository;
+    private $userGroupRepository;
+    private $groupMembershipRepository;
 
-    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router, UserRegister $userRegister, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler)
+    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router, UserRegister $userRegister, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository)
     {
         $this->tokenStorage = $tokenStorage;
         $this->authUtils = $authUtils;
@@ -32,6 +37,9 @@ class UserController extends AbstractController
         $this->userRegister = $userRegister;
         $this->passwordEncoder = $passwordEncoder;
         $this->guardHandler = $guardHandler;
+        $this->notificationRepository = $notificationRepository;
+        $this->userGroupRepository = $userGroupRepository;
+        $this->groupMembershipRepository = $groupMembershipRepository;
     }
 
     public function login()
@@ -109,20 +117,34 @@ class UserController extends AbstractController
         }
     }
 
-    public function dashboard(NotificationRepository $notificationRepository)
+    public function dashboard()
     {
         if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
         {
             // Logged in, continue
 
-            $notifications = $notificationRepository->findBy([
-                "userId" => 18,
+            $user = $this->tokenStorage->getToken()->getUser();
+
+            // to-do: Get latest, unseen user notifications
+            $notifications = $this->notificationRepository->findBy([
+                "userId" => $user->getId(),
                 "seen" => false,
             ]);
+
+            // to-do: Get groups user is in
+            $groups = $this->groupMembershipRepository->findBy([
+                "groupUser" => $user,
+            ]);
+
+            // to-do: Get all user notifications
+
+            // to-do: Calculate notification num and save to each group
+            // to-do use that lazy load thingy optimized for SELECT COUNT
 
             return $this->render("user/dashboard.html.twig", [
                 "page_title" => "Bekdur aplikacija",
                 "notifications" => $notifications,
+                "groups" => $groups,
             ]);
         }
         else

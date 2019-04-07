@@ -4,14 +4,18 @@
 
 	<div id="groupsMenu">
 		<div class="title">Grupe</div>
+			
 			{#
 			Dugme za grupu
 			ako nema novih obavijesti, div id "newPosts" se ne treba kreirat
 			"groupButton"treba dodati background-image;
 			#}
-			<div class = "groupButton">
-				<div id="newPosts" class="color_Pomegranate">55</div>
+
+			{% for group in groups %}
+			<div class = "groupButton" onclick="alert('{{ group.getUserGroup.getName }}')">
+				{#<div id="newPosts" class="color_Pomegranate">55</div>#}
 			</div>
+			{% endfor %}
 	</div>
 
 
