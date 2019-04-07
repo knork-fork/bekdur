@@ -26,11 +26,3 @@ user_dashboard:
     controller: App\Controller\UserController:dashboard
 
 ### other
-
-new_user:
-    path: /user/new
-    controller: App\Controller\UserController:new
-
-sample_user:
-    path: /user/new_sample
-    controller: App\Controller\UserController:new_sample

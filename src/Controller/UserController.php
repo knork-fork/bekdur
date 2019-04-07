@@ -3,9 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -128,26 +125,5 @@ class UserController extends AbstractController
 
             return new RedirectResponse($this->router->generate("user_login"));
         }
-    }
-
-    public function new()
-    {
-        return new Response("OK!");
-    }
-
-    public function new_sample(EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
-    {
-        $user = new User();
-        
-        $user->setUsername("test_user_".rand(1, 100000));
-        $user->setFirstName("Userko");
-        $user->setLastName("Useric");
-        $user->setPassword($encoder->encodePassword($user, "blank"));
-        $user->setCreated(new \DateTime());
-
-        $em->persist($user);
-        $em->flush();
-
-        return new Response("Added user: ".$user->getUsername());
     }
 }
