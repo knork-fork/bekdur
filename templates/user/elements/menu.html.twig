@@ -12,7 +12,7 @@
 			#}
 
 			{% for group in groups %}
-			<div class = "groupButton" onclick="alert('{{ group.getUserGroup.getName }}')">
+			<div class = "groupButton" id = "group_{{ group.getUserGroup.getId }}" onmouseover="showGroupName('{{ group.getUserGroup.getName }}', {{ group.getUserGroup.getId }})" onmouseleave="hideGroupName()">
 				{#<div id="newPosts" class="color_Pomegranate">55</div>#}
 			</div>
 			{% endfor %}
@@ -21,6 +21,11 @@
 
 
 	<div id="chatsMenu">
+		{#
+		Label s imenom grupe koji se pokazuje kad se hovera na grupu
+		#}
+		<div id="groupName" style="display:none;"></div>
+
 		<div class="title">Razgovori</div>
 			{#
 			Dugme za chat
