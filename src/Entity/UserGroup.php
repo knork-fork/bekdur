@@ -38,6 +38,8 @@ class UserGroup
      */
     private $groupMemberships;
 
+    private $notificationNumber;
+
     public function __construct()
     {
         $this->notifications = new ArrayCollection();
@@ -131,6 +133,18 @@ class UserGroup
                 $groupMembership->setUserGroup(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNotificationNumber(): ?int
+    {
+        return $this->notificationNumber;
+    }
+
+    public function setNotificationNumber(int $notificationNumber): self
+    {
+        $this->notificationNumber = $notificationNumber;
 
         return $this;
     }

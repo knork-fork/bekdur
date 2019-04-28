@@ -13,7 +13,9 @@
 
 			{% for group in groups %}
 			<div class = "groupButton" id = "group_{{ group.getUserGroup.getId }}" onmouseover="showGroupName('{{ group.getUserGroup.getName }}', {{ group.getUserGroup.getId }})" onmouseleave="hideGroupName()">
-				{#<div id="newPosts" class="color_Pomegranate">55</div>#}
+				{% if group.getUserGroup.getNotificationNumber > 0 %}
+					<div id="newPosts" class="color_Pomegranate">{{ group.getUserGroup.getNotificationNumber }}</div>
+				{% endif %}
 			</div>
 			{% endfor %}
 	</div>
