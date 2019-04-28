@@ -139,7 +139,6 @@ class UserController extends AbstractController
                 "groupUser" => $user,
             ]);
 
-            // to-do: Get all user notifications
 
             // Calculate notification num and save to each group
             foreach ($groups as $group)
