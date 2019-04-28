@@ -160,4 +160,49 @@ class UserController extends AbstractController
             return new RedirectResponse($this->router->generate("user_login"));
         }
     }
+
+    public function updates()
+    {
+        // This route will be called from frontend (liveUpdater.js)
+        // to-do: also pass group/inbox id (if any currently open) to automatically set notifications in them to seen
+
+        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
+        {
+            // Logged in, continue
+
+            $user = $this->tokenStorage->getToken()->getUser();
+            
+            // Get latest, unseen user notifications
+            $notifications = $this->notificationRepository->findBy([
+                "userId" => $user->getId(),
+                "seen" => false,
+            ]);
+
+            // Get groups user is in
+            $groups = $this->groupMembershipRepository->findBy([
+                "groupUser" => $user,
+            ]);
+
+            // Calculate notification num and save to each group
+            foreach ($groups as $group)
+            {
+                $usergroup = $group->getUserGroup();
+                $this->groupNotificationNumber->setGroupNotificationNumber($usergroup, $notifications);
+            }
+
+            // To-do: message notifications
+
+            return $this->render("user/elements/notification.html.twig", [
+                "page_title" => "Bekdur aplikacija",
+                "notifications" => $notifications,
+                "groups" => $groups,
+            ]);
+        }
+        else
+        {
+            // Not logged in, redirect
+
+            return new RedirectResponse($this->router->generate("user_login"));
+        }
+    }
 }

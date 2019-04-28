@@ -12,7 +12,7 @@
 	{# Include left menu bar element #}
 	{% include 'user/elements/menu.html.twig' %}
 
-	<div class="notificationCenter">
+	<div class="notificationCenter" id="notificationContainer">
 
 		{% include 'user/elements/notification.html.twig' %}
 
@@ -24,4 +24,9 @@
 	</div>
 			
 </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('build/js/liveUpdater.js') }}"></script>
 {% endblock %}

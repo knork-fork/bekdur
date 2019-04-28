@@ -25,4 +25,8 @@ user_dashboard:
     path: /dashboard
     controller: App\Controller\UserController:dashboard
 
+user_updates:
+    path: /updates
+    controller: App\Controller\UserController:updates
+
 ### other
