@@ -17,6 +17,7 @@ use App\Repository\NotificationRepository;
 use App\Repository\UserGroupRepository;
 use App\Repository\GroupMembershipRepository;
 use App\Service\GroupNotificationNumber;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UserController extends AbstractController
 {
@@ -183,26 +184,31 @@ class UserController extends AbstractController
                 "groupUser" => $user,
             ]);
 
-            // Calculate notification num and save to each group
-            foreach ($groups as $group)
-            {
-                $usergroup = $group->getUserGroup();
-                $this->groupNotificationNumber->setGroupNotificationNumber($usergroup, $notifications);
-            }
+            // Get array with key (group id) value (notification number) pairs
+            $notificationNumbers = $this->groupNotificationNumber->calculate($groups, $notifications);
 
             // To-do: message notifications
 
-            return $this->render("user/elements/notification.html.twig", [
+            $notificationView = $this->renderView("user/elements/notification.html.twig", [
                 "page_title" => "Bekdur aplikacija",
                 "notifications" => $notifications,
-                "groups" => $groups,
+            ]);
+
+            return new JsonResponse([
+                "notifications" => $notificationView,
+                "notificationNumbers" => $notificationNumbers,
+                "request" => "OK",
             ]);
         }
         else
         {
-            // Not logged in, redirect
+            // Not logged in
 
-            return new RedirectResponse($this->router->generate("user_login"));
+            // to-do: 403 exception?
+
+            return new JsonResponse([
+                "request" => "NOT OK",
+            ]);
         }
     }
 }

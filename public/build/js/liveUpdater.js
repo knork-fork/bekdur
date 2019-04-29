@@ -18,18 +18,16 @@ function getUpdates()
         {
             if (xmlHttp.status === 200) 
             {
-                // to-do: maybe scan response before output, or render different template from controller
-                document.getElementById("notificationContainer").innerHTML = xmlHttp.responseText;
-            
-                // If updateRequest div doesn't exist in response, that means something went wrong with the request
-                updateRequest = document.getElementById("updateRequest");
-                if (updateRequest === null)
+                jsonData = JSON.parse(xmlHttp.response);
+
+                // If test_var doesn't exist in response, that means something went wrong with the request
+                if (jsonData["request"] !== "OK")
                 {
                     updateFail();
                 }
                 else
                 {
-                    showUpdates();
+                    showUpdates(jsonData);
                 }
             }
             else
@@ -51,23 +49,18 @@ function updateFail()
     location.href = "/dashboard";
 }
 
-function showUpdates()
+function showUpdates(jsonData)
 {
-    // Total notification number for groups inside a hidden div
-    notificationNumbers = document.getElementsByClassName("groupNotificationNumber");
+    // Show notifications
+    document.getElementById("notificationContainer").innerHTML = jsonData["notifications"];
 
-    if (notificationNumbers.length == 0)
-        alert("not ok");
-
-    for (i = 0; i < notificationNumbers.length; i++)
+    // Show total notification number per group
+    notificationNumbers = jsonData["notificationNumbers"];
+    for (var group in notificationNumbers)
     {
-        divName = notificationNumbers[i].getAttribute('name');
+        var num = notificationNumbers[group];
 
-        // Total notification number for group
-        num = parseInt(notificationNumbers[i].innerText);
-
-        // Div that shows total notification number for group
-        notificationNumDiv = document.getElementsByName(divName)[0];
+        notificationNumDiv = document.getElementsByName(group)[0];
         notificationNumDiv.innerText = num;
 
         // Hide notification number div if no notifications

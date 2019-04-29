@@ -17,22 +17,3 @@ Notifikacija
 	<div id="bottom" class="color_Wisteria">Otvori grupu</div>
 </div>
 {% endfor %}
-
-
-{#
-If going through updates route from frontend, also send additional variables - like total notification number for group
-#}
-
-{% if app.request.get('_route') == 'user_updates' %}
-
-<div style="display:none">
-
-	<div id = "updateRequest">ok</div>
-
-	{% for group in groups %}
-		<div class = "groupNotificationNumber" name = "group_{{ group.getUserGroup.getId }}">{{ group.getUserGroup.getNotificationNumber }}</div>
-	{% endfor %}
-
-</div>
-
-{% endif %}
