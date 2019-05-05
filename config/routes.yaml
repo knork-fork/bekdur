@@ -23,10 +23,10 @@ user_signup:
 
 user_dashboard:
     path: /dashboard
-    controller: App\Controller\UserController:dashboard
+    controller: App\Controller\DashboardController:dashboard
 
 user_updates:
     path: /updates
-    controller: App\Controller\UserController:updates
+    controller: App\Controller\DashboardController:updates
 
 ### other

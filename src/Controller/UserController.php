@@ -13,11 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserRegistrationType;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Security\LoginAuthenticator;
-use App\Repository\NotificationRepository;
-use App\Repository\UserGroupRepository;
-use App\Repository\GroupMembershipRepository;
-use App\Service\GroupNotificationNumber;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UserController extends AbstractController
 {
@@ -27,12 +22,8 @@ class UserController extends AbstractController
     private $userRegister;
     private $passwordEncoder;
     private $guardHandler;
-    private $notificationRepository;
-    private $userGroupRepository;
-    private $groupMembershipRepository;
-    private $groupNotificationNumber;
 
-    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router, UserRegister $userRegister, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber)
+    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router, UserRegister $userRegister, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler)
     {
         $this->tokenStorage = $tokenStorage;
         $this->authUtils = $authUtils;
@@ -40,10 +31,6 @@ class UserController extends AbstractController
         $this->userRegister = $userRegister;
         $this->passwordEncoder = $passwordEncoder;
         $this->guardHandler = $guardHandler;
-        $this->notificationRepository = $notificationRepository;
-        $this->userGroupRepository = $userGroupRepository;
-        $this->groupMembershipRepository = $groupMembershipRepository;
-        $this->groupNotificationNumber = $groupNotificationNumber;
     }
 
     public function login()
@@ -118,97 +105,6 @@ class UserController extends AbstractController
             // Logged in, redirect
 
             return new RedirectResponse($this->router->generate("user_dashboard"));
-        }
-    }
-
-    public function dashboard()
-    {
-        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
-        {
-            // Logged in, continue
-
-            $user = $this->tokenStorage->getToken()->getUser();
-
-            // to-do: Get latest, unseen user notifications
-            $notifications = $this->notificationRepository->findBy([
-                "userId" => $user->getId(),
-                "seen" => false,
-            ]);
-
-            // to-do: Get groups user is in
-            $groups = $this->groupMembershipRepository->findBy([
-                "groupUser" => $user,
-            ]);
-
-
-            // Calculate notification num and save to each group
-            foreach ($groups as $group)
-            {
-                $usergroup = $group->getUserGroup();
-                $this->groupNotificationNumber->setGroupNotificationNumber($usergroup, $notifications);
-            }
-
-            return $this->render("user/dashboard.html.twig", [
-                "page_title" => "Bekdur aplikacija",
-                "notifications" => $notifications,
-                "groups" => $groups,
-            ]);
-        }
-        else
-        {
-            // Not logged in, redirect
-
-            return new RedirectResponse($this->router->generate("user_login"));
-        }
-    }
-
-    public function updates()
-    {
-        // This route will be called from frontend (liveUpdater.js)
-        // to-do: also pass group/inbox id (if any currently open) to automatically set notifications in them to seen
-
-        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
-        {
-            // Logged in, continue
-
-            $user = $this->tokenStorage->getToken()->getUser();
-            
-            // Get latest, unseen user notifications
-            $notifications = $this->notificationRepository->findBy([
-                "userId" => $user->getId(),
-                "seen" => false,
-            ]);
-
-            // Get groups user is in
-            $groups = $this->groupMembershipRepository->findBy([
-                "groupUser" => $user,
-            ]);
-
-            // Get array with key (group id) value (notification number) pairs
-            $notificationNumbers = $this->groupNotificationNumber->calculate($groups, $notifications);
-
-            // To-do: message notifications
-
-            $notificationView = $this->renderView("user/elements/notification.html.twig", [
-                "page_title" => "Bekdur aplikacija",
-                "notifications" => $notifications,
-            ]);
-
-            return new JsonResponse([
-                "notifications" => $notificationView,
-                "notificationNumbers" => $notificationNumbers,
-                "request" => "OK",
-            ]);
-        }
-        else
-        {
-            // Not logged in
-
-            // to-do: 403 exception?
-
-            return new JsonResponse([
-                "request" => "NOT OK",
-            ]);
         }
     }
 }
