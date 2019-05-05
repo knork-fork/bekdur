@@ -33,9 +33,15 @@ class UserInbox
      */
     private $inboxMemberships;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="userInbox")
+     */
+    private $messages;
+
     public function __construct()
     {
         $this->inboxMemberships = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,37 @@ class UserInbox
             // set the owning side to null (unless already changed)
             if ($inboxMembership->getUserInbox() === $this) {
                 $inboxMembership->setUserInbox(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUserInbox($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getUserInbox() === $this) {
+                $message->setUserInbox(null);
             }
         }
 
