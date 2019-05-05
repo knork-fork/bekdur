@@ -63,9 +63,15 @@ class User implements UserInterface
      */
     private $groupMemberships;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InboxMembership", mappedBy="inboxUser")
+     */
+    private $inboxMemberships;
+
     public function __construct()
     {
         $this->groupMemberships = new ArrayCollection();
+        $this->inboxMemberships = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -226,6 +232,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($groupMembership->getGroupUser() === $this) {
                 $groupMembership->setGroupUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InboxMembership[]
+     */
+    public function getInboxMemberships(): Collection
+    {
+        return $this->inboxMemberships;
+    }
+
+    public function addInboxMembership(InboxMembership $inboxMembership): self
+    {
+        if (!$this->inboxMemberships->contains($inboxMembership)) {
+            $this->inboxMemberships[] = $inboxMembership;
+            $inboxMembership->setInboxUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInboxMembership(InboxMembership $inboxMembership): self
+    {
+        if ($this->inboxMemberships->contains($inboxMembership)) {
+            $this->inboxMemberships->removeElement($inboxMembership);
+            // set the owning side to null (unless already changed)
+            if ($inboxMembership->getInboxUser() === $this) {
+                $inboxMembership->setInboxUser(null);
             }
         }
 
