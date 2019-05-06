@@ -37,13 +37,20 @@
 			"profileImageDiv"treba dodati background-image;
 			"profileImageDivStatus" oznacava off/on status, boje su color_Nephritis i color_Pomegranate
 			#}
+
+			{% for inbox in inboxes %}
 			<div class = "chatButton">
 				<div id="profileImageDiv">
 					<div id="profileImageDivStatus" class="color_Nephritis"></div>
 				</div>
-				<span>Luka Kgfdne</span>
-				<div id="unreadMessages" class="color_Pomegranate">55</div>
+				<span>{{ inbox.getUserInbox.getName }}</span>
+				{% if inbox.getUserInbox.getMessageNumber > 0 %}
+					<div id="unreadMessages" class="color_Pomegranate">{{ inbox.getUserInbox.getMessageNumber }}</div>
+				{% else %}
+					<div id="unreadMessages" class="color_Pomegranate" style="display:none;"></div>
+				{% endif %}
 			</div>
+			{% endfor %}
 	</div>
 
 </div>
