@@ -11,6 +11,9 @@ use App\Repository\UserGroupRepository;
 use App\Repository\GroupMembershipRepository;
 use App\Service\GroupNotificationNumber;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Repository\InboxMembershipRepository;
+use App\Service\InboxMessageNumber;
+use App\Repository\MessageRepository;
 
 class DashboardController extends AbstractController
 {
@@ -20,8 +23,11 @@ class DashboardController extends AbstractController
     private $userGroupRepository;
     private $groupMembershipRepository;
     private $groupNotificationNumber;
+    private $inboxMembershipRepository;
+    private $inboxMessageNumber;
+    private $messageRepository;
 
-    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber)
+    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository)
     {
         $this->tokenStorage = $tokenStorage;
         $this->router = $router;
@@ -29,6 +35,9 @@ class DashboardController extends AbstractController
         $this->userGroupRepository = $userGroupRepository;
         $this->groupMembershipRepository = $groupMembershipRepository;
         $this->groupNotificationNumber = $groupNotificationNumber;
+        $this->inboxMembershipRepository = $inboxMembershipRepository;
+        $this->inboxMessageNumber = $inboxMessageNumber;
+        $this->messageRepository = $messageRepository;
     }
 
     public function dashboard()
@@ -50,7 +59,6 @@ class DashboardController extends AbstractController
                 "groupUser" => $user,
             ]);
 
-
             // Calculate notification num and save to each group
             foreach ($groups as $group)
             {
@@ -58,10 +66,35 @@ class DashboardController extends AbstractController
                 $this->groupNotificationNumber->setGroupNotificationNumber($usergroup, $notifications);
             }
 
+            // Get latest, unseen messages - userId marks "the target", or the "other" user in an inbox
+            // to-do: for multi-user support, send message to multiple targets?
+            $messages = $this->messageRepository->findBy([
+                "userId" => $user->getId(),
+                "seen" => false,
+            ]);
+
+            // Get inboxes user is in
+            $inboxes = $this->inboxMembershipRepository->findBy([
+                "inboxUser" => $user,
+            ]);
+
+            // to-do: for multi-user inboxes just get inbox name instead, otherwise get name of the other user
+            foreach ($inboxes as $inbox)
+            {
+                $inb = $inbox->getUserInbox();
+
+                // Find other user in inbox
+                $other = $this->inboxMembershipRepository->getOtherInboxUser($user, $inb);
+                $inb->setName($other->getUsername()); // to-do: change to first+last name
+
+                $this->inboxMessageNumber->setInboxMessageNumber($inb, $messages);
+            }
+
             return $this->render("user/dashboard.html.twig", [
                 "page_title" => "Bekdur aplikacija",
                 "notifications" => $notifications,
                 "groups" => $groups,
+                "inboxes" => $inboxes,
             ]);
         }
         else

@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\InboxMembership;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use App\Entity\User;
+use App\Entity\UserInbox;
 
 /**
  * @method InboxMembership|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,19 @@ class InboxMembershipRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, InboxMembership::class);
+    }
+
+    public function getOtherInboxUser(User $user, UserInbox $inbox) : User
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.userInbox = :inbox')
+            ->setParameter('inbox', $inbox)
+            ->andWhere('i.inboxUser != :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ->getInboxUser()
+        ;
     }
 
     // /**

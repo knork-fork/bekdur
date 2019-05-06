@@ -38,6 +38,8 @@ class UserInbox
      */
     private $messages;
 
+    private $messageNumber;
+
     public function __construct()
     {
         $this->inboxMemberships = new ArrayCollection();
@@ -131,6 +133,18 @@ class UserInbox
                 $message->setUserInbox(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMessageNumber(): ?int
+    {
+        return $this->messageNumber;
+    }
+
+    public function setMessageNumber(int $messageNumber): self
+    {
+        $this->messageNumber = $messageNumber;
 
         return $this;
     }
