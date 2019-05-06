@@ -41,6 +41,11 @@ class Message
      */
     private $userId;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $author_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Message
     public function setUserId(?int $userId): self
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    public function getAuthorId(): ?int
+    {
+        return $this->author_id;
+    }
+
+    public function setAuthorId(?int $author_id): self
+    {
+        $this->author_id = $author_id;
 
         return $this;
     }
