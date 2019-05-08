@@ -1,4 +1,4 @@
---to be named-- (Bekdur)
+Collabsy - app for collaboration
 ========================
 
 [HR] Aplikacija za kolaboraciju između učenika.
