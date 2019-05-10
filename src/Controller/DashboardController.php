@@ -40,6 +40,8 @@ class DashboardController extends AbstractController
         $this->messageRepository = $messageRepository;
     }
 
+    // to-do: This is not how a controller should look like... Take away duplicate code and move it to some service or something.
+
     public function dashboard()
     {
         if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
