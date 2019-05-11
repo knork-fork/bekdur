@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+	
+    <head>
+        <meta charset="utf-8">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <title>Quizy - Moji kvizovi</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="font-awesome-animation.min.css">
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/functions.js"></script>
+	</head>
+	
+	<body>
+		<header class="mainHeader color_QuizyBlue">
+			<div class="bgDiv blue">
+				<a href="index.html">
+					<img src="images/logoImg.png"> 
+				</a>
+			</div>
+
+		</header>
+		
+		<div class="dashboard">
+
+			<div id="leftMenuBar">
+
+				<div id="groupsMenu">
+						<div class="title">Grupe</div>
+
+						<!--
+							Dugme za grupu
+							ako nema novih obavijesti, div id "newPosts" se ne treba kreirat
+							"groupButton"treba dodati background-image;
+						-->
+						<div class = "groupButton" style="background-image: url('https://isha.sadhguru.org/blog/wp-content/uploads/2016/05/natures-temples.jpg')">
+							<div id="newPosts" class="color_Pomegranate">4</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/03/31/Pictures/_0abf43c2-34d5-11e8-8c5f-3c6cc031651e.jpg')">
+							<div id="newPosts" class="color_Pomegranate">12</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://www.tes.com/tesv2/files/styles/news_article_ml_x1/public/news-images/maths_blackboard.jpg?itok=gs0GTyed')">
+		
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://image.shutterstock.com/image-photo/software-developer-programming-code-abstract-260nw-577183882.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+						<div class = "groupButton" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+							<div id="newPosts" class="color_Pomegranate">26</div>
+						</div>
+					
+				</div>
+
+
+
+				<div id="chatsMenu">
+					<div class="title">Razgovori</div>
+					
+
+
+						<!--
+							Dugme za chat
+							takoder ako nema novih obavijesti, div "unreadMessages" se ne kreira
+							"profileImageDiv"treba dodati background-image;
+							"profileImageDivStatus" oznacava off/on status, boje su color_Nephritis i color_Pomegranate
+						-->
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukigfdgdfc</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+						<div class = "chatButton">
+							<div id="profileImageDiv" STYLE="background-image: url('data:image/jpeg;base64,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')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Ivan Ivic</span>
+						</div>
+						
+				</div>
+			</div>
+
+<!--
+			<div class="notificationCenter">
+
+
+				<div class="notification">
+					<div id="top">
+						<div id="left">ime grupe</div>
+						<div id="right">&#xf00d;</div>
+					</div>
+					<div id="center">
+						<h3>naslov obavijesti</h3>
+						<p>tekst obavijesti</p>
+					</div>
+					<div id="bottom" class="color_Wisteria">Otvori grupu</div>
+				</div>
+
+				<div class="notification">
+					<div id="top">
+						<div id="left">ime grupe</div>
+						<div id="right">&#xf00d;</div>
+					</div>
+					<div id="center">
+						<h3>naslov obavijesti</h3>
+						<p>tekst obavijesti</p>
+					</div>
+					<div id="bottom" class="color_QuizyBlue">Otvori grupu</div>
+				</div>
+
+
+				<div class="notification">
+					<div id="top">
+						<div id="left">ime grupe</div>
+						<div id="right">&#xf00d;</div>
+					</div>
+					<div id="center">
+						<h3>naslov obavijesti</h3>
+						<p>tekst obavijesti</p>
+					</div>
+					<div id="bottom" class="color_Pumpkin">Otvori grupu</div>
+				</div>
+			</div>
+		
+		-->
+			<div id="content">
+				<div class="groupPost">
+					<div id="top">
+						<div id="left">
+								<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+								Sebastian Vujnović objavljuje program (BASCOM AVR).
+								<br>
+								17. January
+						</div>
+						<div id="right">&#xf077; 32k &#xf078;</div>
+					</div>
+
+					<div id="middle">						
+						Do
+						   If S1 = S2 Then
+							  If S1 = 0 Then
+								 Porta = 0
+							  End If
+						   Else
+							...</div>
+					<div id="bottom">
+						<div class="comment">
+								<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+								Boris Milojevic
+								<br>
+								Lijepo
+						</div>
+						<div class="comment">
+								<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+								Boris Milojevic
+								<br>
+								Lijepo
+						</div>
+						<div class="comment">
+								<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+								Boris Milojevic
+								<br>
+								Lijepo
+						</div>
+
+						
+						<div id="postComment">
+								<div id="profileImageDiv" style="background-image: url('basc.png')"></div> Input za kom
+						</div>
+					</div>
+
+					
+				</div>
+				
+				<div class="groupPost">
+						<div id="top">
+							<div id="left">
+									<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+									Sebastian Vujnović objavljuje program (BASCOM AVR).
+									<br>
+									17. January
+							</div>
+							<div id="right">&#xf077; 32k &#xf078;</div>
+						</div>
+	
+						<div id="middle">						
+							Do
+							   If S1 = S2 Then
+								  If S1 = 0 Then
+									 Porta = 0
+								  End If
+							   Else
+								...</div>
+						<div id="bottom">
+							<div class="comment">
+									<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+									Boris Milojevic
+									<br>
+									Lijepo
+							</div>
+							<div class="comment">
+									<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+									Boris Milojevic
+									<br>
+									Lijepo
+							</div>
+							<div class="comment">
+									<div id="profileImageDiv" style="background-image: url('basc.png')"></div>
+									Boris Milojevic
+									<br>
+									Lijepo
+							</div>
+	
+							
+							<div id="postComment">
+									<div id="profileImageDiv" style="background-image: url('basc.png')"></div> Input za kom
+							</div>
+						</div>
+			</div>
+		
+		
+		</div>
+		
+		
+	</body>
+</html>

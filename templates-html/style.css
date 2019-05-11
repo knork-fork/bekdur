@@ -2,6 +2,7 @@ body {
     overflow: auto;
     height: 100vh;
 	margin:0;
+	background-color:#f0f0f0;
 }
 
 
@@ -92,8 +93,8 @@ a{
 	font-family:Segoe UI;
 }
 .dashboard #content{
-	margin:65px 0px 0px 400px;
-	padding:50px 50px 50px 50px;
+	margin:65px 0px 0px 310px;
+	padding:50px 75px 75px 75px;
 }
 
 .notificationCenter{
@@ -108,6 +109,7 @@ a{
 	box-sizing: content-box;
 	-ms-overflow-style: none; 
 	scrollbar-width: none; 
+	pointer-events: none;
 }
 .notificationCenter::-webkit-scrollbar { 
     display: none;  
@@ -122,6 +124,7 @@ a{
 	border-radius: 5px;
 	position: relative;
 	box-shadow: 0px 5px 13px #2d323d;
+	pointer-events:auto;
 }
 
 .notificationCenter .notification #top{
@@ -225,8 +228,9 @@ a{
 	box-sizing: content-box;
 	-ms-overflow-style: none; 
 	scrollbar-width: none; 
-	padding:0px 0px 30px 0px;
+	padding:0px 0px 50px 0px;
 	z-index:2;
+	box-sizing: border-box;
 }
 
 #leftMenuBar #groupsMenu::-webkit-scrollbar { 
@@ -253,6 +257,7 @@ a{
 #leftMenuBar #groupsMenu .groupButton #newPosts{
 	height:20px;
 	max-width:20px;
+	min-width:12px;
 	overflow:hidden;
 	display:flex;
 	white-space: nowrap;
@@ -280,8 +285,9 @@ a{
 	box-sizing: content-box;
 	-ms-overflow-style: none; 
 	scrollbar-width: none; 
-	padding:0px 0px 30px 0px;
+	padding:0px 0px 50px 0px;
 	box-shadow: 1px 0px 3px #2d323d;
+	box-sizing: border-box;
 }
 
 #leftMenuBar #chatsMenu::-webkit-scrollbar { 
@@ -299,16 +305,16 @@ a{
 	display: flex;
 	align-items: center; 
 }
-#leftMenuBar #chatsMenu .chatButton.notselected{
+.chatButton.notselected{
 	background:rgba(0,0,0,0.0);
 }
-#leftMenuBar #chatsMenu .chatButton.selected{
+.chatButton.selected{
 	background:rgba(0,0,0,0.25);
 }
-#leftMenuBar #chatsMenu .chatButton:hover{
+.chatButton:hover{
 	background:rgba(0,0,0,0.25);
 }
-#leftMenuBar #chatsMenu .chatButton #profileImageDiv{
+#profileImageDiv{
 	height:40px;
 	width:40px;
 	border-radius:50%;
@@ -320,7 +326,7 @@ a{
 	background-color: red;
 }
 
-#leftMenuBar #chatsMenu .chatButton #profileImageDivStatus{
+.chatButton #profileImageDivStatus{
 	height:10px;
 	width:10px;
 	border-radius:50%;
@@ -328,7 +334,7 @@ a{
 	float:right;
 	margin:-3px;
 }
-#leftMenuBar #chatsMenu .chatButton span{
+.chatButton span{
 	max-width:120px;
 	overflow:hidden;
 	white-space: nowrap;
@@ -336,7 +342,7 @@ a{
 	color:#ccc;
 	font-weight:400;
 }
-#leftMenuBar #chatsMenu .chatButton #unreadMessages{
+.chatButton #unreadMessages{
 	height:20px;
 	max-width:20px;
 	overflow:hidden;
@@ -368,4 +374,70 @@ a{
 	top:0;
 	left:0;
 	clip-path: polygon(10px 0%, 100% 0%, 100% 100%, 10px 100%, 0% 50%);
+}
+
+
+
+/*------------Group post------------*/
+.groupPost{
+	background-color:white;
+	width:100%;
+	height: auto;
+	border: 2px solid #e0e0e0;
+	margin-bottom:20px;
+}
+.groupPost #top{
+	height:60px;
+	width:100%;
+	border-bottom:1px solid #e0e0e0;
+	padding:0;
+	box-sizing: border-box;
+}
+.groupPost #top #left{
+	height:100%;
+	width:auto;
+	padding:10px;
+	float:left;
+	box-sizing: border-box;
+}
+.groupPost #top #right{
+	height:100%;
+	width:120px;
+	padding-right:100px;
+	float:right;
+	box-sizing: border-box;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	align-items: center;
+	font-family: FontAwesome;
+	white-space: nowrap;
+}
+
+.groupPost #middle{
+	min-height:60px;
+	width:100%;
+	border-bottom:1px solid #e0e0e0;
+	top:60px;
+	padding:10px 25px 10px 25px;
+	box-sizing: border-box;
+	white-space: pre-wrap;
+}
+.groupPost #bottom{
+	min-height:60px;
+	width:100%;
+	padding:10px;
+	box-sizing: border-box;
+}
+.groupPost .comment{
+	width:100%;
+	padding:10px;
+	box-sizing: border-box;
+	border-bottom:1px solid #e0e0e0;
+}
+.groupPost #postComment{
+	width:100%;
+	padding:10px;
+	box-sizing: border-box;
+	height:55px;
 }
