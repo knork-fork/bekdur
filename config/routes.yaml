@@ -29,4 +29,23 @@ user_updates:
     path: /updates
     controller: App\Controller\DashboardController:updates
 
+### inboxes
+
+# add message to inbox
+# add user to inbox (create inbox if doesn't exist)
+# see messages (seen = true)
+# get messages
+# get inboxes?
+
+### groups
+
+# create group
+# add post
+# add comment to post
+# add notification to user
+# add add user to group
+# see notifications (seen = true)
+# get posts/comments
+# get groups?
+
 ### other
