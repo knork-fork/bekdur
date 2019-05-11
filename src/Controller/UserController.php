@@ -14,7 +14,6 @@ use App\Form\UserRegistrationType;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Security\LoginAuthenticator;
 
-
 class UserController extends AbstractController
 {
     private $tokenStorage;
@@ -106,24 +105,6 @@ class UserController extends AbstractController
             // Logged in, redirect
 
             return new RedirectResponse($this->router->generate("user_dashboard"));
-        }
-    }
-
-    public function dashboard()
-    {
-        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
-        {
-            // Logged in, continue
-
-            return $this->render("user/dashboard.html.twig", [
-                "page_title" => "Bekdur aplikacija",
-            ]);
-        }
-        else
-        {
-            // Not logged in, redirect
-
-            return new RedirectResponse($this->router->generate("user_login"));
         }
     }
 }

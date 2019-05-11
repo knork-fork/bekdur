@@ -4,19 +4,32 @@
 
 	<div id="groupsMenu">
 		<div class="title">Grupe</div>
+			
 			{#
 			Dugme za grupu
 			ako nema novih obavijesti, div id "newPosts" se ne treba kreirat
 			"groupButton"treba dodati background-image;
 			#}
-			<div class = "groupButton">
-				<div id="newPosts" class="color_Pomegranate">55</div>
+
+			{% for group in groups %}
+			<div class = "groupButton" id = "group_{{ group.getUserGroup.getId }}" onmouseover="showGroupName('{{ group.getUserGroup.getName }}', {{ group.getUserGroup.getId }})" onmouseleave="hideGroupName()">
+				{% if group.getUserGroup.getNotificationNumber > 0 %}
+					<div id="newPosts" name="group_{{ group.getUserGroup.getId }}" class="color_Pomegranate">{{ group.getUserGroup.getNotificationNumber }}</div>
+				{% else %}
+					<div id="newPosts" name="group_{{ group.getUserGroup.getId }}" class="color_Pomegranate" style="display:none;"></div>
+				{% endif %}
 			</div>
+			{% endfor %}
 	</div>
 
 
 
 	<div id="chatsMenu">
+		{#
+		Label s imenom grupe koji se pokazuje kad se hovera na grupu
+		#}
+		<div id="groupName" style="display:none;"></div>
+
 		<div class="title">Razgovori</div>
 			{#
 			Dugme za chat
@@ -24,13 +37,20 @@
 			"profileImageDiv"treba dodati background-image;
 			"profileImageDivStatus" oznacava off/on status, boje su color_Nephritis i color_Pomegranate
 			#}
+
+			{% for inbox in inboxes %}
 			<div class = "chatButton">
 				<div id="profileImageDiv">
 					<div id="profileImageDivStatus" class="color_Nephritis"></div>
 				</div>
-				<span>Luka Kgfdne</span>
-				<div id="unreadMessages" class="color_Pomegranate">55</div>
+				<span>{{ inbox.getUserInbox.getName }}</span>
+				{% if inbox.getUserInbox.getMessageNumber > 0 %}
+					<div id="unreadMessages" name="inbox_{{ inbox.getUserInbox.getId }}" class="color_Pomegranate">{{ inbox.getUserInbox.getMessageNumber }}</div>
+				{% else %}
+					<div id="unreadMessages" name="inbox_{{ inbox.getUserInbox.getId }}" class="color_Pomegranate" style="display:none;"></div>
+				{% endif %}
 			</div>
+			{% endfor %}
 	</div>
 
 </div>
