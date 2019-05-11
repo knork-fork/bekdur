@@ -45,9 +45,9 @@
 				</div>
 				<span>{{ inbox.getUserInbox.getName }}</span>
 				{% if inbox.getUserInbox.getMessageNumber > 0 %}
-					<div id="unreadMessages" class="color_Pomegranate">{{ inbox.getUserInbox.getMessageNumber }}</div>
+					<div id="unreadMessages" name="inbox_{{ inbox.getUserInbox.getId }}" class="color_Pomegranate">{{ inbox.getUserInbox.getMessageNumber }}</div>
 				{% else %}
-					<div id="unreadMessages" class="color_Pomegranate" style="display:none;"></div>
+					<div id="unreadMessages" name="inbox_{{ inbox.getUserInbox.getId }}" class="color_Pomegranate" style="display:none;"></div>
 				{% endif %}
 			</div>
 			{% endfor %}

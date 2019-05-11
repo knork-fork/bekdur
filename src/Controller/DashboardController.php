@@ -132,16 +132,30 @@ class DashboardController extends AbstractController
             // Get array with key (group id) value (notification number) pairs
             $notificationNumbers = $this->groupNotificationNumber->calculate($groups, $notifications);
 
-            // To-do: message notifications
-
             $notificationView = $this->renderView("user/elements/notification.html.twig", [
                 "page_title" => "Bekdur aplikacija",
                 "notifications" => $notifications,
             ]);
 
+            // Get latest, unseen messages - userId marks "the target", or the "other" user in an inbox
+            // to-do: for multi-user support, send message to multiple targets?
+            $messages = $this->messageRepository->findBy([
+                "userId" => $user->getId(),
+                "seen" => false,
+            ]);
+
+            // Get inboxes user is in
+            $inboxes = $this->inboxMembershipRepository->findBy([
+                "inboxUser" => $user,
+            ]);
+
+            // Get array with key (inbox id) value (message number) pairs
+            $messageNumbers = $this->inboxMessageNumber->calculate($inboxes, $messages);
+
             return new JsonResponse([
                 "notifications" => $notificationView,
                 "notificationNumbers" => $notificationNumbers,
+                "messageNumbers" => $messageNumbers,
                 "request" => "OK",
             ]);
         }

@@ -11,19 +11,19 @@ class InboxMessageNumber
     public function __construct()
     {}
 
-    /*public function calculate(Array $groups, Array $notifications) : Array
+    public function calculate(Array $inboxes, Array $messages) : Array
     {
         $ret = array();
 
-        foreach ($groups as $group)
+        foreach ($inboxes as $inbox)
         {
-            $usergroup = $group->getUserGroup();
-            $key = "group_".$usergroup->getId();
-            $ret[$key] = $this->getGroupNotificationNumber($usergroup, $notifications);
+            $userinbox = $inbox->getUserInbox();
+            $key = "inbox_".$userinbox->getId();
+            $ret[$key] = $this->getInboxMessageNumber($userinbox, $messages);
         }
 
         return $ret;
-    }*/
+    }
 
     public function setInboxMessageNumber(UserInbox $inbox, Array $messages)
     {
@@ -38,16 +38,16 @@ class InboxMessageNumber
         $inbox->setMessageNumber($num);
     }
 
-    /*public function getGroupNotificationNumber(UserGroup $group, Array $notifications) : int
+    public function getInboxMessageNumber(UserInbox $inbox, Array $messages) : int
     {
         $num = 0;
 
-        foreach ($notifications as $notification)
+        foreach ($messages as $message)
         {
-            if ($notification->getUserGroup()->getId() == $group->getId())
+            if ($message->getUserInbox()->getId() == $inbox->getId())
                 $num++;
         }
 
         return $num;
-    }*/
+    }
 }

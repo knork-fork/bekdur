@@ -70,8 +70,23 @@ function showUpdates(jsonData)
             notificationNumDiv.style = "display:none;";
     }
 
-    // to-do: implement messages
-    // messages = document.getElementsByClassName("inboxNotificationNumber");
+    // Show total message number per inbox
+    messageNumbers = jsonData["messageNumbers"];
+    for (var inbox in messageNumbers)
+    {
+        var num = messageNumbers[inbox];
+
+        messageNumDiv = document.getElementsByName(inbox)[0];
+        messageNumDiv.innerText = num;
+
+        // Hide message number div if no notifications
+        if (num > 0)
+            messageNumDiv.style = "";
+        else
+            messageNumDiv.style = "display:none;";
+    }
+
+    // to-do: actual messages and group comments/posts
 }
 
 // Start
