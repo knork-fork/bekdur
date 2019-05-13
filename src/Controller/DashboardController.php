@@ -8,18 +8,21 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Service\DashboardData;
+use App\Service\Seener;
 
 class DashboardController extends AbstractController
 {
     private $tokenStorage;
     private $router;
     private $dashboardData;
+    private $seener;
 
-    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, DashboardData $dashboardData)
+    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, DashboardData $dashboardData, Seener $seener)
     {
         $this->tokenStorage = $tokenStorage;
         $this->router = $router;
         $this->dashboardData = $dashboardData;
+        $this->seener = $seener;
     }
 
     public function dashboard($group_id = null, $inbox_id = null)
@@ -29,6 +32,9 @@ class DashboardController extends AbstractController
             // Logged in, continue
 
             $user = $this->tokenStorage->getToken()->getUser();
+
+            $this->seener->setNotificationsSeen($group_id, $user);
+            $this->seener->setMessagesSeen($inbox_id, $user);
 
             $parameters = $this->dashboardData->getDashboardDataStatic($user, "Bekdur aplikacija", $group_id, $inbox_id);
 
@@ -52,6 +58,8 @@ class DashboardController extends AbstractController
             // Logged in, continue
 
             $user = $this->tokenStorage->getToken()->getUser();
+
+            // to-do: set messages/notifications to seen
             
             $parameters = $this->dashboardData->getDashboardDataDynamic($user, "Bekdur aplikacija", null, null);
 

@@ -84,31 +84,17 @@ class DashboardData
             $this->inboxMessageNumber->setInboxMessageNumber($inb, $messages);
         }
 
+        // Get group content
         if (isset($group_id))
-        {
-            // Get group content
             $groupPosts = $this->postRepository->findByGroupId($group_id);
-
-            // Set all notifications to seen
-            // to-do
-        }
         else
-        {
             $groupPosts = null;
-        }
 
+        // Get inbox content - to-do
         if (isset($inbox_id))
-        {
-            // Get inbox content
             $inboxMessages = null;
-
-            // Set all messages to seen
-            // to-do
-        }
         else
-        {
             $inboxMessages = null;
-        }
 
         return [
             "page_title" => "Bekdur aplikacija",
