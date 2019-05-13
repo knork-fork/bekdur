@@ -15,6 +15,7 @@ use App\Repository\InboxMembershipRepository;
 use App\Service\InboxMessageNumber;
 use App\Repository\MessageRepository;
 use App\Repository\GroupPostRepository;
+use App\Service\DashboardData;
 
 class DashboardController extends AbstractController
 {
@@ -28,8 +29,9 @@ class DashboardController extends AbstractController
     private $inboxMessageNumber;
     private $messageRepository;
     private $postRepository;
+    private $dashboardData;
 
-    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository)
+    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository, DashboardData $dashboardData)
     {
         $this->tokenStorage = $tokenStorage;
         $this->router = $router;
@@ -41,6 +43,7 @@ class DashboardController extends AbstractController
         $this->inboxMessageNumber = $inboxMessageNumber;
         $this->messageRepository = $messageRepository;
         $this->postRepository = $postRepository;
+        $this->dashboardData = $dashboardData;
     }
 
     // to-do: This is not how a controller should look like... Take away duplicate code and move it to some service or something.
@@ -53,82 +56,9 @@ class DashboardController extends AbstractController
 
             $user = $this->tokenStorage->getToken()->getUser();
 
-            // to-do: Get latest, unseen user notifications
-            $notifications = $this->notificationRepository->findBy([
-                "userId" => $user->getId(),
-                "seen" => false,
-            ]);
+            $parameters = $this->dashboardData->getDashboardDataStatic($user, "Bekdur aplikacija", $group_id, $inbox_id);
 
-            // to-do: Get groups user is in
-            $groups = $this->groupMembershipRepository->findBy([
-                "groupUser" => $user,
-            ]);
-
-            // Calculate notification num and save to each group
-            foreach ($groups as $group)
-            {
-                $usergroup = $group->getUserGroup();
-                $this->groupNotificationNumber->setGroupNotificationNumber($usergroup, $notifications);
-            }
-
-            // Get latest, unseen messages - userId marks "the target", or the "other" user in an inbox
-            // to-do: for multi-user support, send message to multiple targets?
-            $messages = $this->messageRepository->findBy([
-                "userId" => $user->getId(),
-                "seen" => false,
-            ]);
-
-            // Get inboxes user is in
-            $inboxes = $this->inboxMembershipRepository->findBy([
-                "inboxUser" => $user,
-            ]);
-
-            // to-do: for multi-user inboxes just get inbox name instead, otherwise get name of the other user
-            foreach ($inboxes as $inbox)
-            {
-                $inb = $inbox->getUserInbox();
-
-                // Find other user in inbox
-                $other = $this->inboxMembershipRepository->getOtherInboxUser($user, $inb);
-                $inb->setName($other->getUsername()); // to-do: change to first+last name
-
-                $this->inboxMessageNumber->setInboxMessageNumber($inb, $messages);
-            }
-
-            if (isset($group_id))
-            {
-                // Get group content
-                $groupPosts = $this->postRepository->findByGroupId($group_id);
-
-                // Set all notifications to seen
-                // to-do
-            }
-            else
-            {
-                $groupPosts = null;
-            }
-
-            if (isset($inbox_id))
-            {
-                // Get inbox content
-                $inboxMessages = null;
-
-                // Set all messages to seen
-                // to-do
-            }
-            else
-            {
-                $inboxMessages = null;
-            }
-
-            return $this->render("user/dashboard.html.twig", [
-                "page_title" => "Bekdur aplikacija",
-                "notifications" => $notifications,
-                "groups" => $groups,
-                "inboxes" => $inboxes,
-                "posts" => $groupPosts,
-                "messages" => $inboxMessages,
-            ]);
+            return $this->render("user/dashboard.html.twig", $parameters);
         }
         else
         {
