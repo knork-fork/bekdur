@@ -19,6 +19,18 @@ class GroupPostRepository extends ServiceEntityRepository
         parent::__construct($registry, GroupPost::class);
     }
 
+    public function findByGroupId($value)
+    {
+        return $this->createQueryBuilder('g')
+            ->andWhere('g.id = :val')
+            ->setParameter('val', $value)
+            ->orderBy('g.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return GroupPost[] Returns an array of GroupPost objects
     //  */

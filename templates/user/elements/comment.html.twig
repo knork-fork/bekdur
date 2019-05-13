@@ -1,0 +1,12 @@
+{#
+Comment
+#}
+
+{% for comment in post.getGroupComments|sort %}
+<div class="comment">
+		<div id="profileImageDiv"></div>
+		{{ comment.getAuthor.getUsername }}
+		<br>
+		{{ comment.getText }}
+</div>
+{% endfor %}

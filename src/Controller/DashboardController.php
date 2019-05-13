@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Repository\InboxMembershipRepository;
 use App\Service\InboxMessageNumber;
 use App\Repository\MessageRepository;
+use App\Repository\GroupPostRepository;
 
 class DashboardController extends AbstractController
 {
@@ -26,8 +27,9 @@ class DashboardController extends AbstractController
     private $inboxMembershipRepository;
     private $inboxMessageNumber;
     private $messageRepository;
+    private $postRepository;
 
-    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository)
+    public function __construct(TokenStorageInterface $tokenStorage, RouterInterface $router, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository)
     {
         $this->tokenStorage = $tokenStorage;
         $this->router = $router;
@@ -38,11 +40,12 @@ class DashboardController extends AbstractController
         $this->inboxMembershipRepository = $inboxMembershipRepository;
         $this->inboxMessageNumber = $inboxMessageNumber;
         $this->messageRepository = $messageRepository;
+        $this->postRepository = $postRepository;
     }
 
     // to-do: This is not how a controller should look like... Take away duplicate code and move it to some service or something.
 
-    public function dashboard()
+    public function dashboard($group_id = null, $inbox_id = null)
     {
         if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
         {
@@ -92,11 +95,39 @@ class DashboardController extends AbstractController
                 $this->inboxMessageNumber->setInboxMessageNumber($inb, $messages);
             }
 
+            if (isset($group_id))
+            {
+                // Get group content
+                $groupPosts = $this->postRepository->findByGroupId($group_id);
+
+                // Set all notifications to seen
+                // to-do
+            }
+            else
+            {
+                $groupPosts = null;
+            }
+
+            if (isset($inbox_id))
+            {
+                // Get inbox content
+                $inboxMessages = null;
+
+                // Set all messages to seen
+                // to-do
+            }
+            else
+            {
+                $inboxMessages = null;
+            }
+
             return $this->render("user/dashboard.html.twig", [
                 "page_title" => "Bekdur aplikacija",
                 "notifications" => $notifications,
                 "groups" => $groups,
                 "inboxes" => $inboxes,
+                "posts" => $groupPosts,
+                "messages" => $inboxMessages,
             ]);
         }
         else

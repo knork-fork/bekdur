@@ -1,0 +1,31 @@
+{#
+Post
+#}
+
+{% for post in posts %}
+<div class="groupPost">
+    <div id="top">
+    	<div id="left">
+    			<div id="profileImageDiv"></div>
+    			{{ post.getAuthor.getUsername }} {{ post.getHeader }}
+    			<br>
+    			{{ post.getCreated|date('d. M Y.') }}
+    	</div>
+    	<div id="right">&#xf077; {{ post.getPoints }} &#xf078;</div>
+    </div>
+
+    <div id="middle">	
+        {{ post.getContent }}					
+    </div>
+
+    <div id="bottom">
+        
+        {% include 'user/elements/comment.html.twig' %}
+    
+    	<div id="postComment">
+    			<div id="profileImageDiv" style="background-image: url('basc.png')"></div> Input za kom: <input>
+    	</div>
+    </div>
+
+</div>
+{% endfor %}
