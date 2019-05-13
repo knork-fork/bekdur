@@ -14,6 +14,7 @@ use App\Repository\GroupPostRepository;
 
 class DashboardData
 {
+    private $templating;
     private $notificationRepository;
     private $userGroupRepository;
     private $groupMembershipRepository;
@@ -23,8 +24,9 @@ class DashboardData
     private $messageRepository;
     private $postRepository;
 
-    public function __construct(NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository)
+    public function __construct(\Twig_Environment $templating, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository)
     {
+        $this->templating = $templating;
         $this->notificationRepository = $notificationRepository;
         $this->userGroupRepository = $userGroupRepository;
         $this->groupMembershipRepository = $groupMembershipRepository;
@@ -121,9 +123,47 @@ class DashboardData
     /**
      * Called from frontend in update function
      */
-    public function getDashboardDataDynamic() : Array
+    public function getDashboardDataDynamic(User $user, string $pageTitle, $group_id = null, $inbox_id = null) : Array
     {
-        $arr = [];
-        return $arr;
+        // Get latest, unseen user notifications
+        $notifications = $this->notificationRepository->findBy([
+            "userId" => $user->getId(),
+            "seen" => false,
+        ]);
+
+        // Get groups user is in
+        $groups = $this->groupMembershipRepository->findBy([
+            "groupUser" => $user,
+        ]);
+
+        // Get array with key (group id) value (notification number) pairs
+        $notificationNumbers = $this->groupNotificationNumber->calculate($groups, $notifications);
+
+        $notificationView = $this->templating->render("user/elements/notification.html.twig", [
+            "page_title" => "Bekdur aplikacija",
+            "notifications" => $notifications,
+        ]);
+
+        // Get latest, unseen messages - userId marks "the target", or the "other" user in an inbox
+        // to-do: for multi-user support, send message to multiple targets?
+        $messages = $this->messageRepository->findBy([
+            "userId" => $user->getId(),
+            "seen" => false,
+        ]);
+
+        // Get inboxes user is in
+        $inboxes = $this->inboxMembershipRepository->findBy([
+            "inboxUser" => $user,
+        ]);
+
+        // Get array with key (inbox id) value (message number) pairs
+        $messageNumbers = $this->inboxMessageNumber->calculate($inboxes, $messages);
+
+        return [
+            "notifications" => $notificationView,
+            "notificationNumbers" => $notificationNumbers,
+            "messageNumbers" => $messageNumbers,
+            "request" => "OK",
+        ];
     }
 }
