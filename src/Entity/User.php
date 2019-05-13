@@ -68,10 +68,22 @@ class User implements UserInterface
      */
     private $inboxMemberships;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\GroupPost", mappedBy="author")
+     */
+    private $groupPosts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\GroupComment", mappedBy="author")
+     */
+    private $groupComments;
+
     public function __construct()
     {
         $this->groupMemberships = new ArrayCollection();
         $this->inboxMemberships = new ArrayCollection();
+        $this->groupPosts = new ArrayCollection();
+        $this->groupComments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -263,6 +275,68 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($inboxMembership->getInboxUser() === $this) {
                 $inboxMembership->setInboxUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GroupPost[]
+     */
+    public function getGroupPosts(): Collection
+    {
+        return $this->groupPosts;
+    }
+
+    public function addGroupPost(GroupPost $groupPost): self
+    {
+        if (!$this->groupPosts->contains($groupPost)) {
+            $this->groupPosts[] = $groupPost;
+            $groupPost->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupPost(GroupPost $groupPost): self
+    {
+        if ($this->groupPosts->contains($groupPost)) {
+            $this->groupPosts->removeElement($groupPost);
+            // set the owning side to null (unless already changed)
+            if ($groupPost->getAuthor() === $this) {
+                $groupPost->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GroupComment[]
+     */
+    public function getGroupComments(): Collection
+    {
+        return $this->groupComments;
+    }
+
+    public function addGroupComment(GroupComment $groupComment): self
+    {
+        if (!$this->groupComments->contains($groupComment)) {
+            $this->groupComments[] = $groupComment;
+            $groupComment->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupComment(GroupComment $groupComment): self
+    {
+        if ($this->groupComments->contains($groupComment)) {
+            $this->groupComments->removeElement($groupComment);
+            // set the owning side to null (unless already changed)
+            if ($groupComment->getAuthor() === $this) {
+                $groupComment->setAuthor(null);
             }
         }
 

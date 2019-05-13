@@ -40,10 +40,16 @@ class UserGroup
 
     private $notificationNumber;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\GroupPost", mappedBy="userGroup")
+     */
+    private $groupPosts;
+
     public function __construct()
     {
         $this->notifications = new ArrayCollection();
         $this->groupMemberships = new ArrayCollection();
+        $this->groupPosts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -145,6 +151,37 @@ class UserGroup
     public function setNotificationNumber(int $notificationNumber): self
     {
         $this->notificationNumber = $notificationNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GroupPost[]
+     */
+    public function getGroupPosts(): Collection
+    {
+        return $this->groupPosts;
+    }
+
+    public function addGroupPost(GroupPost $groupPost): self
+    {
+        if (!$this->groupPosts->contains($groupPost)) {
+            $this->groupPosts[] = $groupPost;
+            $groupPost->setUserGroup($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupPost(GroupPost $groupPost): self
+    {
+        if ($this->groupPosts->contains($groupPost)) {
+            $this->groupPosts->removeElement($groupPost);
+            // set the owning side to null (unless already changed)
+            if ($groupPost->getUserGroup() === $this) {
+                $groupPost->setUserGroup(null);
+            }
+        }
 
         return $this;
     }
