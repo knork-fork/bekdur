@@ -22,9 +22,9 @@ class GroupPostRepository extends ServiceEntityRepository
     public function findByGroupId($value)
     {
         return $this->createQueryBuilder('g')
-            ->andWhere('g.id = :val')
+            ->andWhere('g.userGroup = :val')
             ->setParameter('val', $value)
-            ->orderBy('g.id', 'ASC')
+            ->orderBy('g.mostRecent', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
