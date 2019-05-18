@@ -1,0 +1,15 @@
+# Console argument (e.g. bin/switchenv dev)
+mode=$1;
+
+if [ "$mode" == "dev" ] ; then
+    sudo cp /var/www/bekdur/bekdur/bin/apache2_conf/apache2.conf_dev /etc/apache2/apache2.conf
+    echo "$(tput setaf 3)Switched environment to $(tput setaf 2)dev$(tput setaf 3) env.$(tput sgr 0)"
+    echo "$(tput setaf 3)Please run $(tput setaf 2)sudo service apache2 restart$(tput sgr 0) $(tput setaf 3)to apply changes.$(tput sgr 0)"
+elif [ "$mode" == "prod" ] ; then
+    sudo cp /var/www/bekdur/bekdur/bin/apache2_conf/apache2.conf_prod /etc/apache2/apache2.conf
+    echo "$(tput setaf 3)Switched environment to $(tput setaf 2)prod$(tput setaf 3) env.$(tput sgr 0)"
+    echo "$(tput setaf 3)Please run $(tput setaf 2)sudo service apache2 restart$(tput sgr 0) $(tput setaf 3)to apply changes.$(tput sgr 0)"
+else
+    echo "$(tput setaf 1)Invalid argument!$(tput sgr 0)"
+    echo "Example: $(tput setaf 3)switchenv dev$(tput sgr 0)"
+fi
