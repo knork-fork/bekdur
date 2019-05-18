@@ -53,6 +53,11 @@ class GroupPost
      */
     private $groupComments;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $mostRecent;
+
     public function __construct()
     {
         $this->groupComments = new ArrayCollection();
@@ -162,6 +167,18 @@ class GroupPost
                 $groupComment->setParent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMostRecent(): ?\DateTimeInterface
+    {
+        return $this->mostRecent;
+    }
+
+    public function setMostRecent(?\DateTimeInterface $mostRecent): self
+    {
+        $this->mostRecent = $mostRecent;
 
         return $this;
     }
