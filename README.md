@@ -25,6 +25,8 @@ Then run latest migrations:
 $ ./bin/console doctrine:migrations:migrate
 ```
 
+**NOTE: Default vendor folder was changed from ./vendor to /home/bekdur/symfony_vendor (check 2415b69).**
+
 Usage
 -----
 
