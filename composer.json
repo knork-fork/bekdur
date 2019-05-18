@@ -34,6 +34,7 @@
         "symfony/web-server-bundle": "4.2.*"
     },
     "config": {
+        "vendor-dir": "/home/bekdur/symfony_vendor",
         "preferred-install": {
             "*": "dist"
         },
