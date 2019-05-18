@@ -7,6 +7,16 @@ function getUpdates()
 {
     theUrl = "/updates";
 
+    // Check if inside group/inbox
+    var path = location.pathname.split('/');
+    var type = path[2];
+    var id = path[3];
+
+    if(type == "group" || type == "inbox")
+    {
+        theUrl += "/" + type + "/" + id;
+    }
+
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", theUrl, true ); // true for asynchronous request
     

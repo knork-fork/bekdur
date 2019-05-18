@@ -109,7 +109,7 @@ class DashboardData
     /**
      * Called from frontend in update function
      */
-    public function getDashboardDataDynamic(User $user, string $pageTitle, $group_id = null, $inbox_id = null) : Array
+    public function getDashboardDataDynamic(User $user, $group_id = null, $inbox_id = null) : Array
     {
         // Get latest, unseen user notifications
         $notifications = $this->notificationRepository->findBy([

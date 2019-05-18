@@ -48,7 +48,7 @@ class DashboardController extends AbstractController
         }
     }
 
-    public function updates()
+    public function updates($group_id = null, $inbox_id = null)
     {
         // This route will be called from frontend (liveUpdater.js)
         // to-do: also pass group/inbox id (if any currently open) to automatically set notifications in them to seen
@@ -59,9 +59,11 @@ class DashboardController extends AbstractController
 
             $user = $this->tokenStorage->getToken()->getUser();
 
-            // to-do: set messages/notifications to seen
+            // There's no need to display notifications when already inside group/inbox
+            $this->seener->setNotificationsSeen($group_id, $user);
+            $this->seener->setMessagesSeen($inbox_id, $user);
             
-            $parameters = $this->dashboardData->getDashboardDataDynamic($user, "Bekdur aplikacija", null, null);
+            $parameters = $this->dashboardData->getDashboardDataDynamic($user, $group_id, $inbox_id);
 
             return new JsonResponse($parameters);
         }
