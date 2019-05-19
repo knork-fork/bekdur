@@ -92,7 +92,7 @@ class DashboardData
         else
             $groupPosts = null;
 
-        // Get inbox content - to-do
+        // Get inbox content
         if (isset($inbox_id))
         {
             $inboxMessages = $this->messageRepository->findByInboxId($inbox_id);
@@ -156,9 +156,13 @@ class DashboardData
         else
             $postViews = null;
 
-        // Get inbox content - to-do
+        // Get inbox content
         if (isset($inbox_id))
-            $messagesView = null;
+        { 
+            $inboxMessages = $this->messageRepository->findByInboxId($inbox_id);
+            $this->mapMessageAuthors->map($inboxMessages);
+            $messagesView = $this->renderMessages($user, $inboxMessages);
+        }
         else
             $messagesView = null;
 
@@ -187,5 +191,13 @@ class DashboardData
         }
 
         return $ret;
+    }
+
+    public function renderMessages(User $user, Array $messages) : string
+    {
+        return $this->templating->render("user/elements/message.html.twig", [
+            "currentUserId" => $user->getId(),
+            "messages" => $messages,
+        ]);
     }
 }
