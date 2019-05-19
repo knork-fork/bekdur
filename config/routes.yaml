@@ -43,7 +43,7 @@ inbox_enter:
     path: /dashboard/inbox/user/{user_id}
     controller: App\Controller\InboxController:enter
 
-inbox_message:
+add_message:
     path: /add/message
     controller: App\Controller\InboxController:create
 
