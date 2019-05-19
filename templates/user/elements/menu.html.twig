@@ -39,7 +39,7 @@
 			#}
 
 			{% for inbox in inboxes %}
-			<div class = "chatButton">
+			<div class = "chatButton" onclick="selectInbox({{ inbox.getUserInbox.getId }})">
 				<div id="profileImageDiv">
 					<div id="profileImageDivStatus" class="color_Nephritis"></div>
 				</div>

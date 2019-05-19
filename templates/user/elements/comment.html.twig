@@ -4,7 +4,11 @@ Comment
 
 {% for comment in post.getGroupComments|sort %}
 <div class="comment">
-		<div id="profileImageDiv"></div>
+		{% if comment.getAuthor.getId != currentUserId %}
+    		<div id="profileImageDiv" title="Uđi u inbox!" onclick="enterInbox({{ comment.getAuthor.getId }})"></div>
+		{% else %}	
+			<div id="profileImageDiv"></div>
+		{% endif %}
 		{{ comment.getAuthor.getUsername }}
 		<br>
 		{{ comment.getText }}

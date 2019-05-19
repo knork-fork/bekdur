@@ -97,6 +97,7 @@ class DashboardData
             $inboxMessages = null;
 
         return [
+            "currentUserId" => $user->getId(),
             "page_title" => "Bekdur aplikacija",
             "notifications" => $notifications,
             "groups" => $groups,
@@ -146,7 +147,7 @@ class DashboardData
 
         // Get group content - only comments will be updated in frontend
         if (isset($group_id))
-            $postViews = $this->renderComments($this->postRepository->findByGroupId($group_id));
+            $postViews = $this->renderComments($user, $this->postRepository->findByGroupId($group_id));
         else
             $postViews = null;
 
@@ -157,6 +158,7 @@ class DashboardData
             $messagesView = null;
 
         return [
+            "currentUserId" => $user->getId(),
             "notifications" => $notificationView,
             "notificationNumbers" => $notificationNumbers,
             "messageNumbers" => $messageNumbers,
@@ -166,7 +168,7 @@ class DashboardData
         ];
     }
 
-    public function renderComments(Array $groupPosts) : Array
+    public function renderComments(User $user, Array $groupPosts) : Array
     {
         $ret = array();
 
@@ -174,6 +176,7 @@ class DashboardData
         {
             $key = "post_".$groupPost->getId();
             $ret[$key] = $this->templating->render("user/elements/comment.html.twig", [
+                "currentUserId" => $user->getId(),
                 "post" => $groupPost,
             ]);
         }
