@@ -46,6 +46,8 @@ class Message
      */
     private $author_id;
 
+    private $authorUsername;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +121,18 @@ class Message
     public function setAuthorId(?int $author_id): self
     {
         $this->author_id = $author_id;
+
+        return $this;
+    }
+
+    public function getAuthorUsername(): ?string
+    {
+        return $this->authorUsername;
+    }
+
+    public function setAuthorUsername(?string $authorUsername): self
+    {
+        $this->authorUsername = $authorUsername;
 
         return $this;
     }

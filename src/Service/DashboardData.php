@@ -23,8 +23,9 @@ class DashboardData
     private $inboxMessageNumber;
     private $messageRepository;
     private $postRepository;
+    private $mapMessageAuthors;
 
-    public function __construct(\Twig_Environment $templating, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository)
+    public function __construct(\Twig_Environment $templating, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository, MapMessageAuthors $mapMessageAuthors)
     {
         $this->templating = $templating;
         $this->notificationRepository = $notificationRepository;
@@ -35,6 +36,7 @@ class DashboardData
         $this->inboxMessageNumber = $inboxMessageNumber;
         $this->messageRepository = $messageRepository;
         $this->postRepository = $postRepository;
+        $this->mapMessageAuthors = $mapMessageAuthors;
     }
 
     /**
@@ -92,7 +94,10 @@ class DashboardData
 
         // Get inbox content - to-do
         if (isset($inbox_id))
+        {
             $inboxMessages = $this->messageRepository->findByInboxId($inbox_id);
+            $this->mapMessageAuthors->map($inboxMessages);
+        }
         else
             $inboxMessages = null;
 

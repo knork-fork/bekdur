@@ -5,7 +5,7 @@ Message
 {% for message in messages %}
 <div class="comment">
 		<div id="profileImageDiv"></div>
-		{{ message.getAuthorId }}
+		{{ message.getAuthorUsername }}
 		<br>
 		{{ message.getText }}
 </div>
