@@ -40,6 +40,11 @@ class UserInbox
 
     private $messageNumber;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $mostRecent;
+
     public function __construct()
     {
         $this->inboxMemberships = new ArrayCollection();
@@ -145,6 +150,18 @@ class UserInbox
     public function setMessageNumber(int $messageNumber): self
     {
         $this->messageNumber = $messageNumber;
+
+        return $this;
+    }
+
+    public function getMostRecent(): ?\DateTimeInterface
+    {
+        return $this->mostRecent;
+    }
+
+    public function setMostRecent(?\DateTimeInterface $mostRecent): self
+    {
+        $this->mostRecent = $mostRecent;
 
         return $this;
     }
