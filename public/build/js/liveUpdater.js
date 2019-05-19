@@ -96,7 +96,23 @@ function showUpdates(jsonData)
             messageNumDiv.style = "display:none;";
     }
 
-    // to-do: actual messages and group comments/posts
+    // Show post comments
+    var posts = jsonData["posts"];
+    if (posts != "" && posts != null)
+    {
+        for (var post in posts)
+        {
+            // Add comments to each post
+            document.getElementById(post).innerHTML = posts[post];
+        }
+    }
+
+    // Show messages
+    var messages = jsonData["messages"]
+    if (messages != "" && messages != null)
+    {
+        document.getElementById("messagesContainer").innerHTML = messages;
+    }
 }
 
 // Start

@@ -126,7 +126,6 @@ class DashboardData
         $notificationNumbers = $this->groupNotificationNumber->calculate($groups, $notifications);
 
         $notificationView = $this->templating->render("user/elements/notification.html.twig", [
-            "page_title" => "Bekdur aplikacija",
             "notifications" => $notifications,
         ]);
 
@@ -145,11 +144,40 @@ class DashboardData
         // Get array with key (inbox id) value (message number) pairs
         $messageNumbers = $this->inboxMessageNumber->calculate($inboxes, $messages);
 
+        // Get group content - only comments will be updated in frontend
+        if (isset($group_id))
+            $postViews = $this->renderComments($this->postRepository->findByGroupId($group_id));
+        else
+            $postViews = null;
+
+        // Get inbox content - to-do
+        if (isset($inbox_id))
+            $messagesView = null;
+        else
+            $messagesView = null;
+
         return [
             "notifications" => $notificationView,
             "notificationNumbers" => $notificationNumbers,
             "messageNumbers" => $messageNumbers,
             "request" => "OK",
+            "posts" => $postViews,
+            "messages" => $messagesView,
         ];
+    }
+
+    public function renderComments(Array $groupPosts) : Array
+    {
+        $ret = array();
+
+        foreach ($groupPosts as $groupPost)
+        {
+            $key = "post_".$groupPost->getId();
+            $ret[$key] = $this->templating->render("user/elements/comment.html.twig", [
+                "post" => $groupPost,
+            ]);
+        }
+
+        return $ret;
     }
 }

@@ -20,7 +20,9 @@ Post
 
     <div id="bottom">
         
-        {% include 'user/elements/comment.html.twig' %}
+		<div id = "post_{{ post.getId }}">
+        	{% include 'user/elements/comment.html.twig' %}
+		</div>
     
     	<div id="postComment">
     			<div id="profileImageDiv"></div> Input za kom: <input>
