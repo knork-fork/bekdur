@@ -39,6 +39,10 @@ inbox_updates:
     path: /updates/inbox/{inbox_id}
     controller: App\Controller\DashboardController:updates
 
+inbox_enter:
+    path: /dashboard/inbox/user/{user_id}
+    controller: App\Controller\InboxController:enter
+
 # add message to inbox
 # add user to inbox (create inbox if doesn't exist)
 # see messages (seen = true)
