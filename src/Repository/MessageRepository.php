@@ -19,6 +19,17 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
+    public function findByInboxId($value)
+    {
+        return $this->createQueryBuilder('g')
+            ->andWhere('g.userInbox = :val')    // Keep an eye on this - userInbox != user_inbox_id
+            ->setParameter('val', $value)
+            ->orderBy('g.created', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Message[] Returns an array of Message objects
     //  */

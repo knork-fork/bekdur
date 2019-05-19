@@ -67,7 +67,7 @@ class DashboardData
             "seen" => false,
         ]);
 
-        // Get inboxes user is in
+        // Get inboxes user is in - to-do: sort by most recent!
         $inboxes = $this->inboxMembershipRepository->findBy([
             "inboxUser" => $user,
         ]);
@@ -92,7 +92,7 @@ class DashboardData
 
         // Get inbox content - to-do
         if (isset($inbox_id))
-            $inboxMessages = null;
+            $inboxMessages = $this->messageRepository->findByInboxId($inbox_id);
         else
             $inboxMessages = null;
 
