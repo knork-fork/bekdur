@@ -5,9 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use App\Repository\InboxMembershipRepository;
 use App\Service\CreateInbox;
+use App\Service\CreateMessage;
 
 class InboxController extends AbstractController
 { 
@@ -15,13 +17,15 @@ class InboxController extends AbstractController
     private $tokenStorage;
     private $router;
     private $createInbox;
+    private $createMessage;
 
-    public function __construct(InboxMembershipRepository $inboxMembershipRepository, TokenStorageInterface $tokenStorage, RouterInterface $router, CreateInbox $createInbox)
+    public function __construct(InboxMembershipRepository $inboxMembershipRepository, TokenStorageInterface $tokenStorage, RouterInterface $router, CreateInbox $createInbox, CreateMessage $createMessage)
     {
         $this->inboxMembershipRepository = $inboxMembershipRepository;
         $this->tokenStorage = $tokenStorage;
         $this->router = $router;
         $this->createInbox = $createInbox;
+        $this->createMessage = $createMessage;
     }
 
     public function enter($user_id = null)
@@ -50,5 +54,14 @@ class InboxController extends AbstractController
 
             return new RedirectResponse($this->router->generate("user_login"));
         }
+    }
+
+    public function create()
+    {
+        // Check if logged in, check if POST etc.
+
+        $this->createMessage->create(5, "sample message", 18, 20);
+
+        return new Response("OK!");
     }
 }
