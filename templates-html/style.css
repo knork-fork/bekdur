@@ -46,6 +46,12 @@ a{
 }
 
 
+.color_QuizyBlue.post{
+	background-color: #0379af15;
+	border:none;
+}
+
+
 
 /*-------------------Main Header Bar---------------------*/
 .mainHeader{
@@ -314,7 +320,7 @@ a{
 .chatButton:hover{
 	background:rgba(0,0,0,0.25);
 }
-#profileImageDiv{
+.profileImageDiv{
 	height:40px;
 	width:40px;
 	border-radius:50%;
@@ -325,7 +331,10 @@ a{
 	background-size: cover;
 	background-color: red;
 }
-
+.profileImageDiv.small{
+	height:34px;
+	width:34px;
+}
 .chatButton #profileImageDivStatus{
 	height:10px;
 	width:10px;
@@ -404,14 +413,22 @@ a{
 	height:100%;
 	width:120px;
 	padding-right:100px;
+	padding-top:20px;
 	float:right;
 	box-sizing: border-box;
-	display: flex;
-    flex-direction: column;
-    justify-content: center;
-	align-items: center;
-	font-family: FontAwesome;
+	font-family: Segoe UI;
 	white-space: nowrap;
+
+}
+.groupPost #top #right span{
+	font-family: FontAwesome;
+	font-size: 20px;
+	padding:5px;
+	color:#7f8c8d;
+	font-weight: 700;
+}
+.groupPost #top #right span:hover{
+	cursor: pointer;
 }
 
 .groupPost #middle{
@@ -421,23 +438,59 @@ a{
 	top:60px;
 	padding:10px 25px 10px 25px;
 	box-sizing: border-box;
-	white-space: pre-wrap;
 }
 .groupPost #bottom{
 	min-height:60px;
 	width:100%;
-	padding:10px;
+	padding-left:5px;
 	box-sizing: border-box;
 }
 .groupPost .comment{
 	width:100%;
-	padding:10px;
+	min-height:46px;
+	padding:6px;
 	box-sizing: border-box;
-	border-bottom:1px solid #e0e0e0;
+	/*border-bottom:1px solid #e0e0e0;*/
+}
+.groupPost .comment	#text{
+	border-radius: 17px;
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
+	font-size: 14px;
+	max-width:90%;
 }
 .groupPost #postComment{
 	width:100%;
-	padding:10px;
+	padding:6px;
 	box-sizing: border-box;
 	height:55px;
+}
+.groupPost #postComment input[type=text] {
+	width: calc(100% - 100px);
+	height:34px;
+	border-radius: 17px;
+	/*background-color: #f2f6f7;*/
+	padding-left:10px;
+	box-sizing: content-box;
+}
+
+.groupPost .label{
+	overflow: hidden;
+}
+.groupPost .label.upper{
+	font-size: 16px;	
+}
+.groupPost .label.postDate{
+	font-size: 13px;
+	color:#2c3e50;	
+}
+.groupPost .label.upper #username{
+	float:left;	
+	margin-right:100px;
+	font-size:15px;
+}
+.groupPost .label.upper #dateTime{
+	float:right;
+	font-size: 13px;
+	color:#2c3e50;		
 }

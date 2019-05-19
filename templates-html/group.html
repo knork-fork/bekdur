@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	
+    <head>
+        <meta charset="utf-8">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <title>Ime grupe</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="font-awesome-animation.min.css">
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/functions.js"></script>
+	</head>
+	
+	<body>
+		<header class="mainHeader color_QuizyBlue">
+			<div class="bgDiv blue">
+				<a href="index.html">
+					<img src="images/logoImg.png"> 
+				</a>
+			</div>
+
+		</header>
+		
+		<div class="dashboard">
+
+			<div id="leftMenuBar">
+
+				<div id="groupsMenu">
+						<div class="title">Grupe</div>
+
+						<!--
+							Dugme za grupu
+							ako nema novih obavijesti, div id "newPosts" se ne treba kreirat
+							"groupButton"treba dodati background-image;
+						-->
+						<div class = "groupButton" style="background-image: url('https://isha.sadhguru.org/blog/wp-content/uploads/2016/05/natures-temples.jpg')">
+							<div id="newPosts" class="color_Pomegranate">4</div>
+						</div>
+
+					
+				</div>
+
+
+
+				<div id="chatsMenu">
+					<div class="title">Razgovori</div>
+					
+
+
+						<!--
+							Dugme za chat
+							takoder ako nema novih obavijesti, div "unreadMessages" se ne kreira
+							"profileImageDiv"treba dodati background-image;
+							"profileImageDivStatus" oznacava off/on status, boje su color_Nephritis i color_Pomegranate
+						-->
+						<div class = "chatButton">
+							<div class="profileImageDiv" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')">
+								<div id="profileImageDivStatus" class="color_Nephritis"></div>
+							</div>
+							<span>Luka Lukic</span>
+							<div id="unreadMessages" class="color_Pomegranate">55</div>
+						</div>
+
+						
+				</div>
+			</div>
+
+<!--
+			<div class="notificationCenter">
+
+
+				<div class="notification">
+					<div id="top">
+						<div id="left">ime grupe</div>
+						<div id="right">&#xf00d;</div>
+					</div>
+					<div id="center">
+						<h3>naslov obavijesti</h3>
+						<p>tekst obavijesti</p>
+					</div>
+					<div id="bottom" class="color_Wisteria">Otvori grupu</div>
+				</div>
+
+				<div class="notification">
+					<div id="top">
+						<div id="left">ime grupe</div>
+						<div id="right">&#xf00d;</div>
+					</div>
+					<div id="center">
+						<h3>naslov obavijesti</h3>
+						<p>tekst obavijesti</p>
+					</div>
+					<div id="bottom" class="color_QuizyBlue">Otvori grupu</div>
+				</div>
+
+
+				<div class="notification">
+					<div id="top">
+						<div id="left">ime grupe</div>
+						<div id="right">&#xf00d;</div>
+					</div>
+					<div id="center">
+						<h3>naslov obavijesti</h3>
+						<p>tekst obavijesti</p>
+					</div>
+					<div id="bottom" class="color_Pumpkin">Otvori grupu</div>
+				</div>
+			</div>
+		
+		-->
+			<div id="content">
+				
+				<div class="groupPost">
+						<div id="top">
+							<div id="left">
+									<div class="profileImageDiv" style="background-image: url('basc.png')"></div>
+									<div class="label upper">Sebastian Vujnović objavljuje program (BASCOM AVR).</div>
+									<div class="label postDate">17. january</div>
+							</div>
+							<div id="right">
+								<span id="upvote">&#xf077;</span>
+								54
+								<span id="downvote">&#xf078;</span>
+							</div>
+						</div>
+	
+						<div id="middle">						
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque suscipit ac sapien vel ullamcorper. Proin ante enim, commodo quis leo eu, blandit egestas ligula. Pellentesque tempus malesuada arcu, quis egestas enim aliquet in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum neque nisl, porttitor nec sapien in, fermentum pretium nisi. Donec tincidunt, risus eleifend gravida tempor, nibh purus accumsan arcu, id vehicula nunc quam quis purus. In nec sem ac massa elementum mollis elementum in nibh. Cras rhoncus fermentum elit eu pellentesque. Proin euismod at mi eget volutpat. Maecenas molestie, tellus et varius feugiat, nulla diam fermentum tellus, dignissim mollis risus risus et neque. Integer non arcu non arcu laoreet aliquam. Curabitur pulvinar urna nec semper tincidunt. Proin lacinia diam vitae massa efficitur, eget feugiat felis lacinia. Quisque vitae posuere mi, at finibus nulla. Aenean sagittis mauris ac turpis maximus molestie. Suspendisse accumsan, justo eu interdum facilisis, urna leo convallis lectus, a ultricies turpis diam vel tortor.	
+						</div>
+						<div id="bottom">
+							<!--Boja komentara i inputa ce biti u boji grupe. Znaci u class se nalazi ime boje + post, -->
+							<div id="postComment">
+									<div class="profileImageDiv small" style="background-image: url('basc.png')"></div> 
+									<input type="text" name="comment" placeholder="Komentirajte..." class="color_QuizyBlue post">
+							</div>
+
+							<div class="comment">
+									<div class="profileImageDiv small" style="background-image: url('basc.png')"></div>
+									<div id="text"  class="color_QuizyBlue post">
+										<div class="label upper">
+											<div id="username">Boris Milojevic</div>
+											<div id="dateTime">16. January, 19:59</div>
+										</div>
+										Neki text
+									</div>
+							</div>
+							
+							
+						</div>
+			</div>
+		
+		
+		</div>
+		
+		
+	</body>
+</html>
