@@ -8,5 +8,10 @@ Message
 		{{ message.getAuthorUsername }}
 		<br>
 		{{ message.getText }}
+		{% if message.getSeen == 1 and loop.last %}
+		<br>
+		(seen)
+		{% endif %}
 </div>
+<br>
 {% endfor %}
