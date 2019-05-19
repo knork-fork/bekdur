@@ -3,6 +3,7 @@ function enterInbox(user_id)
     // to-do: find a way to do this without refreshing the whole page
 
     // Enter user inbox and create it if it doesn't exist
+    // Security to-do: send user_id in post
     location.href = "/dashboard/inbox/user/" + user_id;
 }
 

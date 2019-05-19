@@ -45,7 +45,7 @@ inbox_enter:
 
 add_message:
     path: /add/message
-    controller: App\Controller\InboxController:create
+    controller: App\Controller\InboxController:createMessage
 
 # add message to inbox
 # add user to inbox (create inbox if doesn't exist)

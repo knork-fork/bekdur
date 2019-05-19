@@ -30,6 +30,8 @@ class InboxController extends AbstractController
 
     public function enter($user_id = null)
     {
+        // Security to-do: send user_id in post
+
         if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
         {
             // Logged in, continue
@@ -56,11 +58,11 @@ class InboxController extends AbstractController
         }
     }
 
-    public function create()
+    public function createMessage()
     {
         // Check if logged in, check if POST etc.
 
-        $this->createMessage->create(5, "sample message", 18, 20);
+        $this->createMessage->create(6, "sample message", 18, 20);
 
         return new Response("OK!");
     }
