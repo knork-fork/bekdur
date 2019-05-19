@@ -71,6 +71,14 @@ join_group:
     path: /join/group/{group_id}
     controller: App\Controller\GroupController:joinGroup
 
+add_post:
+    path: /add/post
+    controller: App\Controller\GroupController:createPost
+
+add_comment:
+    path: /add/comment
+    controller: App\Controller\GroupController:createComment
+
 # create group
 # add post
 # add comment to post

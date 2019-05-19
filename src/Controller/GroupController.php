@@ -73,4 +73,53 @@ class GroupController extends AbstractController
         }
     }
 
+    public function createPost()
+    {
+        // Check if logged in, check if POST etc.
+
+        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
+        {
+            // Logged in, continue
+
+            $user = $this->tokenStorage->getToken()->getUser();
+
+            // Reference (just to save group id)
+            $group = $this->em->getReference("App\Entity\UserGroup", 5);
+
+            $this->createPost->create($user, $group, "objavljuje", "Sample post");
+
+            return new Response("OK!");
+         }
+        else
+        {
+            // Not logged in, redirect
+
+            return new RedirectResponse($this->router->generate("user_login"));
+        }
+    }
+
+    public function createComment()
+    {
+        // Check if logged in, check if POST etc.
+
+        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
+        {
+            // Logged in, continue
+
+            $user = $this->tokenStorage->getToken()->getUser();
+
+            // Reference (just to save post id)
+            $post = $this->em->getReference("App\Entity\GroupPost", 2);
+
+            $this->createComment->create($user, $post, "Sample comment");
+            
+            return new Response("OK!");
+         }
+        else
+        {
+            // Not logged in, redirect
+
+            return new RedirectResponse($this->router->generate("user_login"));
+        }
+    }
 }
