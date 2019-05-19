@@ -63,6 +63,14 @@ group_updates:
     path: /updates/group/{group_id}
     controller: App\Controller\DashboardController:updates
 
+add_group:
+    path: /add/group
+    controller: App\Controller\GroupController:createGroup
+
+join_group:
+    path: /join/group/{group_id}
+    controller: App\Controller\GroupController:joinGroup
+
 # create group
 # add post
 # add comment to post
