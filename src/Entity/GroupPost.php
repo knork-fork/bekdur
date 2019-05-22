@@ -63,6 +63,11 @@ class GroupPost
      */
     private $type;
 
+    /**
+     * @ORM\Column(type="string", length=512, nullable=true)
+     */
+    private $filePath;
+
     public function __construct()
     {
         $this->groupComments = new ArrayCollection();
@@ -196,6 +201,18 @@ class GroupPost
     public function setType(?int $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getFilePath(): ?string
+    {
+        return $this->filePath;
+    }
+
+    public function setFilePath(?string $filePath): self
+    {
+        $this->filePath = $filePath;
 
         return $this;
     }
