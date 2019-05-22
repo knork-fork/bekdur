@@ -7,10 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use App\Service\CreateGroup;
 use App\Service\CreatePost;
 use App\Service\CreateComment;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class GroupController extends AbstractController
 { 
@@ -73,7 +75,7 @@ class GroupController extends AbstractController
         }
     }
 
-    public function createPost()
+    public function createPost(Request $request)
     {
         // Check if logged in, check if POST etc.
 
@@ -83,12 +85,24 @@ class GroupController extends AbstractController
 
             $user = $this->tokenStorage->getToken()->getUser();
 
-            // Reference (just to save group id)
-            $group = $this->em->getReference("App\Entity\UserGroup", 5);
+            if ($request->isMethod('POST'))
+            {
+                $group_id = $request->request->get('groupId');
+                $image = $request->request->get('image');
+                $file = $request->request->get('file');
+                $content = $request->request->get('content');
 
-            $this->createPost->create($user, $group, "objavljuje", "Sample post");
+                // Reference (just to save group id)
+                $group = $this->em->getReference("App\Entity\UserGroup", $group_id);
 
-            return new Response("OK!");
+                $this->createPost->create($user, $group, $content, $image, $file);
+
+                // to-do: create a notification
+            
+                return new RedirectResponse($this->router->generate("group_dashboard", array("group_id" => $group_id)));
+            }
+            else
+                return new RedirectResponse($this->router->generate("user_dashboard"));
          }
         else
         {

@@ -4,6 +4,8 @@ Forma za novi post
 
 {% if groupId is not null and groupId is defined %}
 	
+<form id="newPostForm" method="POST" action="{{ path('add_post') }}">
+    <input type="hidden" name="groupId" value="{{ groupId }}">
 	<div id="top">
 		<input type="file" name="image" id="image" class="inputfile">
 		<label for="image"><span><i class="fa fa-file-image-o"></i>&nbsp;&nbsp;Odaberite sliku</span></label>
@@ -19,4 +21,5 @@ Forma za novi post
 	</div>
 	<input type="submit" value="objavi" id="bottom">
 </form>
+
 {% endif %}
