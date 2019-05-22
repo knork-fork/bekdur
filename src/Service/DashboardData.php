@@ -109,6 +109,7 @@ class DashboardData
             "inboxes" => $inboxes,
             "posts" => $groupPosts,
             "messages" => $inboxMessages,
+            "groupId" => $group_id,
         ];
     }
 

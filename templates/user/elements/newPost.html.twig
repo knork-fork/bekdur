@@ -2,7 +2,8 @@
 Forma za novi post
 #}
 
-<form id="newPostForm">
+{% if groupId is not null and groupId is defined %}
+	
 	<div id="top">
 		<input type="file" name="image" id="image" class="inputfile">
 		<label for="image"><span><i class="fa fa-file-image-o"></i>&nbsp;&nbsp;Odaberite sliku</span></label>
@@ -18,3 +19,4 @@ Forma za novi post
 	</div>
 	<input type="submit" value="objavi" id="bottom">
 </form>
+{% endif %}
