@@ -4,7 +4,7 @@ Notifikacija
 "right" zatvara obavijest
 #}
 
-{% for notification in notifications %}
+{% for notification in notifications|sort|reverse %}
 <div class="notification">
 	<div id="top">
 		<div id="left">{{ notification.getUserGroup.getName }}</div>
