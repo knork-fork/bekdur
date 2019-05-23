@@ -12,7 +12,7 @@ Comment
 		<div id="text"  class="color_QuizyBlue post">
 			<div class="label upper">
 				<div id="username"> {{ comment.getAuthor.getUsername }} </div>
-				<div id="dateTime"> {{ post.getCreated|date('d. M Y. H:i') }} </div>
+				<div id="dateTime"> {{ comment.getCreated|date('d. M Y. H:i') }} </div>
 			</div>
 			{{ comment.getText }}
 		</div>
