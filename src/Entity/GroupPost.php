@@ -210,6 +210,19 @@ class GroupPost
         return $this->filePath;
     }
 
+    public function getSrc(): ?string
+    {
+        $src = json_decode($this->filePath);
+        $src = strstr($src->filepath, 'uploads');
+        return $src;
+    }
+
+    public function getOriginal(): ?string
+    {
+        $org = json_decode($this->filePath);
+        return $org->original;
+    }
+
     public function setFilePath(?string $filePath): self
     {
         $this->filePath = $filePath;
