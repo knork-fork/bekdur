@@ -21,7 +21,7 @@ Post types:
 					<div class="profileImageDiv"></div>
 				{% endif %}
 				<div class="label upper"> {{ post.getAuthor.getUsername }} {{ post.getHeader }} </div>
-    			<div class="label postDate"> {{ post.getCreated|date('d. M Y.') }} </div>
+    			<div class="label postDate" title="{{ post.getCreated|date('d. M Y. H:i') }}"> {{ post.getCreated|date('d. M Y.') }} </div>
     	</div>
     	<div id="right">
 			<span id="upvote">&#xf077;</span>
