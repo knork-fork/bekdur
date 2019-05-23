@@ -50,5 +50,8 @@ class CreatePost
 
         $this->em->persist($post);
         $this->em->flush();
+
+        // Pass on header to CreateNotification
+        return $header;
     }
 }

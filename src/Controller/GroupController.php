@@ -13,6 +13,7 @@ use App\Service\CreateGroup;
 use App\Service\CreatePost;
 use App\Service\CreateComment;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use App\Service\CreateNotification;
 
 class GroupController extends AbstractController
 { 
@@ -22,8 +23,9 @@ class GroupController extends AbstractController
     private $createGroup;
     private $createPost;
     private $createComment;
+    private $createNotification;
 
-    public function __construct(EntityManagerInterface $em, TokenStorageInterface $tokenStorage, RouterInterface $router, CreateGroup $createGroup, CreatePost $createPost, CreateComment $createComment)
+    public function __construct(EntityManagerInterface $em, TokenStorageInterface $tokenStorage, RouterInterface $router, CreateGroup $createGroup, CreatePost $createPost, CreateComment $createComment, CreateNotification $createNotification)
     {
         $this->em = $em;
         $this->tokenStorage = $tokenStorage;
@@ -31,6 +33,7 @@ class GroupController extends AbstractController
         $this->createGroup = $createGroup;
         $this->createPost = $createPost;
         $this->createComment = $createComment;
+        $this->createNotification = $createNotification;
     }
 
     public function createGroup()
@@ -95,9 +98,10 @@ class GroupController extends AbstractController
                 // Reference (just to save group id)
                 $group = $this->em->getReference("App\Entity\UserGroup", $group_id);
 
-                $this->createPost->create($user, $group, $content, $image, $file);
+                $header = $this->createPost->create($user, $group, $content, $image, $file);
 
-                // to-do: create a notification
+                // Create a notification for all group members except author of post
+                $this->createNotification->create($user, $group, $content, $header);
             
                 return new RedirectResponse($this->router->generate("group_dashboard", array("group_id" => $group_id)));
             }
