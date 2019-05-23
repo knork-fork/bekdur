@@ -117,7 +117,7 @@ class GroupController extends AbstractController
         }
     }
 
-    public function createComment()
+    public function createComment(Request $request)
     {
         // Check if logged in, check if POST etc.
 
@@ -127,12 +127,23 @@ class GroupController extends AbstractController
 
             $user = $this->tokenStorage->getToken()->getUser();
 
-            // Reference (just to save post id)
-            $post = $this->em->getReference("App\Entity\GroupPost", 2);
+            if ($request->isMethod('POST'))
+            {
+                $group_id = $request->request->get('groupId');
+                $groupPostId = $request->request->get('groupPostId');
+                $text = $request->request->get('text');
 
-            $this->createComment->create($user, $post, "Sample comment");
+                // Reference (just to save post id)
+                $post = $this->em->getReference("App\Entity\GroupPost", $groupPostId);
+
+                $this->createComment->create($user, $post, $text);
+
+                // Return updates from that group
+                return new RedirectResponse($this->router->generate("group_updates", array("group_id" => $group_id)));
+            }
             
-            return new Response("OK!");
+            // Return generic update
+            return new RedirectResponse($this->router->generate("user_updates"));
          }
         else
         {
