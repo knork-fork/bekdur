@@ -91,8 +91,9 @@ class GroupController extends AbstractController
             if ($request->isMethod('POST'))
             {
                 $group_id = $request->request->get('groupId');
-                $image = $request->request->get('image');
-                $file = $request->request->get('file');
+                $image = $request->files->get('image');
+                $file = $request->files->get('file');
+
                 $content = $request->request->get('content');
 
                 // Reference (just to save group id)
