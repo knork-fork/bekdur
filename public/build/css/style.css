@@ -641,7 +641,7 @@ a{
 }
 .message .date{
 	font-size: 13px;
-	width:80px;
+	width:120px;
 	text-align: center;
 	visibility: hidden;
 	display: inline-block;

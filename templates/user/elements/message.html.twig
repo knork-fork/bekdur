@@ -3,6 +3,23 @@ Message
 #}
 
 {% for message in messages %}
+
+	{% if message.getAuthorId == currentUserId %}
+		<div class="message sent">
+			<div class="date">{{ message.getCreated|date('d/m/y H:i') }}</div>
+			<div class="text colored">{{ message.getText }}</div>
+		</div>
+	{% else %}
+		<div class="message received">
+			<div class="text colored">{{ message.getText }}</div>
+			<div class="date">{{ message.getCreated|date('d/m/Y H:i') }}</div>
+		</div>
+	{% endif %}
+
+{% endfor %}
+
+
+{#
 <div class="comment">
 		<div id="profileImageDiv"></div>
 		{{ message.getAuthorUsername }}
@@ -14,4 +31,4 @@ Message
 		{% endif %}
 </div>
 <br>
-{% endfor %}
+#}
