@@ -30,11 +30,13 @@ Post types:
 		</div>
     </div>
 
-    <div id="middle">	
+    <div id="middle"> 
         {{ post.getContent }}		
 				{% if post.type == 2 %}
 					<br><br> <img src="{{ asset(post.getSrc) }}" style="max-width:450px;" alt="{{ post.getOriginal }}" title="{{ post.getOriginal }}">
-				{% endif %}			
+				{% elseif post.type == 3 %}
+					<br><br> Datoteka: <a href="{{ asset(post.getSrc) }}" download="{{ post.getOriginal }}"><i class="fa fa-paperclip"></i>{{ post.getOriginal }}</a>
+				{% endif %}   
     </div>
 
     <div id="bottom">
