@@ -24,6 +24,9 @@ class CreateGroup
         $group->setName($name);
         $group->setCreated(new \DateTime());
 
+        // Set default theme
+        $group->setTheme("color_QuizyBlue");
+
         $this->em->persist($group);
         $this->em->flush();
 

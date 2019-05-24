@@ -9,7 +9,7 @@ Comment
 		{% else %}	
 			<div class="profileImageDiv small"></div>
 		{% endif %}
-		<div id="text"  class="color_QuizyBlue post">
+		<div id="text"  class="{{ theme }} post">
 			<div class="label upper">
 				<div id="username"> {{ comment.getAuthor.getUsername }} </div>
 				<div id="dateTime"> {{ comment.getCreated|date('d. M Y. H:i') }} </div>

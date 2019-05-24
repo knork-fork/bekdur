@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Repository\NotificationRepository;
 use App\Repository\UserGroupRepository;
@@ -25,8 +26,11 @@ class DashboardData
     private $postRepository;
     private $mapMessageAuthors;
 
-    public function __construct(\Twig_Environment $templating, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository, MapMessageAuthors $mapMessageAuthors)
+    private $theme;
+
+    public function __construct(EntityManagerInterface $em, \Twig_Environment $templating, NotificationRepository $notificationRepository, UserGroupRepository $userGroupRepository, GroupMembershipRepository $groupMembershipRepository, GroupNotificationNumber $groupNotificationNumber, InboxMembershipRepository $inboxMembershipRepository, InboxMessageNumber $inboxMessageNumber, MessageRepository $messageRepository, GroupPostRepository $postRepository, MapMessageAuthors $mapMessageAuthors)
     {
+        $this->em = $em;
         $this->templating = $templating;
         $this->notificationRepository = $notificationRepository;
         $this->userGroupRepository = $userGroupRepository;
@@ -37,6 +41,8 @@ class DashboardData
         $this->messageRepository = $messageRepository;
         $this->postRepository = $postRepository;
         $this->mapMessageAuthors = $mapMessageAuthors;
+
+        $this->theme = "color_QuizyBlue";
     }
 
     /**
@@ -88,7 +94,12 @@ class DashboardData
 
         // Get group content
         if (isset($group_id))
+        {
             $groupPosts = $this->postRepository->findByGroupId($group_id);
+            
+            $group = $this->em->getReference("App\Entity\UserGroup", $group_id);
+            $this->theme = $group->getTheme();
+        }
         else
             $groupPosts = null;
 
@@ -104,6 +115,7 @@ class DashboardData
         return [
             "currentUserId" => $user->getId(),
             "page_title" => "Bekdur aplikacija",
+            "theme" => $this->theme,
             "notifications" => $notifications,
             "groups" => $groups,
             "inboxes" => $inboxes,
@@ -153,7 +165,12 @@ class DashboardData
 
         // Get group content - only comments will be updated in frontend
         if (isset($group_id))
+        {
+            $group = $this->em->getReference("App\Entity\UserGroup", $group_id);
+            $this->theme = $group->getTheme();
+
             $postViews = $this->renderComments($user, $this->postRepository->findByGroupId($group_id));
+        }
         else
             $postViews = null;
 
@@ -187,6 +204,7 @@ class DashboardData
             $key = "post_".$groupPost->getId();
             $ret[$key] = $this->templating->render("user/elements/comment.html.twig", [
                 "currentUserId" => $user->getId(),
+                "theme" => $this->theme,
                 "post" => $groupPost,
             ]);
         }
@@ -198,6 +216,7 @@ class DashboardData
     {
         return $this->templating->render("user/elements/message.html.twig", [
             "currentUserId" => $user->getId(),
+            "theme" => $this->theme,
             "messages" => $messages,
         ]);
     }
