@@ -279,7 +279,8 @@ a{
     border: none;
 	cursor: pointer;
 	margin:10px 12px 10px 12px;
-	background-color: red;
+	/*background-color: red;*/
+	background-image: url('../images/default_group.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -361,7 +362,8 @@ a{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-color: red;
+	/*background-color: red;*/
+	background-image: url('../images/default_user.png');
 }
 .profileImageDiv.small{
 	height:34px;
@@ -641,7 +643,7 @@ a{
 }
 .message .date{
 	font-size: 13px;
-	width:80px;
+	width:120px;
 	text-align: center;
 	visibility: hidden;
 	display: inline-block;
