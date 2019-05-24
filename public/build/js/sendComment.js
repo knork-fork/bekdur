@@ -16,6 +16,10 @@ function sendComment(postId)
     var comment = document.getElementById("postInput_" + postId).value;
     document.getElementById("postInput_" + postId).value = "";
 
+    // Empty comment, fail, but don't do updateFail()
+    if (comment == "")
+        return;
+
     var data = new FormData();
     data.append('groupId', id);
     data.append('groupPostId', postId);
