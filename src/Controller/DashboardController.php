@@ -59,8 +59,7 @@ class DashboardController extends AbstractController
 
             $user = $this->tokenStorage->getToken()->getUser();
 
-            // There's no need to display notifications when already inside group/inbox
-            $this->seener->setNotificationsSeen($group_id, $user);
+            // There's no need to display notifications when already inside inbox
             $this->seener->setMessagesSeen($inbox_id, $user);
             
             $parameters = $this->dashboardData->getDashboardDataDynamic($user, $group_id, $inbox_id);
