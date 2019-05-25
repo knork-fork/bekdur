@@ -15,6 +15,7 @@ use App\Repository\GroupPostRepository;
 
 class DashboardData
 {
+    private $em;
     private $templating;
     private $notificationRepository;
     private $userGroupRepository;
