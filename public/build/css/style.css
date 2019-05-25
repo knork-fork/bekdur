@@ -614,13 +614,14 @@ a{
 	width:auto;
 	max-width: 70%;
 	display:table;
+	word-break: break-all;
 }
 .message .text{
 	border-radius:14px;
 	padding:7px 14px 7px 12px;
 	display: inline-block;
 	box-sizing: border-box;
-	max-width: calc(100% - 80px);
+	max-width: calc(100% - 120px);
 }
 
 .message.received{
@@ -651,3 +652,78 @@ a{
 .message:hover .date{
 	visibility: visible;
 }
+
+/*----------Homepage-----------*/
+.groupHomepageDiv{
+	border-radius: 5px;
+	width:250px;
+	height:125px;
+	margin:10px;
+	display: inline-block;
+	padding: 7px;
+	box-sizing: border-box;
+	position: relative;
+	background-image: url('https://cdn.mos.cms.futurecdn.net/FUE7XiFApEqWZQ85wYcAfM-970-80.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	cursor: pointer;
+	transition: filter 0.3s ease-in-out;
+}
+.groupHomepageDiv:hover{
+	filter: grayscale(100%);
+}
+.groupHomepageDiv #groupName{
+	color:#fff;
+	font-size:17px;
+	font-weight: 600;
+	max-width: 95%;
+	word-break: break-word;
+	position: absolute;
+	top:7px;
+	text-shadow: 3px 1px 0px #000;
+}
+
+.groupHomepageDiv #groupStats{
+	color:#fff;
+	font-size:12px;
+	max-width: 95%;
+	overflow:hidden;
+	position: absolute;
+	bottom:7px;
+	text-shadow: 1px 1px 0px #000;
+	text-align: right;
+	right: 7px;
+}
+.groupHomepageDiv #groupStats i{
+	margin:0px 1px 0px 15px;
+}
+.homepageTitle{
+	color:#1f2229;
+	font-size: 22px;
+	font-weight: 500;
+	margin:7px 7px 15px 7px;
+}
+#newGroupButton{
+	border-radius: 5px;
+	width:250px;
+	height:125px;
+	margin:10px;
+	display: inline-block;
+	box-sizing: border-box;
+	position: relative;
+	cursor: pointer;
+	border:2px solid #1f2229;
+	display:flex;
+	white-space: nowrap;
+	align-items: center; 
+	justify-content: center;
+
+}
+#newGroupButton span{
+	margin-top:-20px;
+	font-size:110px;
+	font-weight: 100;
+	color: #1f2229;
+	font-family: Segoe UI;
+} 
