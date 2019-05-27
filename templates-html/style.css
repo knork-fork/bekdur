@@ -600,14 +600,26 @@ a{
 	height:55px;
 }
 .groupPost #postComment input[type=text] {
-	width: calc(100% - 100px);
+	width: calc(100% - 120px);
 	height:34px;
 	border-radius: 17px;
 	/*background-color: #f2f6f7;*/
 	padding-left:10px;
 	box-sizing: content-box;
 }
-
+.groupPost #postComment input[type=button] {
+	width:50px;
+	height:34px;
+	border-radius: 17px;
+	box-sizing: border-box;
+	color:#fff;
+	font-family: FontAwesome;
+	font-size: 23px;
+	border:none;
+	cursor: pointer;
+	float:right;
+	display:none;
+}
 .groupPost .label{
 	overflow: hidden;
 }
