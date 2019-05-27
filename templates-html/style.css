@@ -88,6 +88,7 @@ a{
 .mainHeader{
 	width:100%;
 	height:50px;
+	min-width: 1000px;
 	left:0px;
 	overflow:hidden;
 	padding:0px;
@@ -101,10 +102,32 @@ a{
 	height:45px;
 }
 
-.mainHeader div{
+.mainHeader #list{
 	height:100%;
 	float:right;  
 	margin-right:15px;
+	background-color: #16a085;
+}
+.mainHeader #list .center{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mainHeader #list #username{
+	display: inline-block;
+	height: 100%;
+	background-color: red;
+}
+.mainHeader #list #username span{
+	height: 50px;
+	display:inline-block;
+	background-color: #1f2229;
+}
+.mainHeader #list #logout{
+	display: inline-block;
+	height: 100%;
+
 }
 
 .mainHeader .bgDiv{
@@ -114,6 +137,7 @@ a{
     align-items: center;
 	width:300px;
 	float:left;
+	height:100%;
 }
 .mainHeader .bgDiv.transparent{
 	background:rgba(0,0,0,0);
@@ -363,7 +387,7 @@ a{
 	background-repeat: no-repeat;
 	background-size: cover;
 	/*background-color: red;*/
-	background-image: url('../images/default_user.png');
+	background-image: url('../images/default_group.png');
 }
 .profileImageDiv.small{
 	height:34px;
@@ -612,7 +636,7 @@ a{
 	font-size: 15px;
 	margin:2px;		
 	width:auto;
-	max-width: 70%;
+	max-width: 50%;
 	display:table;
 	word-break: break-all;
 }
@@ -652,7 +676,26 @@ a{
 .message:hover .date{
 	visibility: visible;
 }
-
+#sendMessage input[type=text] {
+	width:100%;
+	height:34px;
+	border-radius: 17px;
+	background-color: #77717420;
+	padding-left:10px;
+	box-sizing: border-box;
+	border:1px solid #8b8f97;
+}
+#sendMessage{
+	width:calc(100% - 300px);
+	position: fixed;
+	bottom: 0px;
+	left:300px;
+	box-sizing: border-box;
+	padding:20px;
+}
+#sendMessage hr{
+	background-color:#8b8f97;
+}
 /*----------Homepage-----------*/
 .groupHomepageDiv{
 	border-radius: 5px;
