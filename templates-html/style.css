@@ -677,13 +677,26 @@ a{
 	visibility: visible;
 }
 #sendMessage input[type=text] {
-	width:100%;
+	width:calc(100% - 70px);
 	height:34px;
 	border-radius: 17px;
 	background-color: #77717420;
 	padding-left:10px;
 	box-sizing: border-box;
 	border:1px solid #8b8f97;
+}
+#sendMessage input[type=button] {
+	width:50px;
+	margin:0px 0px 0px 15px;
+	height:34px;
+	border-radius: 17px;
+	box-sizing: border-box;
+	color:#fff;
+	font-family: FontAwesome;
+	font-size: 23px;
+	border:none;
+	cursor: pointer;
+	float:right;
 }
 #sendMessage{
 	width:calc(100% - 300px);
