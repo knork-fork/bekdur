@@ -817,3 +817,47 @@ a{
 	color: #1f2229;
 	font-family: Segoe UI;
 } 
+#newGroupForm{
+	width:500px;
+} 
+#newGroupForm span{
+	float:left;
+	font-size:16px;
+} 
+#newGroupForm input[type=text]{
+	float:right;
+	border-radius: 5px;
+	border:1px solid #2d323d;
+	width:200px;
+} 
+#newGroupForm .custom-select{
+	float:right;
+	position: relative;
+}
+#newGroupForm select{
+	width:200px;
+	border-radius: 5px;
+	border:1px solid #2d323d;
+}
+#newGroupForm select option{
+	color:#fff;
+}
+#newGroupForm input[type=file] {
+    width: 0.0px;
+    height: 0.0px;
+    opacity: 0;
+    overflow: hidden;
+}
+#newGroupForm input[type=file] + label {
+	height:20px;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+	color: #2c3e50;
+	margin:0;
+	box-sizing: border-box;
+	text-align: center;
+	float:right;
+}

@@ -151,28 +151,42 @@
 			<div id="content">
 
 				<div class="homepageTitle">Nova grupa</div>	
-                <div id="newGroupButton"><span>+</span></div>
-				<form>
+				<div id="newGroupButton"><span>+</span></div>
+
+
+				<form id="newGroupForm">
 					<span>Naziv grupe</span>
-					<input type="text"><br>
+					<input type="text">
+					<br>
+
+
 					<span>Pozadinska slika</span>
-					<input type="file"><br>
+					<input type="file" id="backgroundImg">
+					<label for="backgroundImg"><span><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
+					<br>
+
+
 					<span>Profilna slika</span>
-					<input type="file"><br>
+					<input type="file" id="profileImg">
+					<label for="profileImg"><span><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
+					<br>
+
+
 					<span>Boja teme</span>
 					<div class="custom-select">
 							<select>
-							  <option value="0">GreenSea</option>
-							  <option value="1">Nephritis</option>
-							  <option value="2">QuizyBlue</option>
-							  <option value="3">Wisteria</option>
-							  <option value="4">MidnightBlue</option>
-							  <option value="5">SunFlower</option>
-							  <option value="6">Pumpkin</option>
-							  <option value="7">Pomegranate</option>
-							  <option value="8">Asbestos</option>
+							  <option value="0" class="color_GreenSea">GreenSea</option>
+							  <option value="1" class="color_Nephritis">Nephritis</option>
+							  <option value="2" class="color_QuizyBlue">SeaBlue</option>
+							  <option value="3" class="color_Wisteria">Wisteria</option>
+							  <option value="4" class="color_MidnightBlue">MidnightBlue</option>
+							  <option value="5" class="color_SunFlower">SunFlower</option>
+							  <option value="6" class="color_Pumpkin">Pumpkin</option>
+							  <option value="7" class="color_Pomegranate">Pomegranate</option>
+							  <option value="8" class="color_Asbestos">Asbestos</option>
 							</select>
 					</div>
+					<br>
 
 				</form>
 
