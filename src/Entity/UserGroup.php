@@ -225,6 +225,13 @@ class UserGroup
         return $this;
     }
 
+    public function getProfileSrc(): ?string
+    {
+        $src = json_decode($this->profile);
+        $src = strstr($src->filepath, 'uploads');
+        return $src;
+    }
+
     public function getBackground(): ?string
     {
         return $this->background;
