@@ -44,8 +44,9 @@ Post types:
 		{# Boja komentara i inputa ce biti u boji grupe. Znaci u class se nalazi ime boje + post #}
 
 		<div id="postComment">
-    			<div class="profileImageDiv small" title="Klikni za slanje komentara!" onclick="sendComment({{ post.getId }})"></div>
+    			<div class="profileImageDiv small"></div>
 				<input id = "postInput_{{ post.getId }}" type="text" name="comment" placeholder="Komentirajte..." class="{{ theme }} post">
+				<input type="button" value="&#xf101;" class="{{ theme }}" onclick="sendComment({{ post.getId }})" title="Klikni za slanje komentara!">
     	</div>
 
 		<div id = "post_{{ post.getId }}">
