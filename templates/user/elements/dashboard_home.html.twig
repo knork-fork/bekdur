@@ -1,28 +1,28 @@
 <div class="homepageTitle">Nova grupa</div>	
 	
-<div id="newGroupButton"><span>+</span></div>
+<div id="newGroupButton" onclick="showNewGroupForm()"><span>+</span></div>
 
-<form id="newGroupForm">
+<form id="newGroupForm" style = "display:none;" method="POST" action="{{ path('add_group') }}" enctype="multipart/form-data">
 	<span>Naziv grupe</span>
-	<input type="text">
+	<input type="text" name="groupName">
 	<br>
 
 	<span>Pozadinska slika</span>
-	<input type="file" id="backgroundImg">
-	<label for="backgroundImg"><span><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
+	<input type="file" name="background" id="backgroundImg" onchange="backgroundUpload()">
+	<label for="backgroundImg"><span id="backgroundImgLabel"><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
 	<br>
 
 	<span>Profilna slika</span>
-	<input type="file" id="profileImg">
-	<label for="profileImg"><span><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
+	<input type="file" name="profile" id="profileImg" onchange="profileUpload()">
+	<label for="profileImg"><span id="profileImgLabel"><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
 	<br>
 
 	<span>Boja teme</span>
 	<div class="custom-select">
-			<select>
+			<select name = "theme">
 			  <option value="0" class="color_GreenSea">GreenSea</option>
 			  <option value="1" class="color_Nephritis">Nephritis</option>
-			  <option value="2" class="color_QuizyBlue">SeaBlue</option>
+			  <option value="2" class="color_QuizyBlue" selected>SeaBlue</option>
 			  <option value="3" class="color_Wisteria">Wisteria</option>
 			  <option value="4" class="color_MidnightBlue">MidnightBlue</option>
 			  <option value="5" class="color_SunFlower">SunFlower</option>
