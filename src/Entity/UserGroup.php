@@ -50,6 +50,16 @@ class UserGroup
      */
     private $theme;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $profile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $background;
+
     public function __construct()
     {
         $this->notifications = new ArrayCollection();
@@ -199,6 +209,30 @@ class UserGroup
     public function setTheme(?string $theme): self
     {
         $this->theme = $theme;
+
+        return $this;
+    }
+
+    public function getProfile(): ?string
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?string $profile): self
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function getBackground(): ?string
+    {
+        return $this->background;
+    }
+
+    public function setBackground(?string $background): self
+    {
+        $this->background = $background;
 
         return $this;
     }
