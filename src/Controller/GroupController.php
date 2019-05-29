@@ -36,7 +36,7 @@ class GroupController extends AbstractController
         $this->createNotification = $createNotification;
     }
 
-    public function createGroup()
+    public function createGroup(Request $request)
     {
         // Check if logged in, check if POST etc.
 
@@ -46,7 +46,19 @@ class GroupController extends AbstractController
 
             $user = $this->tokenStorage->getToken()->getUser();
 
-            $this->createGroup->create($user, "Sample Group");
+            if ($request->isMethod('POST'))
+            {
+                $name = $request->request->get('groupName');
+                $profile = $request->files->get('profile');
+                $background = $request->files->get('background');
+                $theme = $request->request->get('theme');
+
+                $group_id = $this->createGroup->create($user, $name, $profile, $background, $theme);
+            
+                return new RedirectResponse($this->router->generate("group_dashboard", array("group_id" => $group_id)));
+            }
+            else
+                return new RedirectResponse($this->router->generate("user_dashboard"));
         }
 
         return new Response("OK!");
