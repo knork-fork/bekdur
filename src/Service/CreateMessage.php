@@ -5,6 +5,7 @@ namespace App\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Message;
 use App\Entity\UserInbox;
+use App\Entity\User;
 
 class CreateMessage
 {
@@ -15,22 +16,31 @@ class CreateMessage
         $this->em = $em;
     }
 
-    public function create(int $inbox_id, string $text, int $user_id, int $author_id)
+    public function create(UserInbox $inbox, string $text, User $author)
     {
-        // Reference (just to save inbox id)
-        $inbox = $this->em->getReference("App\Entity\UserInbox", $inbox_id);
+        $users = $inbox->getInboxMemberships();
 
-        // Create new message
-        $msg = new Message();
+        foreach ($users as $user)
+        {
+            $id = $user->getInboxUser()->getId();
 
-        $msg->setUserInbox($inbox);
-        $msg->setText($text);
-        $msg->setSeen(false);
-        $msg->setCreated(new \DateTime());
-        $msg->setUserId($user_id);
-        $msg->setAuthorId($author_id);
+            // Don't add notification to author
+            if ($id == $author->getId())
+                continue;
 
-        $this->em->persist($msg);
+            $msg = new Message();
+
+            $msg->setUserInbox($inbox);
+            $msg->setText($text);
+            $msg->setSeen(false);
+            $msg->setCreated(new \DateTime());
+            $msg->setUserId($id);
+            $msg->setAuthorId($author->getId());
+
+            $this->em->persist($msg);     
+        }
+
+        // Send all messages at once
         $this->em->flush();
     }
 }

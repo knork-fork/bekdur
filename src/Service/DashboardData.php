@@ -134,6 +134,7 @@ class DashboardData
             "messages" => $inboxMessages,
             "otherGroups" => $otherGroups,
             "groupId" => $group_id,
+            "inboxId" => $inbox_id,
         ];
     }
 

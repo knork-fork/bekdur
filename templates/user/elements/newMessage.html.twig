@@ -3,6 +3,6 @@ Forma za novi post
 #}
 
 <div id="sendMessage">
-	<input type="text" name="comment" placeholder="Napišite poruku...">
-	<input type="button" value="&#xf101;" class="color_QuizyBlue">
+	<input type="text" id="messageInput" name="comment" placeholder="Napišite poruku...">
+	<input type="button" value="&#xf101;" class="color_QuizyBlue" onclick="sendMessage({{ inboxId }})">
 </div>
