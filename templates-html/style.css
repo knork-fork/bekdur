@@ -861,3 +861,114 @@ a{
 	text-align: center;
 	float:right;
 }
+/*-------Login/register form--------*/
+
+/*----forma za login i register------*/
+
+.logRegDiv .logRegForm {
+	background: #FFFFFF;
+	max-width: 280px;
+	padding: 70px 30px 70px 30px;
+	text-align: center;
+	float:left;
+}
+.logRegDiv .logRegForm span{
+	font-size:14px;
+	color:#c0392b;
+	font-family:Segoe UI;
+	width:250px;
+	font-weight:600;
+}
+
+.logRegDiv .logRegForm input[type="text"], .logRegDiv .logRegForm input[type="password"], .logRegDiv .logRegForm select{
+	font-family: sans-serif;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	margin: 10px 0 10px;
+	padding: 15px;
+	box-sizing: border-box;
+	font-size: 15px;
+}
+.logRegDiv .logRegForm input[type="submit"] {
+	font-family: sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #2C73A0;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+	cursor: pointer;
+	margin:10px 0px 10px;
+}
+
+.logRegDiv .logRegForm input[type="submit"]:hover,
+.logRegDiv .logRegForm input[type="submit"]:active,
+.logRegDiv .logRegForm input[type="submit"]:focus {
+	background: #1d5b82;
+}
+
+
+.logRegDiv .contDiv{
+	height:auto;
+	width:auto;
+	display:inline;
+	overflow:hidden;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+.logRegDiv{
+	width:100%;
+	height:100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+	background-color:#e0e0e0;
+    background-size: cover;
+}
+.logRegDiv .imgTxtDiv{
+	background-color:blue;
+	float:left;
+	width:300px;
+	height:100%;
+	background-image:url(../temp/pattern_bg.png);
+    background-size: cover;	
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+	background-color:#133B55;
+    background-size: cover;
+}
+
+.logRegDiv .imgTxtDiv  img{
+	width:90px;
+	height:auto;
+}
+
+.logRegDiv .imgTxtDiv  h1{
+	font-size:38px;
+	color:white;
+	font-family:Segoe UI;
+	letter-spacing:-1px;
+	line-height:0px;
+	padding-top:10px;
+	font-weight:300;
+}
+
+.logRegDiv .imgTxtDiv  p{
+	font-size:14px;
+	color:white;
+	font-family:Segoe UI;
+	width:250px;
+	font-weight:100;
+}
+
+.logRegDiv .imgTxtDiv  a{
+	color: #e5e6e8;
+	text-decoration: none;
+}
