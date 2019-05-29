@@ -243,4 +243,11 @@ class UserGroup
 
         return $this;
     }
+
+    public function getBackgroundSrc(): ?string
+    {
+        $src = json_decode($this->background);
+        $src = strstr($src->filepath, 'uploads');
+        return $src;
+    }
 }

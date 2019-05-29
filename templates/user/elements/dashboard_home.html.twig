@@ -1,0 +1,84 @@
+<div class="homepageTitle">Nova grupa</div>	
+	
+<div id="newGroupButton"><span>+</span></div>
+
+<form id="newGroupForm">
+	<span>Naziv grupe</span>
+	<input type="text">
+	<br>
+
+	<span>Pozadinska slika</span>
+	<input type="file" id="backgroundImg">
+	<label for="backgroundImg"><span><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
+	<br>
+
+	<span>Profilna slika</span>
+	<input type="file" id="profileImg">
+	<label for="profileImg"><span><i class="fa fa-upload"></i>&nbsp;&nbsp;Odaberite datoteku</span></label>
+	<br>
+
+	<span>Boja teme</span>
+	<div class="custom-select">
+			<select>
+			  <option value="0" class="color_GreenSea">GreenSea</option>
+			  <option value="1" class="color_Nephritis">Nephritis</option>
+			  <option value="2" class="color_QuizyBlue">SeaBlue</option>
+			  <option value="3" class="color_Wisteria">Wisteria</option>
+			  <option value="4" class="color_MidnightBlue">MidnightBlue</option>
+			  <option value="5" class="color_SunFlower">SunFlower</option>
+			  <option value="6" class="color_Pumpkin">Pumpkin</option>
+			  <option value="7" class="color_Pomegranate">Pomegranate</option>
+			  <option value="8" class="color_Asbestos">Asbestos</option>
+			</select>
+	</div>
+	<br>
+</form>
+
+<br><br>
+{% if groups|length > 0 %}
+<div class="homepageTitle">Moje grupe</div>
+
+    {% for group in groups %}
+    <a href="{{ path('group_dashboard', {'group_id': group.getUserGroup.getId}) }}">
+    <div class="groupHomepageDiv" 
+        {% if group.getUserGroup.getBackground is not null %}
+			style="background-image: url('{{ asset(group.getUserGroup.getBackgroundSrc) }}');"
+	    {% endif %}
+    >
+        <div id="groupName">{{ group.getUserGroup.getName }}</div>
+        <div id="groupStats">
+			{#<i class="fa fa-user"></i>
+			x članova#}
+			<i class="fa fa-calendar"></i>
+			{{ group.getUserGroup.getCreated|date('d. M Y.') }}
+		</div>
+	</div>
+    </a>
+    {% endfor %}
+
+{% endif %}
+
+{% if otherGroups|length > 0 %}
+<br><br>
+<div class="homepageTitle">Druge grupe</div>
+    
+    {% for group in otherGroups %}
+    <a href="{{ path('join_group', {'group_id': group.getId}) }}">
+    <div class="groupHomepageDiv" 
+        {% if group.getBackground is not null %}
+			style="background-image: url('{{ asset(group.getBackgroundSrc) }}');"
+	    {% endif %}
+    >
+        <div id="groupName">{{ group.getName }}</div>
+        <div id="groupStats">
+			{#<i class="fa fa-user"></i>
+			x članova#}
+			<i class="fa fa-calendar"></i>
+			{{ group.getCreated|date('d. M Y.') }}
+		</div>
+	</div>
+    </a>
+    {% endfor %}
+
+
+{% endif %}

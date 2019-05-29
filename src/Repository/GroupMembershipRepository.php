@@ -5,6 +5,9 @@ namespace App\Repository;
 use App\Entity\GroupMembership;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\UserGroup;
 
 /**
  * @method GroupMembership|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,9 +17,41 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class GroupMembershipRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    private $em;
+
+    public function __construct(RegistryInterface $registry, EntityManagerInterface $em)
     {
         parent::__construct($registry, GroupMembership::class);
+        $this->em = $em;
+    }
+
+    public function getOtherGroups(User $user)
+    {
+        $conn = $this->em->getConnection();
+
+        $q = "SELECT * FROM user_group
+                WHERE id NOT IN(
+                    SELECT user_group_id FROM group_membership
+                    WHERE group_user_id = ?
+                );";
+        
+        $pst = $conn->prepare($q);
+        $pst->bindValue(1, $user->getId());
+
+        $pst->execute(); 
+
+        $groups = $pst->fetchAll();
+        $groupObjects = array();
+
+        // Turn arrays into objects
+        foreach ($groups as $group)
+        {
+            $groupObject = $this->em->getReference("App\Entity\UserGroup", $group["id"]);
+
+            $groupObjects[] = $groupObject;
+        }
+
+        return $groupObjects;
     }
 
     // /**

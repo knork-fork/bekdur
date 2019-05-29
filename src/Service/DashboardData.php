@@ -113,6 +113,15 @@ class DashboardData
         else
             $inboxMessages = null;
 
+        // Get dashboard home content
+        if (!isset($group_id) && !isset($inbox_id))
+        {
+            // Get groups user is NOT in
+            $otherGroups = $this->groupMembershipRepository->getOtherGroups($user);
+        }
+        else
+            $otherGroups = null;
+
         return [
             "currentUserId" => $user->getId(),
             "page_title" => "Bekdur aplikacija",
@@ -122,6 +131,7 @@ class DashboardData
             "inboxes" => $inboxes,
             "posts" => $groupPosts,
             "messages" => $inboxMessages,
+            "otherGroups" => $otherGroups,
             "groupId" => $group_id,
         ];
     }

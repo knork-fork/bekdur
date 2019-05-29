@@ -21,8 +21,13 @@
 
 	<div id="content">
 
-		{% include 'user/elements/post.html.twig' %}
-		{% include 'user/elements/message.html.twig' %}
+		{% if posts is not null %}
+			{% include 'user/elements/post.html.twig' %}
+		{% elseif messages is not null %}
+			{% include 'user/elements/message.html.twig' %}
+		{% else %}
+			{% include 'user/elements/dashboard_home.html.twig' %}
+		{% endif %}
 
 	</div>
 			
