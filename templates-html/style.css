@@ -326,7 +326,7 @@ a{
 	cursor: pointer;
 	margin:10px 12px 10px 12px;
 	/*background-color: red;*/
-	background-image: url('../images/default_group.png');
+	background-image: url('../images/userDefault.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -409,7 +409,7 @@ a{
 	background-repeat: no-repeat;
 	background-size: cover;
 	/*background-color: red;*/
-	background-image: url('../images/default_group.png');
+	background-image: url('../images/userDefault.png');
 }
 .profileImageDiv.small{
 	height:34px;
