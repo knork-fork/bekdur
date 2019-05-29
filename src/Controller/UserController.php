@@ -45,7 +45,7 @@ class UserController extends AbstractController
             // Not logged in, continue
 
             return $this->render("user/login.html.twig", [
-                "page_title" => "Bekdur aplikacija",
+                "page_title" => "Collabsy",
                 "login_error" => $errorMsg,
             ]);
         }
@@ -95,7 +95,7 @@ class UserController extends AbstractController
                 $errorMsg = "Neispravni podaci";
 
             return $this->render("user/signup.html.twig", [
-                "page_title" => "Bekdur aplikacija",
+                "page_title" => "Collabsy",
                 "registrationForm" => $form->createView(),
                 "register_error" => $errorMsg,
             ]);

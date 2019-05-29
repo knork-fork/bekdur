@@ -124,7 +124,7 @@ class DashboardData
 
         return [
             "currentUserId" => $user->getId(),
-            "page_title" => "Bekdur aplikacija",
+            "page_title" => "Collabsy",
             "theme" => $this->theme,
             "notifications" => $notifications,
             "groups" => $groups,

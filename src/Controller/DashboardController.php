@@ -36,7 +36,7 @@ class DashboardController extends AbstractController
             $this->seener->setNotificationsSeen($group_id, $user);
             $this->seener->setMessagesSeen($inbox_id, $user);
 
-            $parameters = $this->dashboardData->getDashboardDataStatic($user, "Bekdur aplikacija", $group_id, $inbox_id);
+            $parameters = $this->dashboardData->getDashboardDataStatic($user, "Collabsy", $group_id, $inbox_id);
 
             return $this->render("user/dashboard.html.twig", $parameters);
         }

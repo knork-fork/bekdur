@@ -10,7 +10,7 @@ class DefaultController extends AbstractController
     public function index(TokenStorageInterface $tokenStorage)
     {
         return $this->render("homepage/homepage.html.twig", [
-            "page_title" => "Bekdur aplikacija",
+            "page_title" => "Collabsy",
             "user_name" => $tokenStorage->getToken()->getUsername(),
         ]);
     }
