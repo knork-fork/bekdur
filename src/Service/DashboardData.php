@@ -124,6 +124,7 @@ class DashboardData
 
         return [
             "currentUserId" => $user->getId(),
+            "currentUser" => $user,
             "page_title" => "Collabsy",
             "theme" => $this->theme,
             "notifications" => $notifications,
