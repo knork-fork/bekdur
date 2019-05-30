@@ -30,20 +30,22 @@ class CreateInbox
         $inbox_id = $inbox->getId();
 
         // Add users to it
-        $conn = $this->em->getConnection();
+        $inboxMembership1 = new InboxMembership();
+        $inboxMembership2 = new InboxMembership();
 
-        $q = "INSERT INTO inbox_membership
-                (inbox_user_id, user_inbox_id, created) VALUES 
-                    (?, ?, now()),
-                    (?, ?, now());";
-           
-        $pst = $conn->prepare($q);
-        $pst->bindValue(1, $user1);
-        $pst->bindValue(2, $inbox_id);
-        $pst->bindValue(3, $user2);
-        $pst->bindValue(4, $inbox_id);
+        // Reference (just to save user 1)
+        $userRef1 = $this->em->getReference("App\Entity\User", $user1);
+        $inboxMembership1->setInboxUser($userRef1);
+        $inboxMembership1->setUserInbox($inbox);
+        $this->em->persist($inboxMembership1);
 
-        $pst->execute();
+        // Reference (just to save user 2)
+        $userRef2 = $this->em->getReference("App\Entity\User", $user2);
+        $inboxMembership2->setInboxUser($userRef2);
+        $inboxMembership2->setUserInbox($inbox);
+        $this->em->persist($inboxMembership2);
+
+        $this->em->flush();
 
         return $inbox_id;
     }
