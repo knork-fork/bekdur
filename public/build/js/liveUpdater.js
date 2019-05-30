@@ -111,7 +111,7 @@ function showUpdates(jsonData)
     var messages = jsonData["messages"]
     if (messages != "" && messages != null)
     {
-        document.getElementById("contentInbox").innerHTML = messages;
+        document.getElementById("messagesList").innerHTML = messages;
     }
 }
 

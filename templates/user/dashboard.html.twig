@@ -24,7 +24,7 @@
 		{% if posts is not null %}
 			{% include 'user/elements/post.html.twig' %}
 		{% elseif messages is not null %}
-			<div id="contentInbox">{% include 'user/elements/message.html.twig' %}</div>
+			<div id="messagesList">{% include 'user/elements/message.html.twig' %}</div>
 			{% include 'user/elements/newMessage.html.twig' %}
 		{% else %}
 			{% include 'user/elements/dashboard_home.html.twig' %}
