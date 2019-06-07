@@ -3,6 +3,7 @@ body {
     height: 100vh;
 	margin:0;
 	background-color:#f0f0f0;
+	min-width:900px;
 }
 
 
@@ -337,7 +338,7 @@ a{
 	transition: border-radius 0.2s ease-in-out;
 }
 #leftMenuBar #groupsMenu .groupButton:hover{
-	border-radius:20%;
+	border-radius:13%;
 }
 #leftMenuBar #groupsMenu .groupButton #newPosts{
 	height:20px;
@@ -414,6 +415,10 @@ a{
 .profileImageDiv.small{
 	height:34px;
 	width:34px;
+}
+.profileImageDiv.big{
+	height:100px;
+	width:100px;
 }
 .chatButton #profileImageDivStatus{
 	height:10px;
@@ -665,18 +670,19 @@ a{
 
 /*------------Messages----------*/
 #messagesList{
-	width: 100%;
+	width: calc(100% - 300px);
 	height:100%;
 	margin-bottom:50px;
 	display:table;
+	min-width:400px;
 }
 .message{
 	font-size: 15px;
 	margin:2px;		
 	width:auto;
-	max-width: 50%;
+	max-width: 70%;
 	display:table;
-	word-break: break-all;
+	word-break: break-word;
 }
 .message .text{
 	border-radius:14px;
@@ -691,7 +697,7 @@ a{
 	float:left;
 }
 .message.received .colored{
-	background-color: #77717420;
+	background-color: #e1e1e1;
 	color:black;
 }
 
@@ -737,13 +743,15 @@ a{
 	float:right;
 }
 #sendMessage{
-	width:calc(100% - 300px);
+	width:calc(100% - 603px);
 	position: fixed;
 	bottom: 0px;
 	left:303px;
 	box-sizing: border-box;
 	padding:20px;
 	background-color: #f0f0f0;
+	z-index:3;
+	min-width:400px;
 }
 #sendMessage hr{
 	background-color:#8b8f97;
@@ -976,4 +984,147 @@ a{
 .logRegDiv .imgTxtDiv  a{
 	color: #e5e6e8;
 	text-decoration: none;
+}
+
+
+/*---Chat right menu---*/
+#chatInfoMenu{
+	width:250px;
+	height:100%;
+	top:50px;
+	position:fixed;
+	right:0;
+	overflow:hidden;
+	box-sizing: content-box;
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+	background-color: #e1e1e1;
+	z-index:2;
+	box-sizing: border-box;
+	box-shadow: 1px 0px 3px #2d323d;
+	overflow:hidden;
+}
+#chatInfoMenu hr{
+	border:0.5px solid #d1d1d1;
+}
+#chatInfoMenu #userProfileImage{
+	width:100%;
+	height:130px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	align-items: center;
+	margin-top:30px;
+}
+#chatInfoMenu #chatUserName{
+	text-align: center;
+	color: black;
+	font-size: 19px;
+	font-weight:400;
+	padding:0px 10px 0px 10px;
+	margin-bottom:20px;
+}
+.searchBox{
+	width: 100%;
+	height: 35px;;
+	padding: 20px;
+
+  }
+.searchBox .container-1{
+	width: 210px;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+  }
+.searchBox	.container-1 input#search{
+	width: 100%;
+	height: 34px;
+	border:1px solid #8b8f97;
+	border-radius: 17px;
+	font-size: 12px;
+	float: left;
+	color: #63717f;
+	padding-left: 45px;
+	background-color: #e1e1e1;
+}
+.searchBox	.container-1 input#search::-webkit-input-placeholder {
+	color: #65737e;
+}
+  
+.searchBox	.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+	color: #65737e;  
+}
+  
+.searchBox	.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+	color: #65737e;  
+}
+  
+.searchBox	.container-1 input#search:-ms-input-placeholder {  
+	color: #65737e;  
+}
+.searchBox	.container-1 .icon{
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	color: #65737e;
+	height:34px;
+	width:45px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	align-items: center;
+}
+#chatInfoMenu #f{
+	width:100%;
+	background: red;
+	
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+}
+#chatInfoMenu .title{
+	width:100%;
+	height:35px;
+	color: black;
+	font-weight: 600;
+	font-size:13px;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom:10px;
+	
+}
+#chatInfoMenu #groupList{
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+	overflow-y:scroll;
+	height:calc(100% - 410px);
+}
+
+#chatInfoMenu #groupList::-webkit-scrollbar { 
+    display: none;  
+}
+#chatInfoMenu #groupList .commonGroup{
+    border: none;
+    cursor: pointer;
+	color: #fff;
+	padding:6px;
+	height:46px;
+	box-sizing: border-box;
+	font-size: 16px;
+	width:100%;
+	transition: background 0.3s ease-in-out;
+	text-align:left;
+}
+#chatInfoMenu #groupList .commonGroup:hover{
+	background:rgba(0,0,0,0.07);
+}
+#chatInfoMenu #groupList #nameLabel{
+	max-width:200px;
+	overflow:hidden;
+	white-space: nowrap;
+	font-size: 14px;
+	color:black;
+	font-weight:400;
+	padding-top:6px;
 }
