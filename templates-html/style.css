@@ -670,7 +670,7 @@ a{
 
 /*------------Messages----------*/
 #messagesList{
-	width: calc(100% - 300px);
+	width: 100%;
 	height:100%;
 	margin-bottom:50px;
 	display:table;
