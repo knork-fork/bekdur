@@ -15,11 +15,10 @@ Post types:
 <div class="groupPost">
     <div id="top">
     	<div id="left">
-    			{% if post.getAuthor.getId != currentUserId %}
-    				<div class="profileImageDiv" title="Uđi u inbox!" onclick="enterInbox({{ post.getAuthor.getId }})"></div>
-				{% else %}	
-					<div class="profileImageDiv"></div>
-				{% endif %}
+				<div class="profileImageDiv"
+					{% if post.getAuthor.getProfileSrc is not null %}
+						style="background-image: url('{{ asset(post.getAuthor.getProfileSrc) }}')"
+					{% endif %}></div>
 				<div class="label upper"> {{ post.getAuthor.getUsername }} {{ post.getHeader }} </div>
     			<div class="label postDate" title="{{ post.getCreated|date('d. M Y. H:i') }}"> {{ post.getCreated|date('d. M Y.') }} </div>
     	</div>

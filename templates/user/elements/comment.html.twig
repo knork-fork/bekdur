@@ -4,11 +4,10 @@ Comment
 
 {% for comment in post.getGroupComments|sort %}
 <div class="comment">
-		{% if comment.getAuthor.getId != currentUserId %}
-    		<div class="profileImageDiv small" title="Uđi u inbox!" onclick="enterInbox({{ comment.getAuthor.getId }})"></div>
-		{% else %}	
-			<div class="profileImageDiv small"></div>
-		{% endif %}
+		<div class="profileImageDiv"
+			{% if comment.getAuthor.getProfileSrc is not null %}
+				style="background-image: url('{{ asset(comment.getAuthor.getProfileSrc) }}')"
+			{% endif %}></div>
 		<div id="text"  class="{{ theme }} post">
 			<div class="label upper">
 				<div id="username"> {{ comment.getAuthor.getUsername }} </div>
