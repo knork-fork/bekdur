@@ -135,18 +135,22 @@ class DashboardData
             "currentUserId" => $user->getId(),
             "currentUser" => $user,
             "page_title" => "Collabsy",
-            "theme" => $this->theme,
             "notifications" => $notifications,
             "groups" => $groups,
             "inboxes" => $inboxes,
+            "theme" => $this->theme,
+            // Common
             "profilePic" => $profilePic,
             "profileName" => $profileName,
             "members" => $members,
-            "posts" => $groupPosts,
-            "messages" => $inboxMessages,
-            "otherGroups" => $otherGroups,
+            // Group specific
             "groupId" => $group_id,
+            "posts" => $groupPosts,
+            // Inbox specific
             "inboxId" => $inbox_id,
+            "messages" => $inboxMessages,
+            // Non-group and Non-inbox specific
+            "otherGroups" => $otherGroups,
         ];
     }
 
