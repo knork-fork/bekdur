@@ -2,7 +2,12 @@
 Forma za novi post
 #}
 
+{% if mobile_detector.isMobile %}
+<div id="sendMessage" class="mobile">
+{% else %}
 <div id="sendMessage">
+{% endif %}
+
 	<input type="text" id="messageInput" name="comment" placeholder="Napišite poruku...">
 	<input type="button" value="&#xf101;" class="color_QuizyBlue" onclick="sendMessage({{ inboxId }})">
 </div>

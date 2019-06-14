@@ -5,12 +5,22 @@ Message
 {% for message in messages %}
 
 	{% if message.getAuthorId == currentUserId %}
+		{% if mobile_detector.isMobile %}
+		<div class="message sent mobile">
+		{% else %}
 		<div class="message sent">
+		{% endif %}
+		
 			<div class="date">{{ message.getCreated|date('d/m/y H:i') }}</div>
 			<div class="text colored">{{ message.getText }}</div>
 		</div>
 	{% else %}
+		{% if mobile_detector.isMobile %}
+		<div class="message received mobile">
+		{% else %}
 		<div class="message received">
+		{% endif %}
+
 			<div class="text colored">{{ message.getText }}</div>
 			<div class="date">{{ message.getCreated|date('d/m/Y H:i') }}</div>
 		</div>
