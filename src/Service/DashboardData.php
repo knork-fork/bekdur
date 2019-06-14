@@ -117,9 +117,18 @@ class DashboardData
         {
             $inboxMessages = $this->messageRepository->findByInboxId($inbox_id);
             $this->mapMessageAuthors->map($inboxMessages);
+
+            $other = $this->inboxMembershipRepository->getOtherInboxUser($user, $this->em->getReference("App\Entity\UserInbox", $inbox_id));
+            $profilePic = $other->getProfileSrc();
+            $profileName = $other->getUsername();
+
+            $commonGroups = $this->groupMembershipRepository->getCommonGroups($user, $other);
         }
         else
+        {
             $inboxMessages = null;
+            $commonGroups = null;
+        }
 
         // Get dashboard home content
         if (!isset($group_id) && !isset($inbox_id))
@@ -152,6 +161,7 @@ class DashboardData
             // Inbox specific
             "inboxId" => $inbox_id,
             "messages" => $inboxMessages,
+            "commonGroups" => $commonGroups,
             // Non-group and Non-inbox specific
             "otherGroups" => $otherGroups,
         ];

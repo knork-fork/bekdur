@@ -54,6 +54,37 @@ class GroupMembershipRepository extends ServiceEntityRepository
         return $groupObjects;
     }
 
+    public function getCommonGroups(User $user1, User $user2)
+    {
+        $conn = $this->em->getConnection();
+
+        $q = "SELECT DISTINCT user_group_id FROM group_membership
+                WHERE group_user_id = ?
+                AND user_group_id IN (
+                    SELECT user_group_id FROM group_membership
+                    WHERE group_user_id = ?
+                );";
+        
+        $pst = $conn->prepare($q);
+        $pst->bindValue(1, $user1->getId());
+        $pst->bindValue(2, $user2->getId());
+
+        $pst->execute(); 
+
+        $groups = $pst->fetchAll();
+        $groupObjects = array();
+
+        // Turn arrays into objects
+        foreach ($groups as $group)
+        {
+            $groupObject = $this->em->getReference("App\Entity\UserGroup", $group["user_group_id"]);
+
+            $groupObjects[] = $groupObject;
+        }
+
+        return $groupObjects;
+    }
+
     // /**
     //  * @return GroupMembership[] Returns an array of GroupMembership objects
     //  */

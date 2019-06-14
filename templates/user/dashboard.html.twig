@@ -49,6 +49,10 @@
 	{% if posts is not null and not mobile_detector.isMobile %}
 		{% include 'user/elements/groupInfo.html.twig' %}
 	{% endif %}
+
+	{% if messages is not null and not mobile_detector.isMobile %}
+		{% include 'user/elements/inboxInfo.html.twig' %}
+	{% endif %}
 			
 </div>
 {% endblock %}

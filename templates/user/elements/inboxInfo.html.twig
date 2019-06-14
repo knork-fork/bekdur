@@ -1,0 +1,64 @@
+<div id="chatInfoMenu">
+	<div id="userProfileImage">
+		<div class="profileImageDiv big" 
+		{% if profilePic is not null %}
+			style="background-image: url('{{ asset(profilePic) }}')"
+		{% endif %}
+		></div>
+	</div>
+	<div id="chatUserName">{{ profileName }}</div>
+     
+	<hr>
+
+    {# isset(inbox_id) #}
+     
+	<div class="title">Zajedničke grupe</div>
+		
+	<div id="groupList">
+
+        {% for group in commonGroups %}
+
+        <div class="commonGroup" onclick="selectGroup({{ group.getId }})">
+			<div class="profileImageDiv small" 
+				{% if group.getProfileSrc is not null %}
+					style="background-image: url('{{ asset(group.getProfileSrc) }}')"
+				{% endif %}></div>
+			<div id="nameLabel">{{ group.getName }}</div>
+		</div>
+
+        {% endfor %}
+
+        {#% for member in members %}
+
+        <div class="commonGroup">
+			<div class="profileImageDiv small" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')"></div>
+			<div id="nameLabel">{{ member.getGroupUser.getUsername }}</div>
+		</div>
+
+        {% endfor %#}
+
+        {#% if comment.getAuthor.getId != currentUserId %}
+    		<div class="profileImageDiv small" title="Uđi u inbox!" onclick="enterInbox({{ comment.getAuthor.getId }})"></div>
+		{% else %}	
+			<div class="profileImageDiv small"></div>
+		{#% endif %}
+
+        {#
+		<div class = "commonGroup" id = "group_{{ group.getUserGroup.getId }}" 
+			
+			{% if group.getUserGroup.getProfile is not null %}
+				style="background-image: url('{{ asset(group.getUserGroup.getProfileSrc) }}');"
+			{% endif %}
+
+			onmouseover="showGroupName('{{ group.getUserGroup.getName }}', {{ group.getUserGroup.getId }})" onmouseleave="hideGroupName()" onclick="selectGroup({{ group.getUserGroup.getId }})">
+				
+			{% if group.getUserGroup.getNotificationNumber > 0 %}
+				<div id="newPosts" name="group_{{ group.getUserGroup.getId }}" class="color_Pomegranate">{{ group.getUserGroup.getNotificationNumber }}</div>
+			{% else %}
+				<div id="newPosts" name="group_{{ group.getUserGroup.getId }}" class="color_Pomegranate" style="display:none;"></div>
+			{% endif %}
+		</div>
+        #}
+	</div>
+	<hr>
+</div>
