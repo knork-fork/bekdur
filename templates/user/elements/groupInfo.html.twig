@@ -18,7 +18,10 @@
             {% if member.getGroupUser.getId != currentUserId %}
                 title="Uđi u inbox!" onclick="enterInbox({{ member.getGroupUser.getId }})"
             {% endif %}>
-			<div class="profileImageDiv small"></div>
+			<div class="profileImageDiv small" 
+				{% if member.getGroupUser.getProfileSrc is not null %}
+					style="background-image: url('{{ asset(member.getGroupUser.getProfileSrc) }}')"
+				{% endif %}></div>
 			<div id="nameLabel">{{ member.getGroupUser.getUsername }}</div>
 		</div>
 

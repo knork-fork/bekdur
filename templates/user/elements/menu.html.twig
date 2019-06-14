@@ -47,7 +47,10 @@
 
 			{% for inbox in inboxes %}
 			<div class = "chatButton" onclick="selectInbox({{ inbox.getUserInbox.getId }})">
-				<div class="profileImageDiv">
+				<div class="profileImageDiv" 
+					{% if inbox.getUserInbox.getProfile is not null %}
+						style="background-image: url('{{ asset(inbox.getUserInbox.getProfile) }}')"
+					{% endif %}>
 					<div id="profileImageDivStatus" class="color_Nephritis"></div>
 				</div>
 				<span>{{ inbox.getUserInbox.getName }}</span>

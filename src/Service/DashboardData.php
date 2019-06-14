@@ -89,6 +89,7 @@ class DashboardData
             // Find other user in inbox
             $other = $this->inboxMembershipRepository->getOtherInboxUser($user, $inb);
             $inb->setName($other->getUsername()); // to-do: change to first+last name
+            $inb->setProfile($other->getProfileSrc());
 
             $this->inboxMessageNumber->setInboxMessageNumber($inb, $messages);
         }
