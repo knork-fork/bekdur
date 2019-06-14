@@ -1,0 +1,29 @@
+<div id="chatInfoMenu">
+	<div id="userProfileImage">
+		<div class="profileImageDiv big" style="background-image: url('{{ asset(profilePic) }}')"></div>
+	</div>
+	<div id="chatUserName">{{ profileName }}</div>
+     
+	<hr>
+
+    {# isset(group_id) #}
+     
+	<div class="title">Članovi</div>
+		
+	<div id="groupList">
+
+        {% for member in members %}
+
+        <div class="commonGroup"
+            {% if member.getGroupUser.getId != currentUserId %}
+                title="Uđi u inbox!" onclick="enterInbox({{ member.getGroupUser.getId }})"
+            {% endif %}>
+			<div class="profileImageDiv small"></div>
+			<div id="nameLabel">{{ member.getGroupUser.getUsername }}</div>
+		</div>
+
+        {% endfor %}
+
+	</div>
+	<hr>
+</div>

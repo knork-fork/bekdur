@@ -17,20 +17,38 @@
 		{% include 'user/elements/notification.html.twig' %}
 
 	</div>
-			
 
-	<div id="content">
-
-		{% if posts is not null %}
-			{% include 'user/elements/post.html.twig' %}
-		{% elseif messages is not null %}
-			<div id="messagesList">{% include 'user/elements/message.html.twig' %}</div>
-			{% include 'user/elements/newMessage.html.twig' %}
+	{% if posts is not null %}
+		{% if not mobile_detector.isMobile %}
+			<div id="content" style="width:calc(100% - 720px);">
 		{% else %}
-			{% include 'user/elements/dashboard_home.html.twig' %}
+			<div id="content">
 		{% endif %}
+		{# Group content #}
+		{% include 'user/elements/post.html.twig' %}
+	
+	{% elseif messages is not null %}
+		{% if not mobile_detector.isMobile %}
+			<div id="content" style="width:calc(100% - 720px);">
+		{% else %}
+			<div id="content">
+		{% endif %}
+		{# Inbox content #}
+		<div id="messagesList">{% include 'user/elements/message.html.twig' %}</div>
+		{% include 'user/elements/newMessage.html.twig' %}
+	
+	{% else %}
+		<div id="content">
+		{# Default dashboard content #}
+		{% include 'user/elements/dashboard_home.html.twig' %}
+	
+	{% endif %}
 
 	</div>
+
+	{% if posts is not null and not mobile_detector.isMobile %}
+		{% include 'user/elements/groupInfo.html.twig' %}
+	{% endif %}
 			
 </div>
 {% endblock %}

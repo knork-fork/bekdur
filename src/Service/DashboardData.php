@@ -100,6 +100,10 @@ class DashboardData
             
             $group = $this->em->getReference("App\Entity\UserGroup", $group_id);
             $this->theme = $group->getTheme();
+            $profilePic = $group->getProfileSrc();
+            $profileName = $group->getName();
+
+            $members = $group->getGroupMemberships();
         }
         else
             $groupPosts = null;
@@ -116,6 +120,11 @@ class DashboardData
         // Get dashboard home content
         if (!isset($group_id) && !isset($inbox_id))
         {
+            // Default common values to null
+            $profilePic = null;
+            $profileName = null;
+            $members = null;
+
             // Get groups user is NOT in
             $otherGroups = $this->groupMembershipRepository->getOtherGroups($user);
         }
@@ -130,6 +139,9 @@ class DashboardData
             "notifications" => $notifications,
             "groups" => $groups,
             "inboxes" => $inboxes,
+            "profilePic" => $profilePic,
+            "profileName" => $profileName,
+            "members" => $members,
             "posts" => $groupPosts,
             "messages" => $inboxMessages,
             "otherGroups" => $otherGroups,
