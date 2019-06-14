@@ -15,7 +15,10 @@ Forma za novi post
 	</div>
 	<div id="middle">
 		<div id="left">
-            <div class="profileImageDiv"></div>
+			<div class="profileImageDiv"
+				{% if currentUser.getProfileSrc is not null %}
+					style="background-image: url('{{ asset(currentUser.getProfileSrc) }}')"
+				{% endif %}></div>
 		</div>
         <input type="text" name="content" placeholder="Napišite objavu...">
 	</div>
