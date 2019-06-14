@@ -27,10 +27,17 @@
 			<div id="user">
 				<div id="image">
 					<div class="center">
-						<div class="profileImageDiv small"
-							{% if currentUser.getProfileSrc is not null %}
-								style="background-image: url('{{ asset(currentUser.getProfileSrc) }}')"
-							{% endif %}></div>
+						<form id="profileChangeForm" method="POST" action="{{ path('user_profile') }}" enctype="multipart/form-data">
+							<input type="file" name="profile" id="profileInput" style="display:none;" onchange="profileChange()">
+							<label for="profileInput">
+								<div class="profileImageDiv small"
+								style = "cursor: pointer;
+								{% if currentUser.getProfileSrc is not null %}
+									background-image: url('{{ asset(currentUser.getProfileSrc) }}');
+								{% endif %}"
+								title = "Promijeni profilnu!"></div>
+							</label>
+						</form>
 					</div>
 				</div>	
 				<div id="username">

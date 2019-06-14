@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserRegistrationType;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use App\Security\LoginAuthenticator;
+use App\Service\ProfileChange;
 
 class UserController extends AbstractController
 {
@@ -22,8 +23,9 @@ class UserController extends AbstractController
     private $userRegister;
     private $passwordEncoder;
     private $guardHandler;
+    private $profileChange;
 
-    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router, UserRegister $userRegister, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler)
+    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationUtils $authUtils, RouterInterface $router, UserRegister $userRegister, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, ProfileChange $profileChange)
     {
         $this->tokenStorage = $tokenStorage;
         $this->authUtils = $authUtils;
@@ -31,6 +33,7 @@ class UserController extends AbstractController
         $this->userRegister = $userRegister;
         $this->passwordEncoder = $passwordEncoder;
         $this->guardHandler = $guardHandler;
+        $this->profileChange = $profileChange;
     }
 
     public function login()
@@ -105,6 +108,34 @@ class UserController extends AbstractController
             // Logged in, redirect
 
             return new RedirectResponse($this->router->generate("user_dashboard"));
+        }
+    }
+
+    public function changeProfile(Request $request)
+    {
+        // Check if logged in, check if POST etc.
+
+        if ($this->tokenStorage->getToken()->getUsername() !== "anon.")
+        {
+            // Logged in, continue
+
+            $user = $this->tokenStorage->getToken()->getUser();
+
+            if ($request->isMethod('POST'))
+            {
+                $image = $request->files->get('profile');
+
+                $this->profileChange->changeProfile($user, $image);
+            }
+            
+            // Redirect to homepage
+            return new RedirectResponse($this->router->generate("user_dashboard"));
+         }
+        else
+        {
+            // Not logged in, redirect
+
+            return new RedirectResponse($this->router->generate("user_login"));
         }
     }
 }
