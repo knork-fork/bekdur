@@ -106,7 +106,10 @@ class DashboardData
             $members = $group->getGroupMemberships();
         }
         else
+        {
             $groupPosts = null;
+            $members = null;
+        }
 
         // Get inbox content
         if (isset($inbox_id))
@@ -123,7 +126,6 @@ class DashboardData
             // Default common values to null
             $profilePic = null;
             $profileName = null;
-            $members = null;
 
             // Get groups user is NOT in
             $otherGroups = $this->groupMembershipRepository->getOtherGroups($user);
@@ -142,10 +144,10 @@ class DashboardData
             // Common
             "profilePic" => $profilePic,
             "profileName" => $profileName,
-            "members" => $members,
             // Group specific
             "groupId" => $group_id,
             "posts" => $groupPosts,
+            "members" => $members,
             // Inbox specific
             "inboxId" => $inbox_id,
             "messages" => $inboxMessages,
