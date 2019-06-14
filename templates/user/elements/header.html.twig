@@ -27,7 +27,10 @@
 			<div id="user">
 				<div id="image">
 					<div class="center">
-						<div class="profileImageDiv small"></div>
+						<div class="profileImageDiv small"
+							{% if currentUser.getProfileSrc is not null %}
+								style="background-image: url('{{ asset(currentUser.getProfileSrc) }}')"
+							{% endif %}></div>
 					</div>
 				</div>	
 				<div id="username">
