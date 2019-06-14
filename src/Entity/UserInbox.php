@@ -45,6 +45,8 @@ class UserInbox
      */
     private $mostRecent;
 
+    private $profile;
+
     public function __construct()
     {
         $this->inboxMemberships = new ArrayCollection();
@@ -162,6 +164,18 @@ class UserInbox
     public function setMostRecent(?\DateTimeInterface $mostRecent): self
     {
         $this->mostRecent = $mostRecent;
+
+        return $this;
+    }
+
+    public function getProfile(): ?string
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?string $profile): self
+    {
+        $this->profile = $profile;
 
         return $this;
     }

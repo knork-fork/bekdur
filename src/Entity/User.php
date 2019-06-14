@@ -78,6 +78,11 @@ class User implements UserInterface
      */
     private $groupComments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $profile;
+
     public function __construct()
     {
         $this->groupMemberships = new ArrayCollection();
@@ -341,5 +346,27 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function getProfile(): ?string
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(?string $profile): self
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function getProfileSrc(): ?string
+    {
+        if ($this->profile == null)
+            return null;
+
+        $src = json_decode($this->profile);
+        $src = strstr($src->filepath, 'uploads');
+        return $src;
     }
 }
