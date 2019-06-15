@@ -13,7 +13,7 @@ Notifikacija
 
 	<div id="top">
 		<div id="left">{{ notification.getUserGroup.getName }}</div>
-		<div id="right">&#xf00d;</div>
+		<div id="right" onclick="hideNotification('notification_{{ notification.getId }}')">&#xf00d;</div>
 	</div>
 	<span onclick="selectGroup({{ notification.getUserGroup.getId }})">
 		<div id="center">
