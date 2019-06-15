@@ -47,6 +47,11 @@ class Notification
      */
     private $userGroup;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pushed;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Notification
     public function setUserGroup(?UserGroup $userGroup): self
     {
         $this->userGroup = $userGroup;
+
+        return $this;
+    }
+
+    public function getPushed(): ?bool
+    {
+        return $this->pushed;
+    }
+
+    public function setPushed(?bool $pushed): self
+    {
+        $this->pushed = $pushed;
 
         return $this;
     }
