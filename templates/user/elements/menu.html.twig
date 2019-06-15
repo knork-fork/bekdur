@@ -51,7 +51,7 @@
 					{% if inbox.getUserInbox.getProfile is not null %}
 						style="background-image: url('{{ asset(inbox.getUserInbox.getProfile) }}')"
 					{% endif %}>
-					<div id="profileImageDivStatus" class="color_Nephritis"></div>
+					{#temp disabled: <div id="profileImageDivStatus" class="color_Nephritis"></div>#}
 				</div>
 				<span>{{ inbox.getUserInbox.getName }}</span>
 				{% if inbox.getUserInbox.getMessageNumber > 0 %}
