@@ -26,13 +26,27 @@ function rightMenu(option)
         document.getElementById("chatInfoMenu").style = "";
 }
 
+function sendImageDiv(option)
+{
+    if (document.getElementById("sendMessage") == null)
+        return;
+
+    var contentWidth = document.getElementById("content").offsetWidth - 2*75;
+
+    if (option)
+        document.getElementById("sendMessage").style = "width:" + contentWidth + "px; left:75px; margin-left:0px; margin-top:50px; z-index:0;";
+    else
+        document.getElementById("sendMessage").style = "width:calc(100% - 603px);";
+}
+
 function resize()
 {
     var width = window.innerWidth;
 
     // for debug
-    //document.getElementById("username").innerText = width+"px";
-
+    /*if (document.getElementById("username") != null)
+        document.getElementById("username").innerText = width+"px";*/
+        
     // Show/hide left menu
     leftMenu(width < 1100);
 
@@ -48,16 +62,14 @@ function resize()
         // Shrink everything
         document.getElementById("content").style = "width:auto; margin-left:0px; margin-top:50px; z-index:0;";
         
-        // Todo: send message div needs fixing too
-        // sendImageDiv();
-        //document.getElementById("sendMessage").style = "width:auto;";
+        sendImageDiv(true);
     }
     else
     {
         // Expand everything
         document.getElementById("content").style = "width:calc(100% - 720px);";
 
-        //document.getElementById("sendMessage").style = "width:calc(100% - 600px);";
+        sendImageDiv(false);
     }
 };
 
@@ -66,6 +78,11 @@ resize();
 
 // On resize event
 window.onresize = function(event) 
+{
+    resize();
+};
+
+window.onload = function(event) 
 {
     resize();
 };
