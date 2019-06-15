@@ -22,11 +22,11 @@ Post types:
 				<div class="label upper"> {{ post.getAuthor.getUsername }} {{ post.getHeader }} </div>
     			<div class="label postDate" title="{{ post.getCreated|date('d. M Y. H:i') }}"> {{ post.getCreated|date('d. M Y.') }} </div>
     	</div>
-    	<div id="right">
+    	{#<div id="right">
 			<span id="upvote">&#xf077;</span>
 			{{ post.getPoints }} 
 			<span id="downvote">&#xf078;</span>
-		</div>
+		</div>#}
     </div>
 
     <div id="middle"> 
