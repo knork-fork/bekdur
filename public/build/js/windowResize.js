@@ -39,6 +39,9 @@ function resize()
     // Show/hide right menu
     rightMenu(width < 1300);
 
+    if (document.getElementById("content") == null)
+        return;
+
     // Divs (testing needed)
     if (width < 1100)
     {
