@@ -38,6 +38,8 @@ class DashboardController extends AbstractController
 
             $parameters = $this->dashboardData->getDashboardDataStatic($user, "Collabsy", $group_id, $inbox_id);
 
+            $this->seener->setNotificationsPushed($user);
+
             return $this->render("user/dashboard.html.twig", $parameters);
         }
         else
@@ -59,10 +61,12 @@ class DashboardController extends AbstractController
 
             $user = $this->tokenStorage->getToken()->getUser();
 
-            // There's no need to display notifications when already inside inbox
+            // Notifications aren't seen if inside group because refresh is needed
             $this->seener->setMessagesSeen($inbox_id, $user);
             
             $parameters = $this->dashboardData->getDashboardDataDynamic($user, $group_id, $inbox_id);
+
+            $this->seener->setNotificationsPushed($user);
 
             return new JsonResponse($parameters);
         }

@@ -5,7 +5,12 @@ Notifikacija
 #}
 
 {% for notification in notifications|sort|reverse %}
-<div class="notification">
+<div class="notification" id="notification_{{ notification.getId }}">
+
+	{# Notification autodelete #}
+	{# Trigger javascript call by some clever trick #}
+	<img src onerror="setTimeout(function(){ hideNotification('notification_{{ notification.getId }}'); }, 15000);" style="display:none;">
+
 	<div id="top">
 		<div id="left">{{ notification.getUserGroup.getName }}</div>
 		<div id="right">&#xf00d;</div>

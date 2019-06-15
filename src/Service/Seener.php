@@ -44,4 +44,16 @@ class Seener
 
         $pst->execute();
     }
+
+    public function setNotificationsPushed($user)
+    {
+        $conn = $this->em->getConnection();
+
+        $q = "UPDATE notification SET pushed = TRUE WHERE user_id = ? AND pushed = FALSE;";
+        
+        $pst = $conn->prepare($q);
+        $pst->bindValue(1, $user->getId());
+
+        $pst->execute();
+    }
 }

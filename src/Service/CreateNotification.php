@@ -39,6 +39,7 @@ class CreateNotification
             $notification->setTitle($header);
             $notification->setText($content);
             $notification->setSeen(false);
+            $notification->setPushed(false);
             $notification->setCreated(new \DateTime());
             $notification->setUserId($id);
 

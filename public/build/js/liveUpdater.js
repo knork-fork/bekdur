@@ -62,7 +62,7 @@ function updateFail()
 function showUpdates(jsonData)
 {
     // Show notifications
-    document.getElementById("notificationContainer").innerHTML = jsonData["notifications"];
+    document.getElementById("notificationContainer").innerHTML += jsonData["notifications"];
 
     // Show total notification number per group
     notificationNumbers = jsonData["notificationNumbers"];

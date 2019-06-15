@@ -57,6 +57,13 @@ class DashboardData
             "seen" => false,
         ]);
 
+        // Get latest, unseen and unpushed user notifications
+        $notificationsUnpushed = $this->notificationRepository->findBy([
+            "userId" => $user->getId(),
+            "seen" => false,
+            "pushed" => false,
+        ]);
+
         // Get groups user is in
         $groups = $this->groupMembershipRepository->findBy([
             "groupUser" => $user,
@@ -147,7 +154,7 @@ class DashboardData
             "currentUserId" => $user->getId(),
             "currentUser" => $user,
             "page_title" => "Collabsy",
-            "notifications" => $notifications,
+            "notifications" => $notificationsUnpushed,
             "groups" => $groups,
             "inboxes" => $inboxes,
             "theme" => $this->theme,
@@ -178,6 +185,13 @@ class DashboardData
             "seen" => false,
         ]);
 
+        // Get latest, unseen and unpushed user notifications
+        $notificationsUnpushed = $this->notificationRepository->findBy([
+            "userId" => $user->getId(),
+            "seen" => false,
+            "pushed" => false,
+        ]);
+
         // Get groups user is in
         $groups = $this->groupMembershipRepository->findBy([
             "groupUser" => $user,
@@ -187,7 +201,7 @@ class DashboardData
         $notificationNumbers = $this->groupNotificationNumber->calculate($groups, $notifications);
 
         $notificationView = $this->templating->render("user/elements/notification.html.twig", [
-            "notifications" => $notifications,
+            "notifications" => $notificationsUnpushed,
         ]);
 
         // Get latest, unseen messages - userId marks "the target", or the "other" user in an inbox
