@@ -6,11 +6,13 @@
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <title>Ime grupe</title>
         <!-- CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="font-awesome.min.css">
 		<link rel="stylesheet" href="font-awesome-animation.min.css">
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/functions.js"></script>
+		<script src="../public/build/js/leftMenu.js"></script>
+		<script src="../public/build/js/windowResize.js"></script>
 	</head>
 	
 	<body>
@@ -19,6 +21,36 @@
 				<a href="index.html">
 					<img src="images/logoImg.png"> 
 				</a>
+			</div>
+
+			<div id="list">
+				<div class="imageAndName">
+					<div id="user">
+						<div id="image">
+							<div class="center">
+								<div class="profileImageDiv small" style="background-image: url('https://ecowatchroar-img.rbl.ms/simage/https%3A%2F%2Fassets.rbl.ms%2F6461852%2F980x.jpg/2000%2C2000/9wf00EfNSTIubFEg/img.jpg')"></div>
+							</div>
+						</div>	
+						<div id="username">
+							<div class="center">
+								Ime korisnika
+							</div>
+						</div>
+					</div>
+					<div id="logout">
+						<div class="center">
+							<i class="fa fa-sign-out">log</i>
+						</div>
+					</div>
+					<div id="leftMenuIcon" style="display:none;" onclick="leftMenuSwitch()">
+						<div id="logout" style="position:absolute; left:0px; top:0px;">
+							<div class="center">
+								<i class="fa fa-align-justify">menu</i>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 
 		</header>
