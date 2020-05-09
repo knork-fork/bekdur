@@ -40,6 +40,9 @@ $ symfony serve
 ```
 
 If you don't have the Symfony client installed, run `php bin/console server:run`.
+
+You can also start the server with `php bin/console server:start *:8000` and stop it with `php bin/console server:stop`
+
 Alternatively, you can [configure a web server][3] like Nginx or Apache to run
 the application.
 
