@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker exec -it bekdur-postgres psql -U bekdur -d bekdur_baza "$@"

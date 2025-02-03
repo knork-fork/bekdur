@@ -1,0 +1,36 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: '3.1'
+services:
+    postgres:
+        container_name: bekdur-postgres
+        image: 'postgres:15-alpine'
+        working_dir: /application
+        volumes:
+            - '.:/application'
+        environment:
+            - POSTGRES_USER=bekdur
+            - POSTGRES_PASSWORD=fudoprvi
+            - POSTGRES_DB=bekdur_baza
+        ports:
+            - '62004:5432'
+
+    webserver:
+        container_name: bekdur-webserver
+        image: 'nginx:alpine'
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+        ports:
+            - '62000:80'
+
+    php-fpm:
+        build: phpdocker/php-fpm
+        container_name: bekdur-php-fpm
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.1/fpm/conf.d/99-overrides.ini'
+            - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.1/cli/conf.d/99-overrides.ini'

@@ -156,6 +156,20 @@
     "phpstan/phpstan": {
         "version": "0.11.7"
     },
+    "phpunit/phpunit": {
+        "version": "9.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "9.6",
+            "ref": "7364a21d87e658eb363c5020c072ecfdc12e2326"
+        },
+        "files": [
+            ".env.test",
+            "phpunit.xml.dist",
+            "tests/bootstrap.php"
+        ]
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -243,9 +257,6 @@
         "files": [
             "config/packages/dev/debug.yaml"
         ]
-    },
-    "symfony/debug-pack": {
-        "version": "v1.0.7"
     },
     "symfony/dependency-injection": {
         "version": "v4.2.4"
@@ -346,9 +357,6 @@
     "symfony/options-resolver": {
         "version": "v4.2.4"
     },
-    "symfony/orm-pack": {
-        "version": "v1.0.6"
-    },
     "symfony/panther": {
         "version": "v0.3.0"
     },
@@ -382,9 +390,6 @@
     },
     "symfony/process": {
         "version": "v4.2.4"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.4"
     },
     "symfony/property-access": {
         "version": "v4.2.4"
@@ -434,9 +439,6 @@
     "symfony/serializer": {
         "version": "v4.2.4"
     },
-    "symfony/serializer-pack": {
-        "version": "v1.0.2"
-    },
     "symfony/stopwatch": {
         "version": "v4.2.4"
     },
@@ -453,9 +455,6 @@
             "config/packages/swiftmailer.yaml",
             "config/packages/test/swiftmailer.yaml"
         ]
-    },
-    "symfony/test-pack": {
-        "version": "v1.0.5"
     },
     "symfony/translation": {
         "version": "3.3",
