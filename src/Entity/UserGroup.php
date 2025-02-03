@@ -228,8 +228,11 @@ class UserGroup
     public function getProfileSrc(): ?string
     {
         $src = json_decode($this->profile);
-        $src = strstr($src->filepath, 'uploads');
-        return $src;
+        if (isset($src->filepath)) {
+            return strstr($src->filepath, 'uploads');
+        } else {
+            return null;
+        }
     }
 
     public function getBackground(): ?string
